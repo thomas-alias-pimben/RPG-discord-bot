@@ -15,6 +15,6 @@ faite ensuite un `` npm install `` pour installer les paquets nécéssaires
 
 # pour lancer le bot
 
-faite un npm start
+faite un `` npm start ``
 
 
