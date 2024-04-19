@@ -1,0 +1,31 @@
+<%- include('./header'); %>
+
+<section class="hero is-warning is-small">
+    <div class="hero-body">
+      <p class="title">
+        changement de PNJ principale
+      </p>
+      
+    </div>
+  </section>
+<%- include('./navbar'); %>
+
+
+<form class="row g-3" action="/changer" method="post">
+ 
+  <% Object.values(manipPNJ.pnj).forEach(element => { %>
+    
+    <% if(element.nom !== undefined){ %>
+      <button class="button"name ='PNJ' value="<%= element.nom %>"> <%= element.nom %> </br> description : <%= element.attribut.description %> </button> 
+   <% } %>
+    
+  
+  <% }); %> 
+</form>
+
+
+
+
+    
+
+<%- include('./footer'); %>

@@ -1,0 +1,237 @@
+<%- include('./header'); %>
+
+<section class="hero is-warning is-small">
+    <div class="hero-body">
+      <p class="title">
+        création/edition de PNJ
+      </p>
+      
+    </div>
+  </section>
+<%- include('./navbar'); %>
+
+
+<form action="/creer" method="post">
+<div class="column is-three-fifths is-offset-one-fifth ">
+  <p> nom : <input class="text" type="text" name="nom" ></p>
+  <p>description :  </p>
+  <textarea class="textarea" name="description" placeholder="description"></textarea>
+  
+  <div class="box">
+    <table class="table is-fullwidth">
+      
+
+      <tbody>
+        <tr>
+          <th> <font size="4">santé physique</font></br><input class="number" type="number" name="santé physique" ></th>
+          <th> <font size="4">santé spirituel</font></br><input class="number" type="number" name="santé spirituel" ></th>
+        </tr>
+      </tbody>
+    </table>
+
+    <table class="table is-fullwidth">
+      <thead>
+        <tr>
+          <th> <font size="6">FORCE</font></br><input class="number" type="number" name="FORCE" ></th>
+          <th></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr>
+          <th> <font size="4">musculature</font></br><input class="number" type="number" name="musculature" ></th>
+          <th> <font size="4">vélocité</font></br><input class="number" type="number" name="vélocité" ></th>
+        </tr>
+        
+      </tbody>
+    </table>
+
+    <table class="table is-fullwidth">
+      <thead>
+        <tr>
+          <th> <font size="6">CHARISME</font></br><input class="number" type="number" name="CHARISME" ></th>
+          <th></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr>
+          <th> <font size="4">manipulation</font></br><input class="number" type="number" name="manipulation" ></th>
+          <th> <font size="4">intimidation</font></br><input class="number" type="number" name="intimidation" ></th>
+        </tr>
+        
+      </tbody>
+    </table>
+
+  </table>
+  <table class="table is-fullwidth">
+    <thead>
+      <tr>
+        <th> <font size="6">ATHLÉTISME</font></br><input class="number" type="number" name="ATHLÉTISME" ></th>
+        <th></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr>
+        <th> <font size="4">équilibre</font></br><input class="number" type="number" name="équilibre" ></th>
+        <th> <font size="4">agilité</font></br><input class="number" type="number" name="agilité" ></th>
+      </tr>
+      
+    </tbody>
+
+    <tbody>
+      <tr>
+        <th> <font size="4">dextérité</font></br><input class="number" type="number" name="dextérité" ></th>
+        <th> <font size="4">esquive</font></br><input class="number" type="number" name="esquive" ></th>
+      </tr>
+      
+    </tbody>
+  </table>
+
+  <table class="table is-fullwidth">
+    <thead>
+      <tr>
+        <th> <font size="6">CONNAISSANCE</font></br><input class="number" type="number" name="CONNAISSANCE" ></th>
+        <th></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr>
+        <th> <font size="4">culture générale</font></br><input class="number" type="number" name="culture générale" ></th>
+        <th> <font size="4">culture mythologie</font></br><input class="number" type="number" name="culture mythologie" ></th>
+      </tr>
+      
+    </tbody>
+
+    <tbody>
+      <tr>
+        <th> <font size="4">culture magique</font></br><input class="number" type="number" name="culture magique" ></th>
+        <th> </th>
+      </tr>
+      
+    </tbody>
+  </table>
+
+  <table class="table is-fullwidth">
+    <thead>
+      <tr>
+        <th> <font size="6">PERCEPTION</font></br><input class="number" type="number" name="PERCEPTION" ></th>
+        <th></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr>
+        <th> <font size="4">vue</font></br><input class="number" type="number" name="vue" ></th>
+        <th> <font size="4">ouie</font></br><input class="number" type="number" name="ouie" ></th>
+      </tr>
+      
+    </tbody>
+
+    <tbody>
+      <tr>
+        <th> <font size="4">fouille</font></br><input class="number" type="number" name="fouille" ></th>
+        <th> <font size="4">instinct</font></br><input class="number" type="number" name="instinct" > </th>
+      </tr>
+      
+    </tbody>
+  </table>
+
+  <table class="table is-fullwidth">
+    <thead>
+      <tr>
+        <th> <font size="6">CONCENTRATION</font></br><input class="number" type="number" name="CONCENTRATION" ></th>
+        <th></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr>
+        <th> <font size="4">focalisation</font></br><input class="number" type="number" name="focalisation" ></th>
+        <th> <font size="4">initiative</font></br><input class="number" type="number" name="initiative" ></th>
+      </tr>
+      
+    </tbody>
+
+    <tbody>
+      <tr>
+        <th> <font size="4">discrétion</font></br><input class="number" type="number" name="discrétion" ></th>
+        <th> <font size="4">orientation</font></br><input class="number" type="number" name="orientation" > </th>
+      </tr>
+      
+    </tbody>
+  </table>
+
+  <table class="table is-fullwidth">
+    <thead>
+      <tr>
+        <th> <font size="6">RÉSISTANCE PHYSIQUE</font></br><input class="number" type="number" name="RÉSISTANCE PHYSIQUE" ></th>
+        <th></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr>
+        <th> <font size="4">fatigue</font></br><input class="number" type="number" name="fatigue" ></th>
+        <th> <font size="4">violence</font></br><input class="number" type="number" name="violence" ></th>
+      </tr>
+      
+    </tbody>
+
+    <tbody>
+      <tr>
+        <th> <font size="4">immunité</font></br><input class="number" type="number" name="immunité" ></th>
+        <th></th>
+      </tr>
+      
+    </tbody>
+  </table>
+
+  <table class="table is-fullwidth">
+    <thead>
+      <tr>
+        <th> <font size="6">RÉSISTANCE MENTAL</font></br><input class="number" type="number" name="RÉSISTANCE MENTAL" ></th>
+        <th></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr>
+        <th> <font size="4">émotions</font></br><input class="number" type="number" name="émotions" ></th>
+        <th> <font size="4">résistance magique</font></br><input class="number" type="number" name="résistance magique" ></th>
+      </tr>
+      
+    </tbody>
+  </table>
+
+  <table class="table is-fullwidth">
+    <thead>
+      <tr>
+        <th> <font size="6">MAGIE</font></br></th>
+        <th></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr>
+        <th> <input class="number" type="text" name="nommagie1" > : <input class="number" type="number" name="nbmagie1" ></th>
+        <th> <input class="number" type="text" name="nommagie2" > : <input class="number" type="number" name="nbmagie2" ></th>
+      </tr>
+      
+    </tbody>
+  </table>
+
+  <input class="button" type="submit" name="valider" value="valider" >
+
+  </div>
+
+
+</div>
+</form>
+    
+   
+   
+
+<%- include('./footer'); %>

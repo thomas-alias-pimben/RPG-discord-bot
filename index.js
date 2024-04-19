@@ -1,84 +1,157 @@
-const fs = require('node:fs');
-const path = require('node:path');
-const { Client, Collection, Events, GatewayIntentBits, IntentsBitField, REST, Intents, ClientEvents } = require('discord.js');
-//importation des autre fichier js
-const { config, aff,afficherPlusieursPartie , afficherPerso, valeurAttribut, affAttribut, affSocial, afficherPersoNom, ajouterPv, ajouterPs, affPv, restaurerPv, restaurerPs, modifierPv, modifierPs, tableauChannel,getIdChannel,chercheChanel, cherchePerso, chercheMusiqueVocal, modifierXP, ajouterXP, getxp,  modifierverse, ajouterverse, getverse, valeurBonus } = require('./manipulerjson');
-//initialisation du bot discord
-const { SlashCommandIntegerOption } = require('@discordjs/builders');
-
-const { token, adminId} = require('./config.json');
 
 
-const idAdmin = adminId
+let express = require('express');
+let app = express();
+let bodyparser = require('body-parser');
+var session = require('express-session');
+const manipjson = require('./manipulerjson')
 
-let pageperso = false
-let estEnVoc = false;
-require("./registeryCommand");
+const botDiscord = require("./bootbot");
 
-// Create a new client instance
-const client = new Client({ intents: [GatewayIntentBits.Guilds,
-        GatewayIntentBits.GuildMessages,
-        GatewayIntentBits.MessageContent,
-        GatewayIntentBits.GuildMembers,
-        IntentsBitField.Flags.GuildPresences] });
+app.set('view engine', 'ejs');
 
-client.commands = new Collection();
+//middleware
+app.use('/assets', express.static('public'));
+app.use(bodyparser.urlencoded({extended : false}));
+app.use(bodyparser.json());
+app.use(session({
+    secret: 'ersgdsgdsfgf',
+    resave: false,
+    saveUninitialized: true,
+    cookie: { secure: false }
+  }));
 
-const foldersPath = path.join(__dirname, 'commands');
-const commandFolders = fs.readdirSync(foldersPath);
+  //midleware perso
+  app.use(require('./middleware/flash'));
 
-for (const folder of commandFolders) {
-    const commandsPath = path.join(foldersPath, folder);
-    const commandFiles = fs.readdirSync(commandsPath).filter(file => file.endsWith('.js'));
-    for (const file of commandFiles) {
-        const filePath = path.join(commandsPath, file);
-        const command = require(filePath);
-        // Set a new item in the Collection with the key as the command name and the value as the exported module
-        if ('data' in command && 'execute' in command) {
-            client.commands.set(command.data.name, command);
-        } else {
-            console.log(`[WARNING] The command at ${filePath} is missing a required "data" or "execute" property.`);
-        }
+
+
+
+
+
+//Route
+app.get('/', (request, response) =>{
+    
+    response.render('page/index', {test: 'salut'});
+    //console.log(request.query)
+} );
+
+
+
+app.get('/perso', (request, response) =>{
+    
+
+    let perso = new Object();
+    perso.config = require('./FonctionServeur');
+    perso.personnage = request.query ;
+
+    response.render('page/fichePerso', perso );
+    //console.log(request.query)
+} );
+
+
+app.get('/bonus', (request, response) =>{
+
+    
+    manipautre = manipjson.configautre;
+    response.render('page/bonus', manipautre);
+    
+} );
+
+app.get('/creer', (request, response) =>{
+    
+    response.render('page/creerPNJ', {test: 'salut'});
+    //console.log(request.query)
+} );
+
+app.get('/changer', (request, response) =>{
+    
+    manipPNJ = {};
+    manipPNJ.pnj = manipjson.configPNJ;
+    response.render('page/changerPNJ', manipPNJ);
+    //console.log(request.query)
+} );
+
+//POST
+app.post('/', (request, response) =>{
+
+    if(request.body.message === undefined || request.body.message === '')
+    {
+        request.flash('error',"vous n'avez pas posté de message");
+        
     }
-}
+    //console.log(request.body);
+    response.redirect('/');
+});
 
-
-
-client.on(Events.InteractionCreate, async interaction => {
-    if (!interaction.isChatInputCommand()) return;
-
-    const command = interaction.client.commands.get(interaction.commandName);
-
-    if (!command) {
-        console.error(`No command matching ${interaction.commandName} was found.`);
-        return;
-    }
-
-    try {
-        await command.execute(interaction);
-    } catch (error) {
-        console.error(error);
-        if (interaction.replied || interaction.deferred) {
-            await interaction.followUp({ content: 'There was an error while executing this command!', ephemeral: true });
-        } else {
-            await interaction.reply({ content: 'There was an error while executing this command!', ephemeral: true });
-        }
-    }
+app.post('/bonus', (request, response) =>{
+    //console.log(request.body);
+    manipjson.modifBonus(request.body);
+    response.redirect('/bonus');
 });
 
 
 
-client.once('ready', (client) => {
+app.post('/perso', (request, response) =>{
 
-    //connecterBotChannelVocal()
-    usernameAdmin = client.users.cache.get(idAdmin);
-    console.log(`${client.user.tag} connecter`);
-    console.log('Je suis prêt pour détruire ton scénario '+usernameAdmin.username+' °( ^-^)°');
+    
+    //console.log(request.body);
 
+    manipjson.modifAtt(request.body.perso,request.body.att,request.body.modif, request.body.nombre)
+    
+    botDiscord.event.emit('rebootPagePerso'); 
+    if (request.body.perso ==="" || request.body.perso === undefined) {
+        response.redirect('/perso');
+    } else {
+        response.redirect('/perso?perso='+request.body.perso);
+    }
+    
+});
+
+app.post('/creer', (request, response) =>{
+
+    if(request.body.nom === undefined || request.body.nom === '')
+    {
+        request.flash('error',"vous n'avez pas mis de nom");
+        
+    }
+    else
+    {
+        manipjson.creerPNJ(request.body);
+        request.flash('valid',"PNJ Crée");
+    }
+    
+    //console.log(request.body);
+    response.redirect('/creer');
+});
+
+app.post('/changer', (request, response) =>{
+
+    if(manipjson.changerPNJ(request.body))
+    {
+        request.flash('valid',"le PNJ principale à été changé");
+    }
+    else
+    {
+        request.flash('error',"ça n'as pas marché");
+    }
+    
+    //console.log(request.body);
+    response.redirect('/changer?post');
 });
 
 
-// Log in to Discord with your client's token
-client.login(token);
+app.get('/coffee', (req, res) => {
+    res.status(418).render('page/PageTeaTime', {"erreur" : "418", "type" : "I AM A TEAPOT"})
+   });
+
+app.get('*', (req, res) => {
+    res.status(404).render('page/PageErreur', {"erreur" : "404", "type" : "NOT FOUND"})
+  });
 
 
+
+
+
+
+app.listen(8000);
