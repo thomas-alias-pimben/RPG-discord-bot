@@ -1,0 +1,163 @@
+{
+    "id": "1234",
+    "idChannel": "",
+    "musique": "",
+    "joueur": "moi",
+    "nom": "Sandra Adoré",
+    "race": "écureuil Garou",
+    "niveau": 10,
+    "xp": 0,
+    "verse": 100,
+    "pv": [
+        {
+            "PV": -18,
+            "PS": 25
+        }
+    ],
+    "attribut": [
+        {
+            "santé physique": 30,
+            "santé spirituelle": 28
+        },
+        {
+            "FORCE": 12,
+            "musculature": 10,
+            "musculature G": 10,
+            "musculature SG": 14,
+            "musculature E": 4,
+            "vélocité": 14,
+            "vélocité G": 18,
+            "vélocité SG": 20,
+            "vélocité E": 20
+        },
+        {
+            "CHARISME": 4,
+            "manipulation": 7,
+            "manipulation G": 5,
+            "manipulation SG": 1,
+            "manipulation E": 3,
+            "intimidation": 1,
+            "intimidation G": 5,
+            "intimidation SG": 9,
+            "intimidation E": -5
+        },
+        {
+            "ATHLÉTISME": 12,
+            "équilibre": 9,
+            "équilibre G": 13,
+            "équilibre SG": 15,
+            "équilibre E": 15,
+            "agilité": 15,
+            "agilité G": 21,
+            "agilité SG": 21,
+            "agilité E": 19,
+            "dextérité": 9,
+            "dextérité G": 11,
+            "dextérité SG": 13,
+            "dextérité E": 3,
+            "esquive": 15,
+            "esquive G": 21,
+            "esquive SG": 19,
+            "esquive E": 19
+        },
+        {
+            "CONNAISSANCE": 4,
+            "culture générale": 1,
+            "culture générale G": 1,
+            "culture générale SG": 1,
+            "culture générale E": 1,
+            "culture mythologique": 5,
+            "culture mythologique G": 5,
+            "culture mythologique SG": 5,
+            "culture mythologique E": 5,
+            "culture garou": 6,
+            "culture garou G": 6,
+            "culture garou SG": 6,
+            "culture garou E": 6
+        },
+        {
+            "PERCEPTION": 9,
+            "vue": 8,
+            "vue G": 8,
+            "vue SG": 8,
+            "vue E": 8,
+            "ouïe": 8,
+            "ouïe G": 10,
+            "ouïe SG": 12,
+            "ouïe E": 12,
+            "fouille": 8,
+            "fouille G": 12,
+            "fouille SG": 12,
+            "fouille E": 12,
+            "instinct": 14,
+            "instinct G": 16,
+            "instinct SG": 16,
+            "instinct E": 16
+        },
+        {
+            "CONCENTRATION": 7,
+            "focalisation": 4,
+            "focalisation G": 6,
+            "focalisation SG": 4,
+            "focalisation E": 2,
+            "initiative": 8,
+            "initiative G": 12,
+            "initiative SG": 16,
+            "initiative E": 16,
+            "discrétion": 10,
+            "discrétion G": 8,
+            "discrétion SG": 6,
+            "discrétion E": 16,
+            "orientation": 6,
+            "orientation G": 6,
+            "orientation SG": 6,
+            "orientation E": 6
+        },
+        {
+            "RÉSISTANCE PHYSIQUE": 3,
+            "fatigue": 4,
+            "fatigue G": 6,
+            "fatigue SG": 8,
+            "fatigue E": 2,
+            "violence": 4,
+            "violence G": 7,
+            "violence SG": 8,
+            "violence E": 0,
+            "immunité": 4,
+            "immunité G": 4,
+            "immunité SG": 8,
+            "immunité E": 4
+        },
+        {
+            "RÉSISTANCE MENTALE": 8,
+            "émotions": 12,
+            "émotions G": 10,
+            "émotions SG": 8,
+            "émotions E": 10,
+            "résistance magique": 5,
+            "résistance magique G": 5,
+            "résistance magique SG": 5,
+            "résistance magique E": 5
+        },
+        {
+            "SPECIAL": 15,
+            "déguerpissement": 7,
+            "déguerpissement G": 12,
+            "déguerpissement SG": 16,
+            "déguerpissement E": 22,
+            "grimoire": 14,
+            "garou": 10,
+            "épée noire": 12,
+            "pétrification": 5
+        },
+        {
+            "SORCELLERIE": 10,
+            "recouvrement": 11,
+            "autonomie": 10,
+            "répartition": 9,
+            "duration": 8,
+            "transfert": 10
+        }
+    ],
+    "magie": {}
+}
