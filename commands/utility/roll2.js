@@ -1,5 +1,5 @@
 const { SlashCommandBuilder } = require('discord.js');
-const {valeurAttribut, chercheMusiqueVocal,  } = require('../../manipulerjson');
+const {valeurAttribut, chercheMusiqueVocal, avoirKey, cherchePerso, getPersoAllAttributs,  } = require('../../manipulerjson');
 const { jetDe, jetCritique} = require("../../diceFunction")
 
 
@@ -12,8 +12,10 @@ module.exports = {
                 .setDescription('Phrase to search for')
                 .setAutocomplete(true)),
     async autocomplete(interaction) {
+        let idJoueur = interaction.user.id;
+
         const focusedValue = interaction.options.getFocused();
-        const choices = ['Popular Topics: Threads', 'Sharding: Getting started', 'Library: Voice Connections', 'Interactions: Replying to slash commands', 'Popular Topics: Embed preview'];
+        const choices = getPersoAllAttributs(idJoueur);
         const filtered = choices.filter(choice => choice.startsWith(focusedValue));
         await interaction.respond(
             filtered.map(choice => ({ name: choice, value: choice })),

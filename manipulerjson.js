@@ -59,6 +59,12 @@ function cherchePerso(idJoueur) {
 
 }
 
+function getPersoAllAttributs(idJoueur)
+{
+  perso = cherchePerso(idJoueur);
+  return Object.keys(config[perso]["attribut"]);
+}
+
 function afficherPersoNom(nom)
 {
   let userId = config[nom]["id"];
@@ -254,7 +260,7 @@ function  afficherPerso(userId)
       }
       else if (att == "magie")
       {
-        resultat+= affSocial(userId);
+        resultat+= affMagie(userId);
       }
       else if (att == "pv")
       {
@@ -292,8 +298,8 @@ function affAttribut(userId)
       clé.forEach(key => {
 
           retour += ""+key+" : "+element[key]+"\n";
-          
-        
+
+
       });
       retour +="\n";
     });
@@ -301,7 +307,7 @@ function affAttribut(userId)
     return retour;
 }
 
-function affSocial(userId) 
+function affMagie(userId)
 {
   perso = cherchePerso(userId);
   let retour="\n\nMAGIE :\n\n";
@@ -588,7 +594,7 @@ module.exports.avoirKey = avoirKey;
 module.exports.valeurAttribut = valeurAttribut;
 module.exports.afficherPerso = afficherPerso;
 module.exports.affAttribut = affAttribut;
-module.exports.affSocial = affSocial;
+module.exports.affSocial = affMagie;
 module.exports.afficherPersoNom = afficherPersoNom;
 module.exports.ajouterPv  =ajouterPv;
 module.exports.ajouterPs  =ajouterPs;
@@ -614,6 +620,7 @@ module.exports.modifAtt = modifAtt;
 module.exports.creerPNJ = creerPNJ;
 module.exports.changerPNJ = changerPNJ;
 module.exports.afficherPlusieursPartie = afficherPlusieursPartie;
+module.exports.getPersoAllAttributs = getPersoAllAttributs
 
 
 

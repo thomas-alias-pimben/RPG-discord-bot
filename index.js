@@ -39,7 +39,6 @@ app.get('/', (request, response) =>{
 
 
 app.get('/perso', (request, response) =>{
-    
 
     let perso = new Object();
     perso.config = require('./FonctionServeur');
@@ -141,6 +140,7 @@ app.post('/changer', (request, response) =>{
 });
 
 
+//page d'erreur
 app.get('/coffee', (req, res) => {
     res.status(418).render('page/PageTeaTime', {"erreur" : "418", "type" : "I AM A TEAPOT"})
    });
