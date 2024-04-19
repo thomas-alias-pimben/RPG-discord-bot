@@ -62,6 +62,9 @@ function cherchePerso(idJoueur) {
 function getPersoAllAttributs(idJoueur)
 {
   perso = cherchePerso(idJoueur);
+  /*config[perso]["attribut"].flatMap((element) =>{
+
+  })*/
   return Object.keys(config[perso]["attribut"]);
 }
 
