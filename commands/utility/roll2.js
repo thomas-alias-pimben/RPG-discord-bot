@@ -15,6 +15,7 @@ module.exports = {
         let idJoueur = interaction.user.id;
 
         const focusedValue = interaction.options.getFocused();
+        console.log(interaction.user.respond);
         const choices = getPersoAllAttributs(idJoueur);
         const filtered = choices.filter(choice => choice.startsWith(focusedValue));
         await interaction.respond(

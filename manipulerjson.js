@@ -62,10 +62,15 @@ function cherchePerso(idJoueur) {
 function getPersoAllAttributs(idJoueur)
 {
   perso = cherchePerso(idJoueur);
-  /*config[perso]["attribut"].flatMap((element) =>{
+  retour = config[perso]["attribut"].flatMap((element) =>{
+    return  Object.keys(element).filter((string)=>{
+      if(!string.includes("SG") || string.includes("G") || string.includes("E")){
+        return true
+      }
+    });
+  })
 
-  })*/
-  return Object.keys(config[perso]["attribut"]);
+  return retour.slice(0,25);
 }
 
 function afficherPersoNom(nom)
