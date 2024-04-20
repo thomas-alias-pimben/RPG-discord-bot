@@ -8,15 +8,14 @@ module.exports = {
         .setName('roll2')
         .setDescription('Search discordjs.guide!')
         .addStringOption(option =>
-            option.setName('query')
+            option.setName('attribut')
                 .setDescription('Phrase to search for')
                 .setAutocomplete(true)),
     async autocomplete(interaction) {
         let idJoueur = interaction.user.id;
-
+        message = interaction.options.data[0].value
         const focusedValue = interaction.options.getFocused();
-        console.log(interaction.user.respond);
-        const choices = getPersoAllAttributs(idJoueur);
+        const choices = getPersoAllAttributs(idJoueur, message);
         const filtered = choices.filter(choice => choice.startsWith(focusedValue));
         await interaction.respond(
             filtered.map(choice => ({ name: choice, value: choice })),
@@ -25,8 +24,11 @@ module.exports = {
     async execute(interaction) {
         const userId = interaction.user.id;
         //les attributs de la fonction
-        const attribut = interaction.options.getString("attribut");
-        console.log(attribut);
+        let attribut = interaction.options.getString("attribut");
+        if(attribut[0] === " ")
+        {
+            attribut = attribut.slice(1);
+        }
         //la valeur de la stat
         const valAttribut = valeurAttribut(userId, attribut);
         let random = jetDe();
@@ -57,7 +59,7 @@ module.exports = {
         }
         else
         {
-            message += "jet simple :**" + random + "**";
+            message += "pas compris... jet simple :**" + random + "**";
             await interaction.reply(message);
         }
     },

@@ -59,13 +59,23 @@ function cherchePerso(idJoueur) {
 
 }
 
-function getPersoAllAttributs(idJoueur)
+function hasSpaceFirst(message) {
+  return message[0] === " ";
+}
+
+function getPersoAllAttributs(idJoueur, message)
 {
+  let spaceFirst = hasSpaceFirst(message)
   perso = cherchePerso(idJoueur);
   retour = config[perso]["attribut"].flatMap((element) =>{
-    return  Object.keys(element).filter((string)=>{
-      if(!string.includes("SG") || string.includes("G") || string.includes("E")){
-        return true
+    return  Object.keys(element).map((e)=>{
+      if(spaceFirst)
+        return  " "+e;
+      else
+        return e;
+    }).filter((string)=>{
+      if(string.includes(message)){
+        return true;
       }
     });
   })
