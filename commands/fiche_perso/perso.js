@@ -10,12 +10,12 @@ module.exports = {
         const perso = afficherPerso(userId);
 
         const persoTab = afficherPlusieursPartie(perso);
-        await interaction.reply({ content:  persoTab[0]+"", ephemeral: true });
+        await interaction.reply({ content:  "```"+persoTab[0]+"```", ephemeral: true });
         if(persoTab.length>1)
         {
             persoTab.shift()
             for (const element of persoTab) {
-                await interaction.followUp({ content: element , ephemeral: true });
+                await interaction.followUp({ content: "```"+element+"```" , ephemeral: true });
             }
 
         }

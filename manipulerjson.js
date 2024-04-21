@@ -234,10 +234,9 @@ function afficherPlusieursPartie(stringPerso)
     const perso1stPartSplitBackSlash = perso1stPart.split("\n");
     const beforeBackSlash = perso1stPartSplitBackSlash[perso1stPartSplitBackSlash.length-1];
     perso1stPart = perso1stPart.substring(0,perso1stPart.length-beforeBackSlash.length)
-    perso1stPart = perso1stPart +"```";
     let perso2stPart = stringPerso.substring(1997)
 
-    perso2stPart = "```"+beforeBackSlash+perso2stPart;
+    perso2stPart = beforeBackSlash+perso2stPart;
 
 
     return [perso1stPart].concat(afficherPlusieursPartie(perso2stPart));
@@ -267,7 +266,6 @@ function  afficherPerso(userId)
   /* mise en page */
   var resultat ="";
 
-  resultat+="```\n";
 
   donnees.forEach(att => {
     if (att != "id")
@@ -290,8 +288,6 @@ function  afficherPerso(userId)
       }
     }
   });
-
-  resultat+="\n```";
 
   //console.log(resultat);
   return resultat;
