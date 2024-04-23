@@ -1,11 +1,11 @@
+angular
+  .module("test", [])
 
-angular.module("test",[])
-
-.controller("testctrl",function($scope){
-    $scope.nbMails=5;
+  .controller("testctrl", function ($scope) {
+    $scope.nbMails = 5;
     //0$scope.perso = require('./../sourcePerso/perso.json');
 
-    $scope.plusUnMail = function() {
-        $scope.nbMails ++;
-    }
-});
+    $scope.plusUnMail = function () {
+      $scope.nbMails++;
+    };
+  });
