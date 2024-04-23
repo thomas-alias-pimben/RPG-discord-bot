@@ -1,0 +1,21 @@
+const { SlashCommandBuilder } = require('discord.js');
+const {afficherPlusieursPartie , afficherPerso, affAttribut} = require('../../manipulerjson');
+const {adminId} = require('../../config.json');
+
+module.exports = {
+    data: new SlashCommandBuilder()
+        .setName('enlevervocal')
+        .setDescription("le bot se déconnecte du vocal de l'admin"),
+    async execute(interaction) {
+        const userId = interaction.user.id;
+        if (userId === adminId)
+        {
+            const { getVoiceConnections } = require('@discordjs/voice');
+            const connection = getVoiceConnections().entries().next().value[1];
+
+            connection.destroy();
+            estEnVoc = false;
+            await interaction.reply({ content:"ok je m'en vais... :(", ephemeral: true });
+        }
+    },
+};
