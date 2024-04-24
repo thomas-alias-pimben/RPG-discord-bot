@@ -238,7 +238,7 @@ function afficherPerso(userId) {
   var resultat = "";
 
   donnees.forEach((att) => {
-    if (att != "id") {
+    if (att != "id" && att != "idChannel" && att != "musique") {
       if (att == "attribut") {
         resultat += affAttribut(userId);
       } else if (att == "magie") {
