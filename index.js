@@ -32,7 +32,7 @@ app.get("/", (request, response) => {
 
 app.get("/perso", (request, response) => {
   let perso = new Object();
-  perso.config = require("./FonctionServeur");
+  perso.config = require("./utils/FonctionServeur");
   perso.personnage = request.query;
 
   response.render("page/fichePerso", perso);

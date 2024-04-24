@@ -5,7 +5,7 @@ const {
   affPv,
   ajouterPv,
 } = require("../../manipulerjson");
-const { DICE, jetDe } = require("../../diceFunction");
+const { DICE, jetDe } = require("../../utils/diceFunction");
 
 module.exports = {
   data: new SlashCommandBuilder()

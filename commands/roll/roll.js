@@ -1,6 +1,7 @@
 const { SlashCommandBuilder } = require("discord.js");
 const { valeurAttribut, chercheMusiqueVocal } = require("../../manipulerjson");
-const { jetDe, jetCritique } = require("../../diceFunction");
+const { jetDe, jetCritique } = require("../../utils/diceFunction");
+const { musiquetime } = require("../../utils/vocalFunction");
 
 module.exports = {
   data: new SlashCommandBuilder()
@@ -27,12 +28,12 @@ module.exports = {
       message += "REUSSITE CRITIQUE !!! : **+" + randomCritique + "**\n";
       random += randomCritique;
       ("&");
-      //musiquetime(chercheMusiqueVocal(userId), 30000);
+      musiquetime(chercheMusiqueVocal(userId), 30000);
     }
     if (random === 1) {
       message = "échec critique ... : **-" + randomCritique + "**\n";
       random -= randomCritique;
-      //musiquetime("./musique/echec.mp3",5000);
+      musiquetime("./musique/echec.mp3",5000);
     }
     if (valAttribut !== undefined) {
       message +=

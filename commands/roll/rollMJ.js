@@ -4,8 +4,9 @@ const {
   chercheMusiqueVocal,
   valeurBonus,
 } = require("../../manipulerjson");
-const { jetDe, jetCritique } = require("../../diceFunction");
+const { jetDe, jetCritique } = require("../../utils/diceFunction");
 const { adminId } = require("../../config.json");
+const { musiquetime } = require("../../utils/vocalFunction");
 
 module.exports = {
   data: new SlashCommandBuilder()
@@ -30,7 +31,7 @@ module.exports = {
         //on gere les critique
         if (random === 10) {
           random += randomCritique;
-          //musiquetime(chercheMusiqueVocal(userId),30000);
+          musiquetime(chercheMusiqueVocal(userId),30000);
         }
         if (random === 1) {
           random -= randomCritique;

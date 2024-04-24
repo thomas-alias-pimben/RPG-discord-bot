@@ -5,6 +5,7 @@ const {
   affAttribut,
 } = require("../../manipulerjson");
 const { adminId } = require("../../config.json");
+const { getVoiceConnections } = require("@discordjs/voice");
 
 module.exports = {
   data: new SlashCommandBuilder()
@@ -13,7 +14,7 @@ module.exports = {
   async execute(interaction) {
     const userId = interaction.user.id;
     if (userId === adminId) {
-      const { getVoiceConnections } = require("@discordjs/voice");
+
       const connection = getVoiceConnections().entries().next().value[1];
 
       connection.destroy();
