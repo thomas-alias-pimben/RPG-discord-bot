@@ -22,38 +22,33 @@ module.exports = {
     const randomCritique = jetCritique();
     let message = "";
 
+    //on gere les critique
+    if (random === 10) {
+      message += "REUSSITE CRITIQUE !!! : **+" + randomCritique + "**\n";
+      random += randomCritique;
+      ("&");
+      //musiquetime(chercheMusiqueVocal(userId), 30000);
+    }
+    if (random === 1) {
+      message = "échec critique ... : **-" + randomCritique + "**\n";
+      random -= randomCritique;
+      //musiquetime("./musique/echec.mp3",5000);
+    }
     if (valAttribut !== undefined) {
-      //on gere les critique
-      if (random === 10) {
-        message += "REUSSITE CRITIQUE !!! : **+" + randomCritique + "**\n";
-        random += randomCritique;
-        ("&");
-        //musiquetime(chercheMusiqueVocal(userId), 30000);
-      }
-      if (random === 1) {
-        message = "échec critique ... : **-" + randomCritique + "**\n";
-        random -= randomCritique;
-        //musiquetime("./musique/echec.mp3",5000);
-      }
-      if (attribut != null) {
-        message +=
-          "jet de " +
-          attribut +
-          " : " +
-          random +
-          "+" +
-          valAttribut +
-          "=**" +
-          (random + valAttribut) +
-          "**";
-      } else {
-        message += "jet simple :**" + random + "**";
-      }
-
-      await interaction.reply(message);
+      message +=
+        "jet de " +
+        attribut +
+        " : " +
+        random +
+        "+" +
+        valAttribut +
+        "=**" +
+        (random + valAttribut) +
+        "**";
     } else {
       message += "jet simple :**" + random + "**";
-      await interaction.reply(message);
     }
+
+    await interaction.reply(message);
   },
 };

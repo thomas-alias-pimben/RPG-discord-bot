@@ -307,16 +307,19 @@ function valeurAttribut(userId, attribut) {
   perso = cherchePerso(userId);
 
   let retour;
-  config[perso]["attribut"].forEach((element) => {
-    clé = avoirKey(element);
+  if (config[perso] !== undefined) {
+    config[perso]["attribut"].forEach((element) => {
+      clé = avoirKey(element);
 
-    clé.forEach((key) => {
-      if (key == attribut) {
-        retour = element[key];
-      }
+      clé.forEach((key) => {
+        if (key === attribut) {
+          retour = element[key];
+        }
+      });
     });
-  });
-  return retour;
+    return retour;
+  }
+  return undefined;
 }
 
 /*    pour les CHANNEL */

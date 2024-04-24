@@ -28,11 +28,11 @@ module.exports = {
 
       if (valAttribut !== undefined) {
         //on gere les critique
-        if (random == 10) {
+        if (random === 10) {
           random += randomCritique;
           //musiquetime(chercheMusiqueVocal(userId),30000);
         }
-        if (random == 1) {
+        if (random === 1) {
           random -= randomCritique;
           musiquetime("./musique/echec.mp3", 5000);
         }

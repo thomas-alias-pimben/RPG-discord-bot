@@ -34,7 +34,7 @@ module.exports = {
     const userId = interaction.user.id;
     //les attributs de la fonction
     let attribut = interaction.options.getString("attribut");
-    if (attribut[0] === " ") {
+    if (typeof attribut === "string" && attribut[0] === " ") {
       attribut = attribut.slice(1);
     }
     //la valeur de la stat
@@ -43,38 +43,33 @@ module.exports = {
     const randomCritique = jetCritique();
     let message = "";
 
-    if (valAttribut !== undefined) {
-      //on gere les critique
-      if (random === 10) {
-        message += "REUSSITE CRITIQUE !!! : **+" + randomCritique + "**\n";
-        random += randomCritique;
-        ("&");
-        //musiquetime(chercheMusiqueVocal(userId), 30000);
-      }
-      if (random === 1) {
-        message = "échec critique ... : **-" + randomCritique + "**\n";
-        random -= randomCritique;
-        //musiquetime("./musique/echec.mp3",5000);
-      }
-      if (attribut != null) {
-        message +=
-          "jet de " +
-          attribut +
-          " : " +
-          random +
-          "+" +
-          valAttribut +
-          "=**" +
-          (random + valAttribut) +
-          "**";
-      } else {
-        message += "jet simple :**" + random + "**";
-      }
-
-      await interaction.reply(message);
-    } else {
-      message += "pas compris... jet simple :**" + random + "**";
-      await interaction.reply(message);
+    //on gere les critique
+    if (random === 10) {
+      message += "REUSSITE CRITIQUE !!! : **+" + randomCritique + "**\n";
+      random += randomCritique;
+      ("&");
+      //musiquetime(chercheMusiqueVocal(userId), 30000);
     }
+    if (random === 1) {
+      message = "échec critique ... : **-" + randomCritique + "**\n";
+      random -= randomCritique;
+      //musiquetime("./musique/echec.mp3",5000);
+    }
+    if (valAttribut !== undefined) {
+      message +=
+        "jet de " +
+        attribut +
+        " : " +
+        random +
+        "+" +
+        valAttribut +
+        "=**" +
+        (random + valAttribut) +
+        "**";
+    } else {
+      message += "jet simple :**" + random + "**";
+    }
+
+    await interaction.reply(message);
   },
 };
