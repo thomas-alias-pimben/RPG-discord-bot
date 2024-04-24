@@ -1,8 +1,12 @@
-const { createAudioResource, AudioPlayerStatus, createAudioPlayer } = require("@discordjs/voice");
+const {
+  createAudioResource,
+  AudioPlayerStatus,
+  createAudioPlayer,
+} = require("@discordjs/voice");
 const { getVoiceConnections } = require("@discordjs/voice");
 
 module.exports.musiquetime = () => {
-  if (getVoiceConnections().size !==0) {
+  if (getVoiceConnections().size !== 0) {
     console.log("path =" + path);
     player.pause();
     const resource = createAudioResource(path);
@@ -25,10 +29,7 @@ module.exports.musiquetime = () => {
       player.unpause();
     }, time);
     console.log("musique réussite critique");
-  }
-  else
-  {
+  } else {
     console.log("pas connecter");
   }
 };
-

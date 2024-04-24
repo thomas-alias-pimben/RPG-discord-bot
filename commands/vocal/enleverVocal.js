@@ -14,7 +14,6 @@ module.exports = {
   async execute(interaction) {
     const userId = interaction.user.id;
     if (userId === adminId) {
-
       const connection = getVoiceConnections().entries().next().value[1];
 
       connection.destroy();

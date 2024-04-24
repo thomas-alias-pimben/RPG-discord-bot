@@ -31,7 +31,7 @@ module.exports = {
         //on gere les critique
         if (random === 10) {
           random += randomCritique;
-          musiquetime(chercheMusiqueVocal(userId),30000);
+          musiquetime(chercheMusiqueVocal(userId), 30000);
         }
         if (random === 1) {
           random -= randomCritique;
