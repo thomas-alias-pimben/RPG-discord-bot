@@ -18,12 +18,7 @@ module.exports.rebootPagePerso = (client) => {
       let channelpromise2 = client.channels.find(idJoueur);
 
       channelpromise2.then(succesChannel);
-    }
-    catch (e) {
-
-    }
-
-
+    } catch (e) {}
   });
 
   async function succesChannel(channel) {
