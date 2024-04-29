@@ -36,10 +36,17 @@ module.exports.rebootPagePerso = (client) => {
       afficherPlusieursPartie(
         afficherPersoNom(chercheChanel(channel.id)),
       ).forEach((message) => {
-        let first = fetched.last();
-        fetched.delete(first.id);
-        first.edit(message);
-        //channel.send(message);
+        if(fetched.size ===0)
+        {
+          channel.send(message)
+        }
+        else
+        {
+          let first = fetched.last();
+          fetched.delete(first.id);
+          first.edit(message);
+        }
+
       });
 
       fetched.forEach((message) => {
