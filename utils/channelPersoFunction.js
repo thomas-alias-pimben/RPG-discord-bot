@@ -25,14 +25,26 @@ module.exports.rebootPagePerso = (client) => {
     //channel.send(afficherPerso(userId));
 
     const fetched = await channel.messages.fetch({ limit: 10 });
-    fetched.forEach((message) => {
-      message.delete();
-    });
+    console.log(fetched.size);
+    if (fetched.size === 0) {
+      afficherPlusieursPartie(
+        afficherPersoNom(chercheChanel(channel.id)),
+      ).forEach((message) => {
+        channel.send(message);
+      });
+    } else {
+      afficherPlusieursPartie(
+        afficherPersoNom(chercheChanel(channel.id)),
+      ).forEach((message) => {
+        let first = fetched.last();
+        fetched.delete(first.id);
+        first.edit(message);
+        //channel.send(message);
+      });
 
-    afficherPlusieursPartie(
-      afficherPersoNom(chercheChanel(channel.id)),
-    ).forEach((message) => {
-      channel.send(message);
-    });
+      fetched.forEach((message) => {
+        message.delete();
+      });
+    }
   }
 };
