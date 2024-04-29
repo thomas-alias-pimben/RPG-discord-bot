@@ -14,11 +14,11 @@ module.exports.rebootPagePerso = (client) => {
 
     console.log(idJoueur);
 
-    try {
-      let channelpromise2 = client.channels.find(idJoueur);
+    let channelpromise2 = client.channels.fetch(idJoueur);
 
-      channelpromise2.then(succesChannel);
-    } catch (e) {}
+    channelpromise2.then(succesChannel).catch(() => {
+      console.log(idJoueur + "n'as pas été trouvé");
+    });
   });
 
   async function succesChannel(channel) {
