@@ -12,8 +12,6 @@ module.exports.rebootPagePerso = (client) => {
   tableauIdChannel.forEach((joueurChannelid) => {
     idJoueur = getIdChannel(joueurChannelid);
 
-    console.log(idJoueur);
-
     let channelpromise2 = client.channels.fetch(idJoueur);
 
     channelpromise2.then(succesChannel).catch(() => {

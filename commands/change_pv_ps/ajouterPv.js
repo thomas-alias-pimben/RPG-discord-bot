@@ -6,6 +6,7 @@ const {
   ajouterPv,
 } = require("../../manipulerjson");
 const { DICE, jetDe } = require("../../utils/diceFunction");
+const { rebootPagePerso } = require("../../utils/channelPersoFunction");
 
 module.exports = {
   data: new SlashCommandBuilder()
@@ -22,6 +23,7 @@ module.exports = {
       pv = 0;
     }
     ajouterPv(userId, pv);
+    rebootPagePerso(interaction.client);
     await interaction.reply({ content: "" + affPv(userId), ephemeral: true });
     console.log(
       interaction.user.username +
