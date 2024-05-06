@@ -111,22 +111,17 @@ app.post("/creer", (request, response) => {
 });
 
 app.post("/changer", (request, response) => {
-
   if (request.body.change === undefined) {
-
     if (manipjson.manipPNJ(request.body)) {
       request.flash("valid", "la requête est passé");
     } else {
       request.flash("error", "ça n'as pas marché");
     }
 
-
     //console.log(request.body);
     response.redirect("/changer?post");
-  }
-  else
-  {
-    response.redirect("/changerPNJ?perso="+request.body.change);
+  } else {
+    response.redirect("/changerPNJ?perso=" + request.body.change);
   }
 });
 

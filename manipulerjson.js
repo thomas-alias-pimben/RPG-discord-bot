@@ -440,8 +440,6 @@ function creerPNJ(perso) {
 
     configPNJ[perso.nom] = objperso;
 
-
-
     fs.writeFileSync(
       "./sourcePerso/PNJ.json",
       JSON.stringify(configPNJ, null, 4),
@@ -484,12 +482,9 @@ function creerObjPerso(perso) {
     ) {
       console.log("nop " + element);
     } else {
-      if(perso[element] === "")
-      {
+      if (perso[element] === "") {
         objPerso["attribut"][element] = "5";
-      }
-      else
-      {
+      } else {
         objPerso["attribut"][element] = perso[element];
       }
     }
