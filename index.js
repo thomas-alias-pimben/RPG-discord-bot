@@ -102,7 +102,7 @@ app.post("/creer", (request, response) => {
 });
 
 app.post("/changer", (request, response) => {
-  if (manipjson.changerPNJ(request.body)) {
+  if (manipjson.manipPNJ(request.body)) {
     request.flash("valid", "le PNJ principale à été changé");
   } else {
     request.flash("error", "ça n'as pas marché");

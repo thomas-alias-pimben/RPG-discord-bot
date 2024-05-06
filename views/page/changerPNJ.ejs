@@ -12,15 +12,21 @@
 
 
 <form class="row g-3" action="/changer" method="post">
- 
-  <% Object.values(manipPNJ.pnj).forEach(element => { %>
-    
-    <% if(element.nom !== undefined){ %>
-      <button class="button"name ='PNJ' value="<%= element.nom %>"> <%= element.nom %> </br> description : <%= element.attribut.description %> </button> 
-   <% } %>
-    
-  
-  <% }); %> 
+
+    <div style="display: flex;flex-direction: column">
+        <% Object.values(manipPNJ.pnj).forEach(element => { %>
+
+            <% if(element.nom !== undefined){ %>
+            <div style="display: flex;">
+                <p > <%= element.nom %> </br> description : <%= element.attribut.description %> </p>
+                <button  name ='PNJ' value="<%= element.nom %>" class="button">selectionner</button>
+                <button name ='change' value="<%= element.nom %>" class="button">changer</button>
+                <button name ='supp' value="<%= element.nom %>" class="button">suprimmer</button>
+            </div>
+            <% } %>
+        <% }); %>
+    </div>
+
 </form>
 
 

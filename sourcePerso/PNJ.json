@@ -43,49 +43,5 @@
     },
     "nom": "kurumi"
   },
-  "test": {
-    "attribut": {
-      "description": "c'est un test",
-      "santé physique": "5",
-      "santé spirituel": "5",
-      "FORCE": "5",
-      "musculature": "5",
-      "vélocité": "5",
-      "CHARISME": "5",
-      "manipulation": "5",
-      "intimidation": "5",
-      "ATHLÉTISME": "5",
-      "équilibre": "5",
-      "agilité": "5",
-      "dextérité": "5",
-      "esquive": "",
-      "CONNAISSANCE": "5",
-      "culture générale": "5",
-      "culture mythologie": "5",
-      "culture magique": "5",
-      "PERCEPTION": "5",
-      "vue": "5",
-      "ouie": "5",
-      "fouille": "5",
-      "instinct": "5",
-      "CONCENTRATION": "5",
-      "focalisation": "5",
-      "initiative": "5",
-      "discrétion": "5",
-      "orientation": "5",
-      "RÉSISTANCE PHYSIQUE": "5",
-      "fatigue": "5",
-      "violence": "5",
-      "immunité": "5",
-      "RÉSISTANCE MENTAL": "5",
-      "émotions": "5",
-      "résistance magique": "5"
-    },
-    "magie": {
-      "amamam": "5",
-      "zmzmzm": "5"
-    },
-    "nom": "test"
-  },
   "principale": "test"
 }

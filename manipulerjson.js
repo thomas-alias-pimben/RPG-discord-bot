@@ -448,8 +448,16 @@ function creerPNJ(perso) {
   }
 }
 
-function changerPNJ(perso) {
-  configPNJ.principale = perso.PNJ;
+function manipPNJ(perso) {
+  if (perso.PNJ !== undefined) {
+    configPNJ.principale = perso.PNJ;
+  }
+  if (perso.change !== undefined) {
+    console.log("change");
+  }
+  if (perso.supp !== undefined) {
+    delete configPNJ[perso.supp];
+  }
   fs.writeFileSync(
     "./sourcePerso/PNJ.json",
     JSON.stringify(configPNJ, null, 4),
@@ -527,6 +535,6 @@ module.exports.modifBonus = modifBonus;
 module.exports.valeurBonus = valeurBonus;
 module.exports.modifAtt = modifAtt;
 module.exports.creerPNJ = creerPNJ;
-module.exports.changerPNJ = changerPNJ;
+module.exports.manipPNJ = manipPNJ;
 module.exports.afficherPlusieursPartie = afficherPlusieursPartie;
 module.exports.getPersoAllAttributs = getPersoAllAttributs;

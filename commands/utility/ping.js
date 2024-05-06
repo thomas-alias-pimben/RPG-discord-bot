@@ -5,6 +5,8 @@ module.exports = {
     .setName("ping")
     .setDescription("ping ... pong LOL"),
   async execute(interaction) {
-    await interaction.reply("Pong!");
+    await interaction.reply(
+      "Pong! \n Websocket heartbeat:" + interaction.client.ws.ping,
+    );
   },
 };
