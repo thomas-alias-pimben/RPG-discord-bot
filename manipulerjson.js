@@ -437,8 +437,11 @@ function creerPNJ(perso) {
   if (configPNJ[perso.nom] == undefined) {
     delete perso["valider"];
     objperso = creerObjPerso(perso);
-    console.log("perso : " + objperso);
+
     configPNJ[perso.nom] = objperso;
+
+
+
     fs.writeFileSync(
       "./sourcePerso/PNJ.json",
       JSON.stringify(configPNJ, null, 4),
@@ -481,7 +484,14 @@ function creerObjPerso(perso) {
     ) {
       console.log("nop " + element);
     } else {
-      objPerso["attribut"][element] = perso[element];
+      if(perso[element] === "")
+      {
+        objPerso["attribut"][element] = "5";
+      }
+      else
+      {
+        objPerso["attribut"][element] = perso[element];
+      }
     }
 
     //partie pour les magies
