@@ -56,6 +56,13 @@ app.get("/changer", (request, response) => {
   //console.log(request.query)
 });
 
+app.get("/changerPNJ", (request, response) => {
+  manipPNJ = {};
+  manipPNJ.pnj = manipjson.configPNJ.kurumi;
+  response.render("page/modifierPNJ", manipPNJ);
+  //console.log(request.query)
+});
+
 //POST
 app.post("/", (request, response) => {
   if (request.body.message === undefined || request.body.message === "") {
