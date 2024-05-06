@@ -4,6 +4,8 @@ let bodyparser = require("body-parser");
 var session = require("express-session");
 const manipjson = require("./manipulerjson");
 
+const { portServer } = require("./config.json");
+
 const botDiscord = require("./bootbot");
 
 app.set("view engine", "ejs");
@@ -58,7 +60,7 @@ app.get("/changer", (request, response) => {
 
 app.get("/changerPNJ", (request, response) => {
   manipPNJ = {};
-  manipPNJ.pnj = manipjson.configPNJ.kurumi;
+  manipPNJ.pnj = manipjson.configPNJ[request.query.perso];
   response.render("page/modifierPNJ", manipPNJ);
   //console.log(request.query)
 });
@@ -109,14 +111,23 @@ app.post("/creer", (request, response) => {
 });
 
 app.post("/changer", (request, response) => {
-  if (manipjson.manipPNJ(request.body)) {
-    request.flash("valid", "la requête est passé");
-  } else {
-    request.flash("error", "ça n'as pas marché");
-  }
 
-  //console.log(request.body);
-  response.redirect("/changer?post");
+  if (request.body.change === undefined) {
+
+    if (manipjson.manipPNJ(request.body)) {
+      request.flash("valid", "la requête est passé");
+    } else {
+      request.flash("error", "ça n'as pas marché");
+    }
+
+
+    //console.log(request.body);
+    response.redirect("/changer?post");
+  }
+  else
+  {
+    response.redirect("/changerPNJ?perso="+request.body.change);
+  }
 });
 
 //page d'erreur
@@ -132,4 +143,4 @@ app.get("*", (req, res) => {
     .render("page/PageErreur", { erreur: "404", type: "NOT FOUND" });
 });
 
-app.listen(8000);
+app.listen(portServer);

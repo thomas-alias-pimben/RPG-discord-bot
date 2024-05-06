@@ -8,7 +8,8 @@ mettez le token de votre bot, l'id de votre bot, l'id du serveur et l'id de votr
   "token": "",
   "clientId": "",
   "guildId": "",
-  "adminId": ""
+  "adminId": "",
+  "portServer": 8000
 }
 ```
 

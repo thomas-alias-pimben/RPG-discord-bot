@@ -15,7 +15,6 @@
 
     <div style="display: flex;flex-direction: column">
         <% Object.values(manipPNJ.pnj).forEach(element => { %>
-
             <% if(element.nom !== undefined){ %>
             <div style="display: flex;">
                 <p > <%= element.nom %> </br> description : <%= element.attribut.description %> </p>
