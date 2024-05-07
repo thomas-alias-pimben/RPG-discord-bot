@@ -9,37 +9,9 @@ const {
   REST,
   Intents,
   ClientEvents,
+  ActivityType
 } = require("discord.js");
-//importation des autre fichier js
-const {
-  config,
-  aff,
-  afficherPlusieursPartie,
-  afficherPerso,
-  valeurAttribut,
-  affAttribut,
-  affSocial,
-  afficherPersoNom,
-  ajouterPv,
-  ajouterPs,
-  affPv,
-  restaurerPv,
-  restaurerPs,
-  modifierPv,
-  modifierPs,
-  tableauChannel,
-  getIdChannel,
-  chercheChanel,
-  cherchePerso,
-  chercheMusiqueVocal,
-  modifierXP,
-  ajouterXP,
-  getxp,
-  modifierverse,
-  ajouterverse,
-  getverse,
-  valeurBonus,
-} = require("./manipulerjson");
+
 //initialisation du bot discord
 const { SlashCommandIntegerOption } = require("@discordjs/builders");
 
@@ -140,6 +112,7 @@ client.once("ready", (client) => {
       usernameAdmin.username +
       " °( ^-^)°",
   );
+  client.user.setActivity('troller les joueurs');
 });
 
 // Log in to Discord with your client's token
