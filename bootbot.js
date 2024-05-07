@@ -9,7 +9,7 @@ const {
   REST,
   Intents,
   ClientEvents,
-  ActivityType
+  ActivityType,
 } = require("discord.js");
 
 //initialisation du bot discord
@@ -112,7 +112,7 @@ client.once("ready", (client) => {
       usernameAdmin.username +
       " °( ^-^)°",
   );
-  client.user.setActivity('troller les joueurs');
+  client.user.setActivity("troller les joueurs");
 });
 
 // Log in to Discord with your client's token
