@@ -238,12 +238,12 @@ function afficherPerso(userId) {
   var resultat = "";
 
   donnees.forEach((att) => {
-    if (att != "id" && att != "idChannel" && att != "musique") {
-      if (att == "attribut") {
+    if (att !== "id" && att !== "idChannel" && att !== "musique") {
+      if (att === "attribut") {
         resultat += affAttribut(userId);
-      } else if (att == "magie") {
+      } else if (att === "magie") {
         resultat += affMagie(userId);
-      } else if (att == "pv") {
+      } else if (att === "pv") {
         resultat += affPv(userId);
       } else {
         resultat += att + " : " + config[perso][att] + "\n";
@@ -261,9 +261,9 @@ function affAttribut(userId) {
   perso = cherchePerso(userId);
   let retour = "\n\nATTRIBUT :\n\n";
   config[perso]["attribut"].forEach((element) => {
-    clé = avoirKey(element);
+    clef = avoirKey(element);
 
-    clé.forEach((key) => {
+    clef.forEach((key) => {
       retour += "" + key + " : " + element[key] + "\n";
     });
     retour += "\n";
@@ -290,9 +290,9 @@ function affMagie(userId) {
   clef.forEach((attSocial) => {
     retour += attSocial + " :\n\n";
     config[perso]["magie"][attSocial].forEach((element) => {
-      clé = avoirKey(element);
+      clef = avoirKey(element);
 
-      clé.forEach((key) => {
+      clef.forEach((key) => {
         retour += "" + key + " : " + element[key] + "\n";
       });
       retour += "\n";
@@ -309,9 +309,9 @@ function valeurAttribut(userId, attribut) {
   let retour;
   if (config[perso] !== undefined) {
     config[perso]["attribut"].forEach((element) => {
-      clé = avoirKey(element);
+      let clef = avoirKey(element);
 
-      clé.forEach((key) => {
+      clef.forEach((key) => {
         if (key === attribut) {
           retour = element[key];
         }
@@ -412,9 +412,9 @@ function modifAtt(perso, att, modif, nombre) {
   //on modifie
   let tmp = 0;
   config[perso]["attribut"].forEach((element) => {
-    clé = avoirKey(element);
+    clef = avoirKey(element);
 
-    clé.forEach((key) => {
+    clef.forEach((key) => {
       if (key == att) {
         //console.log(config[perso]["attribut"][tmp][att]);
         if (modif == "+1" || modif == "-1") {
