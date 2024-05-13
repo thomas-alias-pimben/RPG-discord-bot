@@ -19,7 +19,7 @@ mettez le token de votre bot, l'id de votre bot, l'id du serveur et l'id de votr
 - **clientId** : l'identifiant utilisateur du bot <br/> _(accéssible en faisant un clic-droit et appuyer sur "copier l'idendifiant utilisateur" sur la page de profil du bot)_
 - **guildId** : l'identifiant de votre salon <br/>_(accéssible en faisant un clic-droit puis et appuyer "copier l'idendifiant du salon" sur la page du salon)_
 - **adminId** : l'identifiant de votre salon <br/>_(accéssible en faisant un clic-droit puis et appuyer "copier l'idendifiant utilisateur" sur votre page de profil)_
-- **portServer** : le port de votre serveur <br/> _si non précisé, le port sera à 8000_
+- **portServer** : le port de votre serveur <br/> _si cet attribut est absent, le port sera à 8000_
 
 ## installer les pakages
 
