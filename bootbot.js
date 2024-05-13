@@ -106,7 +106,7 @@ client.on(Events.InteractionCreate, async (interaction) => {
 client.once("ready", (client) => {
   //connecterBotChannelVocal()
   usernameAdmin = client.users.cache.get(idAdmin);
-  console.log(`${client.user.tag} connecter`);
+  console.log(`${client.user.tag} connecté`);
   console.log(
     "Je suis prêt pour détruire ton scénario " +
       usernameAdmin.username +
