@@ -1,4 +1,4 @@
-# Avant de démmarer le bot
+# Avant de démarrer le bot
 
 ## ajouter le fichier de config
 
@@ -16,9 +16,9 @@ mettez le token de votre bot, l'id de votre bot, l'id du serveur et l'id de votr
 ```
 
 - **token** : la clé privé de votre bot
-- **clientId** : l'identifiant utilisateur du bot <br/> _(accéssible en faisant un clic-droit puis copier l'idendifiant utilisateur sur sa page de profil)_
-- **guildId** : l'identifiant de votre salon <br/>_(accéssible en faisant un clic-droit puis copier l'idendifiant du salon sur sa page de profil)_
-- **adminId** : l'identifiant de votre salon <br/>_(accéssible en faisant un clic-droit puis copier l'idendifiant utilisateur sur votre page de profil)_
+- **clientId** : l'identifiant utilisateur du bot <br/> _(accéssible en faisant un clic-droit puis sur "copier l'idendifiant utilisateur sur sa page de profil")_
+- **guildId** : l'identifiant de votre salon <br/>_(accéssible en faisant un clic-droit puis sur "copier l'idendifiant du salon sur sa page de profil")_
+- **adminId** : l'identifiant de votre salon <br/>_(accéssible en faisant un clic-droit puis sur "copier l'idendifiant utilisateur sur votre page de profil")_
 - **portServer** : le port de votre serveur <br/> _si non précisé, le port sera à 8000_
 
 ## installer les pakages
