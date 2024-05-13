@@ -18,11 +18,11 @@ module.exports = {
         .setName("attribut")
         .setDescription("l'attribut à utiliser pour ce lancer de dé")
         .setAutocomplete(true)
-        .setRequired(true)
-    ).addIntegerOption((option) =>
-      option
-        .setName("bonus")
-        .setDescription("le bonus")),
+        .setRequired(true),
+    )
+    .addIntegerOption((option) =>
+      option.setName("bonus").setDescription("le bonus"),
+    ),
   async autocomplete(interaction) {
     let idJoueur = interaction.user.id;
     message = interaction.options.data[0].value;
@@ -62,23 +62,14 @@ module.exports = {
       musiquetime("./musique/echec.mp3", 5000);
     }
     if (valAttribut !== undefined) {
-      message +=
-        "jet de " +
-        attribut +
-        " : **" +
-        random +
-        "** +" +
-        valAttribut;
+      message += "jet de " + attribut + " : **" + random + "** +" + valAttribut;
 
-        if(bonus !== null) {
-          message += "+ "+bonus;
-          random = random+bonus;
-        }
+      if (bonus !== null) {
+        message += "+ " + bonus;
+        random = random + bonus;
+      }
 
-        message +=
-        "=__**" +
-        (random + valAttribut) +
-        "**__";
+      message += "=__**" + (random + valAttribut) + "**__";
     } else {
       message += "jet simple :**" + random + "**";
     }
