@@ -7,10 +7,10 @@ mettez le token de votre bot, l'id de votre bot, l'id du serveur et l'id de votr
 
 ```json
 {
-  "token": "",
-  "clientId": "",
-  "guildId": "",
-  "adminId": "",
+  "token": "yourToken",
+  "clientId": "yourClientId",
+  "guildId": "yourGuildId",
+  "adminId": "yourAdminId",
   "portServer": 8000
 }
 ```
