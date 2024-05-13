@@ -107,7 +107,19 @@ app.post("/creer", (request, response) => {
   }
 
   //console.log(request.body);
-  response.redirect("/creer");
+  response.redirect("/changer");
+});
+
+app.post("/modifier", (request, response) => {
+  if (request.body.nom === undefined || request.body.nom === "") {
+    request.flash("error", "vous n'avez pas mis de nom");
+  } else {
+    manipjson.changerPNJ(request.body);
+    request.flash("valid", "PNJ Crée");
+  }
+
+  //console.log(request.body);
+  response.redirect("/changer");
 });
 
 app.post("/changer", (request, response) => {

@@ -449,6 +449,16 @@ function creerPNJ(perso) {
   }
 }
 
+function changerPNJ(perso) {
+  delete perso["valider"];
+  objperso = creerObjPerso(perso);
+  configPNJ[perso.nom] = objperso;
+  fs.writeFileSync(
+    "./sourcePerso/PNJ.json",
+    JSON.stringify(configPNJ, null, 4),
+  );
+}
+
 function manipPNJ(perso) {
   if (perso.PNJ !== undefined) {
     configPNJ.principale = perso.PNJ;
@@ -540,6 +550,7 @@ module.exports.modifBonus = modifBonus;
 module.exports.valeurBonus = valeurBonus;
 module.exports.modifAtt = modifAtt;
 module.exports.creerPNJ = creerPNJ;
+module.exports.changerPNJ = changerPNJ;
 module.exports.manipPNJ = manipPNJ;
 module.exports.afficherPlusieursPartie = afficherPlusieursPartie;
 module.exports.getPersoAllAttributs = getPersoAllAttributs;
