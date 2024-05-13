@@ -17,8 +17,12 @@ module.exports = {
       option
         .setName("attribut")
         .setDescription("l'attribut à utiliser pour ce lancer de dé")
-        .setAutocomplete(true),
-    ),
+        .setAutocomplete(true)
+        .setRequired(true)
+    ).addIntegerOption((option) =>
+      option
+        .setName("bonus")
+        .setDescription("le bonus")),
   async autocomplete(interaction) {
     let idJoueur = interaction.user.id;
     message = interaction.options.data[0].value;
@@ -35,6 +39,8 @@ module.exports = {
     const userId = interaction.user.id;
     //les attributs de la fonction
     let attribut = interaction.options.getString("attribut");
+    let bonus = interaction.options.getInteger("bonus");
+
     if (typeof attribut === "string" && attribut[0] === " ") {
       attribut = attribut.slice(1);
     }
@@ -59,13 +65,20 @@ module.exports = {
       message +=
         "jet de " +
         attribut +
-        " : " +
+        " : **" +
         random +
-        "+" +
-        valAttribut +
-        "=**" +
+        "** +" +
+        valAttribut;
+
+        if(bonus !== null) {
+          message += "+ "+bonus;
+          random = random+bonus;
+        }
+
+        message +=
+        "=__**" +
         (random + valAttribut) +
-        "**";
+        "**__";
     } else {
       message += "jet simple :**" + random + "**";
     }
