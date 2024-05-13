@@ -6,10 +6,6 @@ const {
   Events,
   GatewayIntentBits,
   IntentsBitField,
-  REST,
-  Intents,
-  ClientEvents,
-  ActivityType,
 } = require("discord.js");
 
 //initialisation du bot discord
