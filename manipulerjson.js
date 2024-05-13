@@ -477,6 +477,16 @@ function manipPNJ(perso) {
   return true;
 }
 
+function valeurAttributPNJ(attribut) {
+  let pnj = configPNJ.principale;
+
+  let retour;
+  if (configPNJ[pnj] !== undefined) {
+    return configPNJ[pnj]["attribut"][attribut];
+  }
+  return undefined;
+}
+
 function creerObjPerso(perso) {
   objPerso = {};
   objPerso["attribut"] = {};
@@ -552,5 +562,6 @@ module.exports.modifAtt = modifAtt;
 module.exports.creerPNJ = creerPNJ;
 module.exports.changerPNJ = changerPNJ;
 module.exports.manipPNJ = manipPNJ;
+module.exports.valeurAttributPNJ = valeurAttributPNJ;
 module.exports.afficherPlusieursPartie = afficherPlusieursPartie;
 module.exports.getPersoAllAttributs = getPersoAllAttributs;

@@ -5,6 +5,7 @@ const {
   avoirKey,
   cherchePerso,
   getPersoAllAttributs,
+  valeurAttributPNJ,
 } = require("../../manipulerjson");
 const { jetDe, jetCritique } = require("../../utils/diceFunction");
 const { musiquetime } = require("../../utils/vocalFunction");
@@ -45,7 +46,7 @@ module.exports = {
       attribut = attribut.slice(1);
     }
     //la valeur de la stat
-    const valAttribut = valeurAttribut(userId, attribut);
+    const valAttribut = valeurAttributPNJ(attribut);
     let random = jetDe();
     const randomCritique = jetCritique();
     let message = "";
@@ -74,6 +75,9 @@ module.exports = {
       message += "jet simple :**" + random + "**";
     }
 
-    await interaction.reply(message);
+    console.log(message);
+    await interaction.reply(
+      "jet de " + attribut + " : **" + (random + valAttribut) + "**",
+    );
   },
 };
