@@ -2,7 +2,11 @@ const { SlashCommandBuilder } = require("discord.js");
 const {
   chercheMusiqueVocal,
   getPersoAllAttributs,
-  valeurAttributPNJ, getPersoAllPNJ, changePNJPrincipale, getAllPNJ, getPricipale,
+  valeurAttributPNJ,
+  getPersoAllPNJ,
+  changePNJPrincipale,
+  getAllPNJ,
+  getPricipale,
 } = require("../../manipulerjson");
 
 const { adminId } = require("../../config.json");
@@ -37,9 +41,8 @@ module.exports = {
     //les attributs de la fonction
     let pnj = interaction.options.getString("pnj");
     if (userId === adminId) {
-      await interaction.reply(getPricipale() +" => "+ pnj);
+      await interaction.reply(getPricipale() + " => " + pnj);
       changePNJPrincipale(pnj);
     }
-
   },
 };

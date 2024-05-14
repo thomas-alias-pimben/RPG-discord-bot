@@ -79,21 +79,21 @@ function getPersoAllPNJ(message) {
   let spaceFirst = hasSpaceFirst(message);
   let pnj = configPNJ.principale;
   let retour = Object.keys(configPNJ[pnj]["attribut"])
-      .map((e) => {
-        if (spaceFirst) return " " + e;
-        else return e;
-      })
-      .filter((string) => {
-        if (string.includes(message)) {
-          return true;
-        }
-      });
+    .map((e) => {
+      if (spaceFirst) return " " + e;
+      else return e;
+    })
+    .filter((string) => {
+      if (string.includes(message)) {
+        return true;
+      }
+    });
 
   return retour.slice(0, 25);
 }
 
-function getPrincipale(){
-  return configPNJ.principale
+function getPrincipale() {
+  return configPNJ.principale;
 }
 
 function getAllPNJ(message) {
@@ -109,12 +109,12 @@ function getAllPNJ(message) {
         return true;
       }
     });
-    retour = retour.filter((e) => { return !e.includes("principale")})
+  retour = retour.filter((e) => {
+    return !e.includes("principale");
+  });
 
   return retour.slice(0, 25);
 }
-
-
 
 function afficherPersoNom(nom) {
   let userId = config[nom]["id"];
@@ -407,23 +407,23 @@ function chercheMusiqueVocal(userId) {
 /* COMMANDE SERVEUR*/
 
 function modifBonus(bonus) {
-  if (bonus[0] != "") {
+  if (bonus[0] !== "") {
     configautre.bonusPNJ[0] = parseInt(bonus[0], 10);
   }
 
-  if (bonus[1] != "") {
+  if (bonus[1] !== "") {
     configautre.bonusPNJ[1] = parseInt(bonus[1], 10);
   }
 
-  if (bonus[2] != "") {
+  if (bonus[2] !== "") {
     configautre.bonusPNJ[2] = parseInt(bonus[2], 10);
   }
 
-  if (bonus[3] != "") {
+  if (bonus[3] !== "") {
     configautre.bonusPNJ[3] = parseInt(bonus[3], 10);
   }
 
-  if (bonus[4] != "") {
+  if (bonus[4] !== "") {
     configautre.bonusPNJ[4] = parseInt(bonus[4], 10);
   }
 
@@ -500,8 +500,7 @@ function changerPNJ(perso) {
   );
 }
 
-function changePNJPrincipale(pnj)
-{
+function changePNJPrincipale(pnj) {
   configPNJ.principale = pnj;
   fs.writeFileSync(
     "./sourcePerso/PNJ.json",
@@ -528,9 +527,7 @@ function manipPNJ(perso) {
 }
 
 function valeurAttributPNJ(attribut, pnj) {
-
-  if(pnj === null)
-  {
+  if (pnj === null) {
     pnj = configPNJ.principale;
   }
 

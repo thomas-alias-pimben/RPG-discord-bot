@@ -28,9 +28,7 @@ module.exports = {
     message = interaction.options.data[0].value;
     const focusedValue = interaction.options.getFocused();
     const choices = getPersoAllAttributs(idJoueur, message);
-    const filtered = choices.filter((choice) =>
-      choice.includes(focusedValue),
-    );
+    const filtered = choices.filter((choice) => choice.includes(focusedValue));
     await interaction.respond(
       filtered.map((choice) => ({ name: choice, value: choice })),
     );

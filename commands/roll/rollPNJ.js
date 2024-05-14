@@ -2,7 +2,10 @@ const { SlashCommandBuilder } = require("discord.js");
 const {
   chercheMusiqueVocal,
   getPersoAllAttributs,
-  valeurAttributPNJ, getPersoAllPNJ, getPricipale, getAllPNJ,
+  valeurAttributPNJ,
+  getPersoAllPNJ,
+  getPricipale,
+  getAllPNJ,
 } = require("../../manipulerjson");
 const { jetDe, jetCritique } = require("../../utils/diceFunction");
 const { musiquetime } = require("../../utils/vocalFunction");
@@ -22,25 +25,27 @@ module.exports = {
       option.setName("bonus").setDescription("le bonus"),
     )
     .addStringOption((option) =>
-      option.setName("pnj").setDescription("le pnj à utiliser, sans cela, c'est le principal qui est choisi").setAutocomplete(true),
+      option
+        .setName("pnj")
+        .setDescription(
+          "le pnj à utiliser, sans cela, c'est le principal qui est choisi",
+        )
+        .setAutocomplete(true),
     ),
   async autocomplete(interaction) {
     const focusedOption = interaction.options.getFocused(true);
-    if(focusedOption.name === 'attribut')
-    {
+    if (focusedOption.name === "attribut") {
       let idJoueur = interaction.user.id;
       message = interaction.options.data[0].value;
       const focusedValue = interaction.options.getFocused();
       const choices = getPersoAllPNJ(message);
       const filtered = choices.filter((choice) =>
-        choice.includes(focusedValue)
+        choice.includes(focusedValue),
       );
       await interaction.respond(
-        filtered.map((choice) => ({ name: choice, value: choice }))
+        filtered.map((choice) => ({ name: choice, value: choice })),
       );
-    }
-    else
-    {
+    } else {
       message = interaction.options.data[0].value;
       const focusedValue = interaction.options.getFocused();
       const choices = getAllPNJ(message);
@@ -48,8 +53,6 @@ module.exports = {
         choices.map((choice) => ({ name: choice, value: choice })),
       );
     }
-
-
   },
   async execute(interaction) {
     const userId = interaction.user.id;
@@ -86,15 +89,15 @@ module.exports = {
         message += "+ " + bonus;
         random = random + bonus;
       }
-      res = random + parseInt(valAttribut)
-      message += " = "+res ;
+      res = random + parseInt(valAttribut);
+      message += " = " + res;
     } else {
-      res = random
+      res = random;
       message += "jet simple :" + random;
     }
     console.log(message);
     await interaction.reply(
-      getPricipale()+" => jet de " + attribut + " : **" + res + "**",
+      getPricipale() + " => jet de " + attribut + " : **" + res + "**",
     );
   },
 };
