@@ -96,7 +96,7 @@ function getPrincipale(){
   return configPNJ.principale
 }
 
-function getAllPNJ() {
+function getAllPNJ(message) {
   let spaceFirst = hasSpaceFirst(message);
   let pnj = configPNJ.principale;
   let retour = Object.keys(configPNJ)
@@ -527,8 +527,12 @@ function manipPNJ(perso) {
   return true;
 }
 
-function valeurAttributPNJ(attribut) {
-  let pnj = configPNJ.principale;
+function valeurAttributPNJ(attribut, pnj) {
+
+  if(pnj === null)
+  {
+    pnj = configPNJ.principale;
+  }
 
   let retour;
   if (configPNJ[pnj] !== undefined) {
