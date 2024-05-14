@@ -46,7 +46,7 @@ module.exports = {
         filtered.map((choice) => ({ name: choice, value: choice })),
       );
     } else {
-      message = interaction.options.data[0].value;
+      message = interaction.options.data[1].value;
       const focusedValue = interaction.options.getFocused();
       const choices = getAllPNJ(message);
       await interaction.respond(
