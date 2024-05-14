@@ -75,6 +75,47 @@ function getPersoAllAttributs(idJoueur, message) {
   return retour.slice(0, 25);
 }
 
+function getPersoAllPNJ(message) {
+  let spaceFirst = hasSpaceFirst(message);
+  let pnj = configPNJ.principale;
+  let retour = Object.keys(configPNJ[pnj]["attribut"])
+      .map((e) => {
+        if (spaceFirst) return " " + e;
+        else return e;
+      })
+      .filter((string) => {
+        if (string.includes(message)) {
+          return true;
+        }
+      });
+
+  return retour.slice(0, 25);
+}
+
+function getPrincipale(){
+  return configPNJ.principale
+}
+
+function getAllPNJ() {
+  let spaceFirst = hasSpaceFirst(message);
+  let pnj = configPNJ.principale;
+  let retour = Object.keys(configPNJ)
+    .map((e) => {
+      if (spaceFirst) return " " + e;
+      else return e;
+    })
+    .filter((string) => {
+      if (string.includes(message)) {
+        return true;
+      }
+    });
+    retour = retour.filter((e) => { return !e.includes("principale")})
+
+  return retour.slice(0, 25);
+}
+
+
+
 function afficherPersoNom(nom) {
   let userId = config[nom]["id"];
   return afficherPerso(userId);
@@ -459,6 +500,15 @@ function changerPNJ(perso) {
   );
 }
 
+function changePNJPrincipale(pnj)
+{
+  configPNJ.principale = pnj;
+  fs.writeFileSync(
+    "./sourcePerso/PNJ.json",
+    JSON.stringify(configPNJ, null, 4),
+  );
+}
+
 function manipPNJ(perso) {
   if (perso.PNJ !== undefined) {
     configPNJ.principale = perso.PNJ;
@@ -563,5 +613,9 @@ module.exports.creerPNJ = creerPNJ;
 module.exports.changerPNJ = changerPNJ;
 module.exports.manipPNJ = manipPNJ;
 module.exports.valeurAttributPNJ = valeurAttributPNJ;
+module.exports.getPersoAllPNJ = getPersoAllPNJ;
 module.exports.afficherPlusieursPartie = afficherPlusieursPartie;
 module.exports.getPersoAllAttributs = getPersoAllAttributs;
+module.exports.changePNJPrincipale = changePNJPrincipale;
+module.exports.getAllPNJ = getAllPNJ;
+module.exports.getPricipale = getPrincipale;

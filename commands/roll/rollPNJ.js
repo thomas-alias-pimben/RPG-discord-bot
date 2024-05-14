@@ -1,11 +1,8 @@
 const { SlashCommandBuilder } = require("discord.js");
 const {
-  valeurAttribut,
   chercheMusiqueVocal,
-  avoirKey,
-  cherchePerso,
   getPersoAllAttributs,
-  valeurAttributPNJ,
+  valeurAttributPNJ, getPersoAllPNJ, getPricipale,
 } = require("../../manipulerjson");
 const { jetDe, jetCritique } = require("../../utils/diceFunction");
 const { musiquetime } = require("../../utils/vocalFunction");
@@ -28,9 +25,9 @@ module.exports = {
     let idJoueur = interaction.user.id;
     message = interaction.options.data[0].value;
     const focusedValue = interaction.options.getFocused();
-    const choices = getPersoAllAttributs(idJoueur, message);
+    const choices = getPersoAllPNJ(message);
     const filtered = choices.filter((choice) =>
-      choice.startsWith(focusedValue),
+      choice.includes(focusedValue),
     );
     await interaction.respond(
       filtered.map((choice) => ({ name: choice, value: choice })),
@@ -62,22 +59,23 @@ module.exports = {
       random -= randomCritique;
       musiquetime("./musique/echec.mp3", 5000);
     }
+    let res = 0;
     if (valAttribut !== undefined) {
-      message += "jet de " + attribut + " : **" + random + "** +" + valAttribut;
+      message += "jet de " + attribut + " : " + random + " + " + valAttribut;
 
       if (bonus !== null) {
         message += "+ " + bonus;
         random = random + bonus;
       }
-
-      message += "=__**" + (random + valAttribut) + "**__";
+      res = random + parseInt(valAttribut)
+      message += " = "+res ;
     } else {
-      message += "jet simple :**" + random + "**";
+      res = random
+      message += "jet simple :" + random;
     }
-
     console.log(message);
     await interaction.reply(
-      "jet de " + attribut + " : **" + (random + valAttribut) + "**",
+      getPricipale()+" => jet de " + attribut + " : **" + res + "**",
     );
   },
 };
