@@ -4,7 +4,7 @@ const {
   afficherPerso,
   affAttribut,
   affSocial,
-} = require("../../manipulerjson");
+} = require("../../utils/manipulerjson");
 
 module.exports = {
   data: new SlashCommandBuilder()

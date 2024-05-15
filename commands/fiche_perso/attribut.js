@@ -3,7 +3,7 @@ const {
   afficherPlusieursPartie,
   afficherPerso,
   affAttribut,
-} = require("../../manipulerjson");
+} = require("../../utils/manipulerjson");
 
 module.exports = {
   data: new SlashCommandBuilder()

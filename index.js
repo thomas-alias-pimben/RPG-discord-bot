@@ -2,7 +2,7 @@ let express = require("express");
 let app = express();
 let bodyparser = require("body-parser");
 var session = require("express-session");
-const manipjson = require("./manipulerjson");
+const manipjson = require("./utils/manipulerjson");
 
 const { portServer } = require("./config.json");
 

@@ -7,7 +7,7 @@ const {
   changePNJPrincipale,
   getAllPNJ,
   getPricipale,
-} = require("../../manipulerjson");
+} = require("../../utils/manipulerjson");
 
 const { adminId } = require("../../config.json");
 

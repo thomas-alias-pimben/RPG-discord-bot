@@ -4,7 +4,7 @@ const {
   chercheMusiqueVocal,
   affPv,
   ajouterPv,
-} = require("../../manipulerjson");
+} = require("../../utils/manipulerjson");
 const { DICE, jetDe } = require("../../utils/diceFunction");
 const { rebootPagePerso } = require("../../utils/channelPersoFunction");
 

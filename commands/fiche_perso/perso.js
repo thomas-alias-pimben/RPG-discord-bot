@@ -2,7 +2,7 @@ const { SlashCommandBuilder } = require("discord.js");
 const {
   afficherPlusieursPartie,
   afficherPerso,
-} = require("../../manipulerjson");
+} = require("../../utils/manipulerjson");
 
 module.exports = {
   data: new SlashCommandBuilder()

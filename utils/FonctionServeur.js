@@ -25,7 +25,7 @@ const {
   modifierverse,
   ajouterverse,
   getverse,
-} = require("../manipulerjson");
+} = require("./manipulerjson");
 
 function TableauPerso(perso) {
   resultat = "";

@@ -5,7 +5,7 @@ const {
   affPv,
   ajouterPv,
   modifierPv,
-} = require("../../manipulerjson");
+} = require("../../utils/manipulerjson");
 const { DICE, jetDe } = require("../../utils/diceFunction");
 const { rebootPagePerso } = require("../../utils/channelPersoFunction");
 

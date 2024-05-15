@@ -3,7 +3,7 @@ const {
   afficherPlusieursPartie,
   afficherPerso,
   affAttribut,
-} = require("../../manipulerjson");
+} = require("../../utils/manipulerjson");
 const { adminId } = require("../../config.json");
 const { joinVoiceChannel } = require("@discordjs/voice");
 

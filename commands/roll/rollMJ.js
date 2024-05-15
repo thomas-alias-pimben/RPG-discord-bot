@@ -3,7 +3,7 @@ const {
   valeurAttribut,
   chercheMusiqueVocal,
   valeurBonus,
-} = require("../../manipulerjson");
+} = require("../../utils/manipulerjson");
 const { jetDe, jetCritique } = require("../../utils/diceFunction");
 const { adminId } = require("../../config.json");
 const { musiquetime } = require("../../utils/vocalFunction");

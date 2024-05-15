@@ -6,7 +6,7 @@ const {
   getPersoAllPNJ,
   getPricipale,
   getAllPNJ,
-} = require("../../manipulerjson");
+} = require("../../utils/manipulerjson");
 const { jetDe, jetCritique } = require("../../utils/diceFunction");
 const { musiquetime } = require("../../utils/vocalFunction");
 

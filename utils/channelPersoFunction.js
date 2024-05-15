@@ -4,7 +4,7 @@ const {
   afficherPlusieursPartie,
   afficherPersoNom,
   chercheChanel,
-} = require("../manipulerjson");
+} = require("./manipulerjson");
 
 module.exports.rebootPagePerso = (client) => {
   tableauIdChannel = tableauChannel();

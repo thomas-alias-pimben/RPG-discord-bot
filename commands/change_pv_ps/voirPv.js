@@ -1,5 +1,5 @@
 const { SlashCommandBuilder } = require("discord.js");
-const { affPv } = require("../../manipulerjson");
+const { affPv } = require("../../utils/manipulerjson");
 
 module.exports = {
   data: new SlashCommandBuilder()

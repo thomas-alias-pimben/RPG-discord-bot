@@ -2,13 +2,13 @@ const fs = require("fs");
 
 function gererPersoJSON() {
   const modules = {};
-  const controllerPath = require("path").join(__dirname, "perso");
+  const controllerPath = require("path").join(__dirname, "../perso");
 
   require("fs")
     .readdirSync(controllerPath)
     .forEach((file) => {
       const name = file.replace(/\.js$/, "").replace(".json", "");
-      modules[name] = require(`./perso/${file}`);
+      modules[name] = require(`../perso/${file}`);
     });
 
   return modules;
@@ -16,9 +16,9 @@ function gererPersoJSON() {
 
 //config =require('./sourcePerso/perso.json');
 config = gererPersoJSON();
-configPNJ = require("./sourcePerso/PNJ.json");
+configPNJ = require("../sourcePerso/PNJ.json");
 
-configautre = require("./sourcePerso/autre.json");
+configautre = require("../sourcePerso/autre.json");
 
 function avoirKey(element) {
   let objectToInspect;

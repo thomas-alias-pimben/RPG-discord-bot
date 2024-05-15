@@ -5,7 +5,7 @@ const {
   avoirKey,
   cherchePerso,
   getPersoAllAttributs,
-} = require("../../manipulerjson");
+} = require("../../utils/manipulerjson");
 const { jetDe, jetCritique } = require("../../utils/diceFunction");
 const { musiquetime } = require("../../utils/vocalFunction");
 
