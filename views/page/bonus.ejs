@@ -9,22 +9,19 @@
     </div>
   </section>
 <%- include('./navbar'); %>
-<div class="columns is-mobile">
-    <div class="column is-half is-offset-one-quarter">
-        <div class="column is-half is-offset-one-quarter">
 
-        <form action="/bonus" method="post">
+    <div style="display: flex;flex-direction: column;align-items: center">
+
+        <form class="box" style="background-color :  #f2f4f4  ;width : fit-content;display: flex;flex-direction: column;align-items: center" action="/bonus" method="post">
           
-            <div ><h4 class="title is-4">n°0 :<%= manipautre.bonusPNJ[0] %></h4><input class="number" type="number" name="0" id="0" placeholder="n°0"></input></div>
-            <div><h4 class="title is-4">n°1 :<%= manipautre.bonusPNJ[1] %></h4><input class="number" type="number" name="1" id="1" placeholder="n°1"></input></div>
-            <div><h4 class="title is-4">n°2 :<%= manipautre.bonusPNJ[2] %></h4><input class="number" type="number" name="2" id="2" placeholder="n°2"></input></div>
-            <div><h4 class="title is-4">n°3 :<%= manipautre.bonusPNJ[3] %></h4><input class="number" type="number" name="3" id="3" placeholder="n°3"></input></div>
-            <div><h4 class="title is-4">n°4 :<%= manipautre.bonusPNJ[4] %></h4><input class="number" type="number" name="4" id="4" placeholder="n°4"></input></div>
+            <div ><h4 class="title is-4">n°0 : <%= manipautre.bonusPNJ[0] %></h4><input class="number" type="number" name="0" id="0" placeholder="n°0"></input></div>
+            <div><h4 class="title is-4">n°1 : <%= manipautre.bonusPNJ[1] %></h4><input class="number" type="number" name="1" id="1" placeholder="n°1"></input></div>
+            <div><h4 class="title is-4">n°2 : <%= manipautre.bonusPNJ[2] %></h4><input class="number" type="number" name="2" id="2" placeholder="n°2"></input></div>
+            <div><h4 class="title is-4">n°3 : <%= manipautre.bonusPNJ[3] %></h4><input class="number" type="number" name="3" id="3" placeholder="n°3"></input></div>
+            <div><h4 class="title is-4">n°4 : <%= manipautre.bonusPNJ[4] %></h4><input class="number" type="number" name="4" id="4" placeholder="n°4"></input></div>
           
         <button class="button" type="submit">envoyer</button>
         </form>
-    </div>
-</div>
 
   </div>
 

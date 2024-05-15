@@ -124,9 +124,7 @@ app.post("/modifier", (request, response) => {
 
 app.post("/changer", (request, response) => {
   if (request.body.change === undefined) {
-    if (manipjson.manipPNJ(request.body)) {
-      request.flash("valid", "la requête est passé");
-    } else {
+    if (!manipjson.manipPNJ(request.body)) {
       request.flash("error", "ça n'as pas marché");
     }
 

@@ -11,21 +11,32 @@
 <%- include('./navbar'); %>
 
 
-<form class="row g-3" action="/changer" method="post">
+<div class="box" style="background-color :#e5e7e9
+   ">PNJ Principale : <b><%= manipPNJ.pnj.principale %></b> </div>
 
-    <div style="display: flex;flex-direction: column">
+<form class="box" style="background-color : #e5e7e9" action="/changer" method="post">
+
+    <div style="display: flex;flex-direction: column;gap: 20px">
         <% Object.values(manipPNJ.pnj).forEach(element => { %>
             <% if(element.nom !== undefined){ %>
-            <div style="display: flex;">
-                <p > <%= element.nom %> </br> description : <%= element.attribut.description %> </p>
-                <button  name ='PNJ' value="<%= element.nom %>" class="button">selectionner</button>
-                <button name ='change' value="<%= element.nom %>" class="button">changer</button>
-                <button name ='supp' value="<%= element.nom %>" class="button">suprimmer</button>
+            <div style="display: flex;gap: 20px;width: 100%">
+                <p > <%= element.nom %></p>
+                <p>description : <%= element.attribut.description %></p>
+                <div style="display: flex;justify-content: end; order: 5;flex-grow: 99;gap: 10px">
+                    <button  name ='PNJ' value="<%= element.nom %>" class="button is-primary">selectionner</button>
+                    <button name ='change' value="<%= element.nom %>" class="button is-warning">changer</button>
+                    <button name ='supp' value="<%= element.nom %>" class="button is-danger">suprimmer</button>
+                </div>
+
             </div>
             <% } %>
         <% }); %>
     </div>
 
+</form>
+</br>
+<form style="display: flex" action="/creer" method="get">
+    <button style="width: fit-content; align-content: end;" class="button is-success is-large">creer un PNJ</button>
 </form>
 
 
