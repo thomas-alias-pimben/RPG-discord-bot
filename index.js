@@ -127,7 +127,6 @@ app.post("/changer", (request, response) => {
     if (!manipjson.manipPNJ(request.body)) {
       request.flash("error", "ça n'as pas marché");
     }
-
     //console.log(request.body);
     response.redirect("/changer?post");
   } else {
