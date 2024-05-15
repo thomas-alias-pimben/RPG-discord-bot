@@ -89,8 +89,6 @@ app.post("/perso", (request, response) => {
     request.body.modif,
     request.body.nombre,
   );
-
-  botDiscord.event.emit("rebootPagePerso");
   if (request.body.perso === "" || request.body.perso === undefined) {
     response.redirect("/perso");
   } else {
