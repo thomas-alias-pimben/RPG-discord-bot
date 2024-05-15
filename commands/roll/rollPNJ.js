@@ -59,7 +59,7 @@ module.exports = {
     //les attributs de la fonction
     let attribut = interaction.options.getString("attribut");
     let bonus = interaction.options.getInteger("bonus");
-    let pnj = interaction.options.getInteger("bonus");
+    let pnj = interaction.options.getString("pnj");
 
     if (typeof attribut === "string" && attribut[0] === " ") {
       attribut = attribut.slice(1);
