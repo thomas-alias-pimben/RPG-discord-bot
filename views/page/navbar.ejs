@@ -18,16 +18,20 @@
             attribut PNJ / bonus/malus
           </a>
         </li>
-        
+
+
+
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="/perso"  role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Joueur
+            Joueur (version non static)
           </a>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="/perso?perso=abel">emmy</a></li>
-            <li><a class="dropdown-item" href="/perso?perso=mael">Shin'ei</a></li>
-            <li><a class="dropdown-item" href="/perso?perso=hana">vesper</a></li>
-            <li><a class="dropdown-item" href="/perso?perso=thomas">thomas</a></li>
+
+            <%  Object.entries(joueurs).forEach(element => { %>
+              <li><a class="dropdown-item" href="/perso?perso=<%= element[0] %>">  <%= element[1].joueur %> | <%= element[1].nom %></a></li>
+            <% }) %>
+
+
           </ul>
         </li>
 

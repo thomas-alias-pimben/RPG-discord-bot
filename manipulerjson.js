@@ -1,4 +1,5 @@
 const fs = require("fs");
+
 function gererPersoJSON() {
   const modules = {};
   const controllerPath = require("path").join(__dirname, "perso");

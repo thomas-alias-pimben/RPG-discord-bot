@@ -25,10 +25,10 @@ app.use(
 
 //midleware perso
 app.use(require("./middleware/flash"));
-
+joueurs = manipjson.config;
 //Route
 app.get("/", (request, response) => {
-  response.render("page/index", { test: "salut" });
+  response.render("page/index", { test: "salut", joueurs });
   //console.log(request.query)
 });
 
@@ -37,31 +37,31 @@ app.get("/perso", (request, response) => {
   perso.config = require("./utils/FonctionServeur");
   perso.personnage = request.query;
 
-  response.render("page/fichePerso", perso);
+  response.render("page/fichePerso", { perso, joueurs });
   //console.log(request.query)
 });
 
 app.get("/bonus", (request, response) => {
   manipautre = manipjson.configautre;
-  response.render("page/bonus", manipautre);
+  response.render("page/bonus", { manipautre, joueurs });
 });
 
 app.get("/creer", (request, response) => {
-  response.render("page/creerPNJ", { test: "salut" });
+  response.render("page/creerPNJ", { test: "salut", joueurs });
   //console.log(request.query)
 });
 
 app.get("/changer", (request, response) => {
   manipPNJ = {};
   manipPNJ.pnj = manipjson.configPNJ;
-  response.render("page/changerPNJ", manipPNJ);
+  response.render("page/changerPNJ", { manipPNJ, joueurs });
   //console.log(request.query)
 });
 
 app.get("/changerPNJ", (request, response) => {
   manipPNJ = {};
   manipPNJ.pnj = manipjson.configPNJ[request.query.perso];
-  response.render("page/modifierPNJ", manipPNJ);
+  response.render("page/modifierPNJ", { manipPNJ, joueurs });
   //console.log(request.query)
 });
 

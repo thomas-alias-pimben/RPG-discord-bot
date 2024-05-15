@@ -3,7 +3,7 @@
 <section class="hero is-warning is-small">
     <div class="hero-body">
       <p class="title">
-        FICHE PERSO <%= personnage.perso %>
+        FICHE PERSO <%= perso.personnage.perso %>
       </p>
       
     </div>
@@ -17,7 +17,7 @@
 
 
     
-    <%- config.TableauPerso(personnage.perso) %>
+    <%- perso.config.TableauPerso(perso.personnage.perso) %>
 
 
 <%- include('./footer'); %>
