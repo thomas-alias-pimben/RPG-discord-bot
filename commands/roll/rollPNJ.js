@@ -65,6 +65,9 @@ module.exports = {
       attribut = attribut.slice(1);
     }
     //la valeur de la stat
+    if (pnj === null) {
+      pnj = getPricipale();
+    }
     const valAttribut = valeurAttributPNJ(attribut, pnj);
     let random = jetDe();
     const randomCritique = jetCritique();
@@ -97,7 +100,7 @@ module.exports = {
     }
     console.log(message);
     await interaction.reply(
-      getPricipale() + " => jet de " + attribut + " : **" + res + "**",
+      pnj + " => jet de " + attribut + " : **" + res + "**",
     );
   },
 };
