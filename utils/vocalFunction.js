@@ -5,8 +5,13 @@ const {
 } = require("@discordjs/voice");
 const { getVoiceConnections } = require("@discordjs/voice");
 
-module.exports.musiquetime = () => {
+module.exports.musiquetime = (path, time) => {
+  let player;
+  let playercritique;
   if (getVoiceConnections().size !== 0) {
+    let arrayConn = Array.from(getVoiceConnections(), ([name, value]) => ({ name, value }));
+    let connection = arrayConn[0];
+    player = createAudioPlayer();
     console.log("path =" + path);
     player.pause();
     const resource = createAudioResource(path);
