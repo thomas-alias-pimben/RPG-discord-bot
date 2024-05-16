@@ -107,11 +107,8 @@ module.exports = {
       await interaction.reply(
         pnj + " => jet de " + attribut + " : **" + res + "**",
       );
-    }
-    else
-    {
+    } else {
       await interaction.reply("vous n'avez pas les droits");
     }
-
   },
 };
