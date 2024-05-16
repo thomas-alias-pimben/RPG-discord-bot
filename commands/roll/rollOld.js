@@ -1,5 +1,8 @@
 const { SlashCommandBuilder } = require("discord.js");
-const { valeurAttribut, chercheMusiqueVocal } = require("../../utils/manipulerjson");
+const {
+  valeurAttribut,
+  chercheMusiqueVocal,
+} = require("../../utils/manipulerjson");
 const { jetDe, jetCritique } = require("../../utils/diceFunction");
 const { musiquetime } = require("../../utils/vocalFunction");
 

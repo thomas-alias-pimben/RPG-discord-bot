@@ -75,12 +75,12 @@ module.exports = {
 
     //on gere les critique
     if (random === 10) {
-      message += "REUSSITE CRITIQUE !!! : **+" + randomCritique + "**\n";
+      message += "REUSSITE CRITIQUE !!! : +" + randomCritique + "\n";
       random += randomCritique;
       musiquetime(chercheMusiqueVocal(userId), 30000);
     }
     if (random === 1) {
-      message = "échec critique ... : **-" + randomCritique + "**\n";
+      message = "échec critique ... : -" + randomCritique + "\n";
       random -= randomCritique;
       musiquetime("./musique/echec.mp3", 5000);
     }
