@@ -2,7 +2,7 @@
 
 ## ajouter le fichier de config
 
-créer un fichier config.json :
+créez un fichier config.json :
 mettez le token de votre bot, l'id de votre bot, l'id du serveur et l'id de votre propre compte discord avec ce style :
 
 ```json
@@ -23,8 +23,8 @@ mettez le token de votre bot, l'id de votre bot, l'id du serveur et l'id de votr
 
 ## installer les pakages
 
-faite ensuite un `npm install` pour installer les paquets nécéssaires
+faites ensuite un `npm install` pour installer les paquets nécéssaires
 
 # pour lancer le bot
 
-faite un `npm start`
+faites un `npm start`
