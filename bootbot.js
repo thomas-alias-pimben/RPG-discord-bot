@@ -13,11 +13,14 @@ const { SlashCommandIntegerOption } = require("@discordjs/builders");
 
 const { token, adminId } = require("./config.json");
 
+
+
 const idAdmin = adminId;
 
 let pageperso = false;
 let estEnVoc = false;
 require("./registeryCommand");
+const { changeURLPNJ } = require("./utils/manipulerjson");
 
 // Create a new client instance
 const client = new Client({
@@ -109,6 +112,7 @@ client.once("ready", (client) => {
       " °( ^-^)°",
   );
   client.user.setActivity("troller les joueurs");
+  changeURLPNJ(client.user.avatarURL())
 });
 
 // Log in to Discord with your client's token
