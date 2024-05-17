@@ -31,15 +31,15 @@ function TableauPerso(perso) {
   resultat = "";
   if (typeof perso === "undefined") {
     Object.values(config).forEach((element) => {
-      afficherTableau(element,perso);
+      afficherTableau(element, perso);
     });
   } else {
-    resultat += afficherTableau(config[perso],perso);
+    resultat += afficherTableau(config[perso], perso);
   }
   return resultat;
 }
 
-function afficherTableau(element,perso) {
+function afficherTableau(element, perso) {
   let objectToInspect;
   let donnees = [];
   for (
@@ -68,9 +68,7 @@ function afficherTableau(element,perso) {
             retour += '<form action="/perso" method="post">';
             //console.log(element.joueur);
             retour +=
-              '<input name="perso" type="hidden" value="' +
-              perso +
-              '">';
+              '<input name="perso" type="hidden" value="' + perso + '">';
             retour += '<input name="att" type="hidden" value="' + key + '">';
             if (key[0] == key[0].toUpperCase()) {
               let tmp =
