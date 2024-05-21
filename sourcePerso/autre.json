@@ -1,11 +1,5 @@
 {
-    "bonusPNJ": [
-        55,
-        8,
-        14,
-        16,
-        8
-    ],
-    "avatarURL": "https://cdn.discordapp.com/avatars/907207199611318302/423d8edec0c406f2608baaba45cc7140.webp",
-    "_locals": {}
+  "bonusPNJ": [55, 8, 14, 16, 8],
+  "avatarURL": "https://cdn.discordapp.com/avatars/907207199611318302/423d8edec0c406f2608baaba45cc7140.webp",
+  "_locals": {}
 }

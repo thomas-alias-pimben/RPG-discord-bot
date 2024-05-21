@@ -13,8 +13,6 @@ const { SlashCommandIntegerOption } = require("@discordjs/builders");
 
 const { token, adminId } = require("./config.json");
 
-
-
 const idAdmin = adminId;
 
 let pageperso = false;
@@ -112,7 +110,7 @@ client.once("ready", (client) => {
       " °( ^-^)°",
   );
   client.user.setActivity("troller les joueurs");
-  changeURLPNJ(client.user.avatarURL())
+  changeURLPNJ(client.user.avatarURL());
 });
 
 // Log in to Discord with your client's token

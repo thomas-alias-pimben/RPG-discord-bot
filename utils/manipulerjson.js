@@ -437,8 +437,7 @@ function valeurBonus(bonus) {
   return configautre.bonusPNJ[parseInt(bonus)];
 }
 
-function changeURLPNJ(url)
-{
+function changeURLPNJ(url) {
   configautre.avatarURL = url;
   fs.writeFileSync(
     "./sourcePerso/autre.json",

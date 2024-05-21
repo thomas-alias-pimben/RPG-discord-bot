@@ -67,7 +67,6 @@ app.get("/changerPNJ", (request, response) => {
 
 //JEU
 app.get("/jeu", (request, response) => {
-
   response.render("page/jeu", { joueurs });
   //console.log(request.query)
 });
