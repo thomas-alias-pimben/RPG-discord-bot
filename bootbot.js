@@ -11,7 +11,7 @@ const {
 //initialisation du bot discord
 const { SlashCommandIntegerOption } = require("@discordjs/builders");
 
-const { token, adminId } = require("./config.json");
+const { token, adminId, guildId } = require("./config.json");
 
 const idAdmin = adminId;
 
@@ -19,6 +19,7 @@ let pageperso = false;
 let estEnVoc = false;
 require("./registeryCommand");
 const { changeURLPNJ } = require("./utils/manipulerjson");
+const { joinVoiceChannel } = require("@discordjs/voice");
 
 // Create a new client instance
 const client = new Client({
@@ -101,8 +102,8 @@ client.on(Events.InteractionCreate, async (interaction) => {
   }
 });
 
-client.once("ready", (client) => {
-  //connecterBotChannelVocal()
+client.once("ready", async (client) => {
+  await connecterBotChannelVocal();
   usernameAdmin = client.users.cache.get(idAdmin);
   console.log(`${client.user.tag} connecté`);
   console.log(
@@ -113,6 +114,35 @@ client.once("ready", (client) => {
   client.user.setActivity("troller les joueurs");
   changeURLPNJ(client.user.avatarURL());
 });
+
+async function connecterBotChannelVocal() {
+  const guild = client.guilds.cache.get(guildId);
+
+  if (guild) {
+    const voiceChannels = guild.channels.valueOf().filter((channel) => {
+      return channel.type === 2;
+    });
+    console.log(voiceChannels);
+    voiceChannels.forEach((channel) => {
+      let voiceChannel = client.channels.cache.get(channel.id);
+      const members = channel.members;
+
+      if (members.some((member) => member.id === idAdmin)) {
+        console.log("L'utilisateur est connecté au channel vocal.");
+        const { joinVoiceChannel } = require("@discordjs/voice");
+        connection = joinVoiceChannel({
+          channelId: voiceChannel.id,
+          guildId: voiceChannel.guild.id,
+          adapterCreator: voiceChannel.guild.voiceAdapterCreator,
+        });
+
+        estEnVoc = true;
+      }
+    });
+  } else {
+    console.log("Serveur non trouvé.");
+  }
+}
 
 // Log in to Discord with your client's token
 client.login(token);
