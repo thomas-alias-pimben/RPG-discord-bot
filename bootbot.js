@@ -122,7 +122,6 @@ async function connecterBotChannelVocal() {
     const voiceChannels = guild.channels.valueOf().filter((channel) => {
       return channel.type === 2;
     });
-    console.log(voiceChannels);
     voiceChannels.forEach((channel) => {
       let voiceChannel = client.channels.cache.get(channel.id);
       const members = channel.members;
