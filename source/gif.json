@@ -70,7 +70,7 @@
 
   "agilité": {
     "key": ["agilité"],
-    "bad url": [],
+    "bad url": ["https://tenor.com/fr/view/anime-hug-fly-cute-fail-gif-15974218"],
     "good url": [
       "https://tenor.com/view/cyberpunk-cyberpunk-anime-david-cyberpunk-edgerunners-rapid-punch-gif-26712702",
       "https://tenor.com/view/tsugumomo-kukuri-anime-fight-jump-gif-17581958",
@@ -156,7 +156,8 @@
       "https://tenor.com/view/ijirinaide-nagatoro-san-please-dont-bully-me-nagatoro-san-anime-blush-smug-gif-20766008",
       "https://tenor.com/view/naruto-obito-anime-stare-gif-13877567",
       "https://tenor.com/view/mahou-shoujo-site-anime-gif-13078786",
-      "https://tenor.com/view/yami-sukehiro-black-clover-anime-approach-intimidating-gif-17907655"
+      "https://tenor.com/view/yami-sukehiro-black-clover-anime-approach-intimidating-gif-17907655",
+     "https://tenor.com/fr/view/anime-angry-anime-300slime-anime-scares-anime-trembles-gif-21157071"
     ]
   },
   "manipulation": {
