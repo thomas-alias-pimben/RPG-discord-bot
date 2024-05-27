@@ -70,7 +70,10 @@
 
   "agilité": {
     "key": ["agilité"],
-    "bad url": ["https://tenor.com/fr/view/anime-hug-fly-cute-fail-gif-15974218","https://tenor.com/fr/view/tangled-flynn-rider-slam-smash-hurt-gif-5148616"],
+    "bad url": [
+      "https://tenor.com/fr/view/anime-hug-fly-cute-fail-gif-15974218",
+      "https://tenor.com/fr/view/tangled-flynn-rider-slam-smash-hurt-gif-5148616"
+    ],
     "good url": [
       "https://tenor.com/view/cyberpunk-cyberpunk-anime-david-cyberpunk-edgerunners-rapid-punch-gif-26712702",
       "https://tenor.com/view/tsugumomo-kukuri-anime-fight-jump-gif-17581958",
@@ -88,7 +91,9 @@
 
   "dextérité": {
     "key": ["dextérité"],
-    "bad url": ["https://tenor.com/fr/view/best-friends-ill-catch-you-dragon-ball-fall-flop-gif-16153188"],
+    "bad url": [
+      "https://tenor.com/fr/view/best-friends-ill-catch-you-dragon-ball-fall-flop-gif-16153188"
+    ],
     "good url": [
       "https://tenor.com/view/nya-sword-art-online-fight-anime-gif-7409491",
       "https://tenor.com/view/anime-one-punch-man-fight-bang-garou-gif-16359839",
@@ -138,7 +143,10 @@
 
   "intimidation": {
     "key": ["intimidation"],
-    "bad url": ["https://tenor.com/fr/view/genshin-genshin-impact-ei-raiden-shogun-patpat-gif-27565134","https://tenor.com/fr/view/pat-anime-pat-pat-adc-pat-adcvr-adcvr-gif-18442781"],
+    "bad url": [
+      "https://tenor.com/fr/view/genshin-genshin-impact-ei-raiden-shogun-patpat-gif-27565134",
+      "https://tenor.com/fr/view/pat-anime-pat-pat-adc-pat-adcvr-adcvr-gif-18442781"
+    ],
     "good url": [
       "https://tenor.com/view/ayanokoji-anime-stare-eyes-looking-gif-17023515",
       "https://tenor.com/view/little-busters-gif-20703585",
@@ -157,7 +165,7 @@
       "https://tenor.com/view/naruto-obito-anime-stare-gif-13877567",
       "https://tenor.com/view/mahou-shoujo-site-anime-gif-13078786",
       "https://tenor.com/view/yami-sukehiro-black-clover-anime-approach-intimidating-gif-17907655",
-     "https://tenor.com/fr/view/anime-angry-anime-300slime-anime-scares-anime-trembles-gif-21157071"
+      "https://tenor.com/fr/view/anime-angry-anime-300slime-anime-scares-anime-trembles-gif-21157071"
     ]
   },
   "manipulation": {
@@ -225,7 +233,9 @@
 
   "default": {
     "key": [],
-    "bad url": ["https://tenor.com/fr/view/kanokari-anime-fall-kazuya-kinoshita-gif-26402084"],
+    "bad url": [
+      "https://tenor.com/fr/view/kanokari-anime-fall-kazuya-kinoshita-gif-26402084"
+    ],
     "good url": [
       "https://tenor.com/fr/view/rikka-gif-21699826",
       "https://tenor.com/fr/view/kaomedy-your-lie-in-april-kaori-miyazono-gif-20285687"
