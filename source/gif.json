@@ -1,7 +1,7 @@
 {
   "vue": {
     "key": ["vue"],
-    "bad url": [],
+    "bad url": ["https://tenor.com/fr/view/anime-i-see-gif-25052382"],
     "good url": [
       "https://tenor.com/view/komi-trembling-anime-intense-stare-gif-24318263",
       "https://tenor.com/view/anime-naruto-looking-crazy-eyes-searching-gif-21367337",
@@ -70,7 +70,7 @@
 
   "agilité": {
     "key": ["agilité"],
-    "bad url": ["https://tenor.com/fr/view/anime-hug-fly-cute-fail-gif-15974218"],
+    "bad url": ["https://tenor.com/fr/view/anime-hug-fly-cute-fail-gif-15974218","https://tenor.com/fr/view/tangled-flynn-rider-slam-smash-hurt-gif-5148616"],
     "good url": [
       "https://tenor.com/view/cyberpunk-cyberpunk-anime-david-cyberpunk-edgerunners-rapid-punch-gif-26712702",
       "https://tenor.com/view/tsugumomo-kukuri-anime-fight-jump-gif-17581958",
@@ -88,7 +88,7 @@
 
   "dextérité": {
     "key": ["dextérité"],
-    "bad url": [],
+    "bad url": ["https://tenor.com/fr/view/best-friends-ill-catch-you-dragon-ball-fall-flop-gif-16153188"],
     "good url": [
       "https://tenor.com/view/nya-sword-art-online-fight-anime-gif-7409491",
       "https://tenor.com/view/anime-one-punch-man-fight-bang-garou-gif-16359839",
@@ -138,7 +138,7 @@
 
   "intimidation": {
     "key": ["intimidation"],
-    "bad url": [],
+    "bad url": ["https://tenor.com/fr/view/genshin-genshin-impact-ei-raiden-shogun-patpat-gif-27565134","https://tenor.com/fr/view/pat-anime-pat-pat-adc-pat-adcvr-adcvr-gif-18442781"],
     "good url": [
       "https://tenor.com/view/ayanokoji-anime-stare-eyes-looking-gif-17023515",
       "https://tenor.com/view/little-busters-gif-20703585",
