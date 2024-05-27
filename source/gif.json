@@ -79,7 +79,6 @@
       "https://tenor.com/view/doki-doki-precure-aida-mana-kenzaki-makoto-fighting-game-parody-gif-19814400",
       "https://tenor.com/view/fight-anime-stance-gif-17941258",
       "https://tenor.com/view/anime-fight-power-attack-girl-gif-17383718",
-      "https://tenor.com/view/battle-gif-25213966",
       "https://tenor.com/view/anime-fight-gif-21827202",
       "https://tenor.com/view/jujutsu-kaisen-anime-fight-animation-gojo-satoru-gif-20850159",
       "https://tenor.com/view/demon-slayer-anime-fight-kimetsu-no-yaiba-tanjiro-gif-14745107",
@@ -161,14 +160,13 @@
     ]
   },
   "manipulation": {
-    "key": ["fouille"],
+    "key": ["manipulation"],
     "bad url": [],
     "good url": [
       "https://tenor.com/view/no-reaction-smile-houka-oreki-chitanda-anime-gif-7865467",
       "https://tenor.com/view/anime-amprove-nod-smile-sparkler-gif-17129216",
       "https://tenor.com/view/my-little-monster-anime-sparkle-happy-smile-gif-16414349",
       "https://tenor.com/view/todoroki-gif-19082963",
-
       "https://tenor.com/view/please-anime-beg-kawaii-gif-4555931",
       "https://tenor.com/view/anime-anime-girl-gif-1527515159874375720",
       "https://tenor.com/view/yumeko-kakegurui-poker-baralho-gif-22742248",
@@ -196,6 +194,17 @@
     ]
   },
 
+  "discrétion": {
+    "key": ["discrétion"],
+    "bad url": [],
+    "good url": [
+      "https://tenor.com/fr/view/the-simpsons-disappear-bush-gif-3548673",
+      "https://tenor.com/fr/view/one-pieceg8-one-piece-anime-luffy-g8-gif-17711803",
+      "https://tenor.com/fr/view/ninja-coworker-hide-sneak-gif-14618099",
+      "https://tenor.com/fr/view/tristan-sneaking-sneaky-tip-toe-anime-gif-22179110"
+    ]
+  },
+
   "magie": {
     "key": ["magie"],
     "bad url": [],
@@ -210,6 +219,16 @@
       "https://tenor.com/view/keiratio-keinuts-wei-i-gif-26387329",
       "https://tenor.com/view/cast-a-spell-hannah-dragons-dogma-spell-magic-gif-18395705",
       "https://tenor.com/view/anime-cool-gif-20451957"
+    ]
+  },
+
+  "default": {
+    "key": [],
+    "bad url": [],
+    "good url": [
+      "https://tenor.com/fr/view/badass-dance-mood-gif-14342311",
+      "https://tenor.com/view/bofuri-fight-anime-attack-power-gif-17259187",
+      "https://tenor.com/fr/view/rikka-gif-21699826"
     ]
   }
 }
