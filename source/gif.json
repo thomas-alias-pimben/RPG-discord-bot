@@ -224,11 +224,10 @@
 
   "default": {
     "key": [],
-    "bad url": [],
+    "bad url": ["https://tenor.com/fr/view/kanokari-anime-fall-kazuya-kinoshita-gif-26402084"],
     "good url": [
-      "https://tenor.com/fr/view/badass-dance-mood-gif-14342311",
-      "https://tenor.com/view/bofuri-fight-anime-attack-power-gif-17259187",
-      "https://tenor.com/fr/view/rikka-gif-21699826"
+      "https://tenor.com/fr/view/rikka-gif-21699826",
+      "https://tenor.com/fr/view/kaomedy-your-lie-in-april-kaori-miyazono-gif-20285687"
     ]
   }
 }
