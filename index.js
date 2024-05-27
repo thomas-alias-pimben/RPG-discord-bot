@@ -8,6 +8,9 @@ const { portServer } = require("./config.json");
 
 const botDiscord = require("./bootbot");
 
+const joueurs = manipjson.config;
+const urlAvatar = manipjson.configautre.avatarURL;
+
 app.set("view engine", "ejs");
 
 //middleware
@@ -25,10 +28,14 @@ app.use(
 
 //midleware perso
 app.use(require("./middleware/flash"));
-joueurs = manipjson.config;
+
 //Route
 app.get("/", (request, response) => {
-  response.render("page/index", { test: "salut", joueurs });
+  response.render("page/index", {
+    test: "salut",
+    joueurs,
+    urlAvatar: urlAvatar,
+  });
   //console.log(request.query)
 });
 
@@ -37,37 +44,49 @@ app.get("/perso", (request, response) => {
   perso.config = require("./utils/FonctionServeur");
   perso.personnage = request.query;
 
-  response.render("page/fichePerso", { perso, joueurs });
+  response.render("page/fichePerso", { perso, joueurs, urlAvatar: urlAvatar });
   //console.log(request.query)
 });
 
 app.get("/bonus", (request, response) => {
   manipautre = manipjson.configautre;
-  response.render("page/bonus", { manipautre, joueurs });
+  response.render("page/bonus", { manipautre, joueurs, urlAvatar: urlAvatar });
 });
 
 app.get("/creer", (request, response) => {
-  response.render("page/creerPNJ", { test: "salut", joueurs });
+  response.render("page/creerPNJ", {
+    test: "salut",
+    joueurs,
+    urlAvatar: urlAvatar,
+  });
   //console.log(request.query)
 });
 
 app.get("/changer", (request, response) => {
   manipPNJ = {};
   manipPNJ.pnj = manipjson.configPNJ;
-  response.render("page/changerPNJ", { manipPNJ, joueurs });
+  response.render("page/changerPNJ", {
+    manipPNJ,
+    joueurs,
+    urlAvatar: urlAvatar,
+  });
   //console.log(request.query)
 });
 
 app.get("/changerPNJ", (request, response) => {
   manipPNJ = {};
   manipPNJ.pnj = manipjson.configPNJ[request.query.perso];
-  response.render("page/modifierPNJ", { manipPNJ, joueurs });
+  response.render("page/modifierPNJ", {
+    manipPNJ,
+    joueurs,
+    urlAvatar: urlAvatar,
+  });
   //console.log(request.query)
 });
 
 //JEU
 app.get("/jeu", (request, response) => {
-  response.render("page/jeu", { joueurs });
+  response.render("page/jeu", { joueurs, urlAvatar: urlAvatar });
   //console.log(request.query)
 });
 

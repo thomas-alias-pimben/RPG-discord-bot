@@ -437,6 +437,14 @@ function valeurBonus(bonus) {
   return configautre.bonusPNJ[parseInt(bonus)];
 }
 
+function changeURLPNJ(url) {
+  configautre.avatarURL = url;
+  fs.writeFileSync(
+    "./sourcePerso/autre.json",
+    JSON.stringify(configautre, null, 4),
+  );
+}
+
 function modifAtt(perso, att, modif, nombre) {
   console.log(perso + " " + att + " " + modif);
 
@@ -621,3 +629,4 @@ module.exports.getPersoAllAttributs = getPersoAllAttributs;
 module.exports.changePNJPrincipale = changePNJPrincipale;
 module.exports.getAllPNJ = getAllPNJ;
 module.exports.getPricipale = getPrincipale;
+module.exports.changeURLPNJ = changeURLPNJ;

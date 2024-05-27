@@ -10,7 +10,7 @@ module.exports = {
     .setName("testbutton")
     .setDescription("test de bouton")
     .addUserOption((option) =>
-      option.setName("target").setDescription("test getUser"),
+      option.setName("target").setDescription("test getUser").setRequired(true),
     )
     .addStringOption((option) =>
       option.setName("reason").setDescription("la raison"),
@@ -45,7 +45,7 @@ module.exports = {
 
       if (confirmation.customId === "confirm") {
         await confirmation.update({
-          content: `${target.username} à été ban par ce que: ${reason} \n LOL`,
+          content: `${target.username} vous avez choisi ${reason} \n LOL`,
           components: [],
         });
       } else if (confirmation.customId === "cancel") {
