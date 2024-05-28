@@ -597,6 +597,7 @@ function avoirGIF(attribut) {
       return value;
     }
   }
+  return gif["default"];
 }
 
 //méthode à importer

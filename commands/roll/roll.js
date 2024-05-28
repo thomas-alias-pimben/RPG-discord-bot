@@ -50,7 +50,6 @@ module.exports = {
     let message = "";
     let gif = avoirGIF(attribut);
     critique = 0;
-    console.log(gif["good url"][0]);
     //on gere les critique
     if (random === 10) {
       critique = 1;
@@ -77,12 +76,13 @@ module.exports = {
       message += "jet simple :**" + random + "**";
     }
 
-    await interaction.reply(message);
+    await interaction.channel.send(message);
     if (critique > 0) {
-      await interaction.channel.send(gif["good url"][0] + "\n");
+      await interaction.channel.send(gif["good url"][1] + "\n");
     }
     if (critique < 0) {
       await interaction.channel.send(gif["bad url"][0] + "\n");
     }
+
   },
 };
