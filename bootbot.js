@@ -103,7 +103,7 @@ client.on(Events.InteractionCreate, async (interaction) => {
 });
 
 client.once("ready", async (client) => {
-  await connecterBotChannelVocal();
+  //await connecterBotChannelVocal();
   usernameAdmin = client.users.cache.get(idAdmin);
   console.log(`${client.user.tag} connecté`);
   console.log(

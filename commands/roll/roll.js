@@ -5,6 +5,7 @@ const {
   avoirKey,
   cherchePerso,
   getPersoAllAttributs,
+  avoirGIF,
 } = require("../../utils/manipulerjson");
 const { jetDe, jetCritique } = require("../../utils/diceFunction");
 const { musiquetime } = require("../../utils/vocalFunction");
@@ -47,14 +48,18 @@ module.exports = {
     let random = jetDe();
     const randomCritique = jetCritique();
     let message = "";
-
+    let gif = avoirGIF(attribut);
+    critique = 0;
+    console.log(gif["good url"][0]);
     //on gere les critique
     if (random === 10) {
+      critique = 1;
       message += "REUSSITE CRITIQUE !!! : **+" + randomCritique + "**\n";
       random += randomCritique;
       musiquetime(chercheMusiqueVocal(userId), 30000);
     }
     if (random === 1) {
+      critique = -1;
       message = "échec critique ... : **-" + randomCritique + "**\n";
       random -= randomCritique;
       musiquetime("./musique/echec.mp3", 5000);
@@ -73,5 +78,11 @@ module.exports = {
     }
 
     await interaction.reply(message);
+    if (critique > 0) {
+      await interaction.channel.send(gif["good url"][0] + "\n");
+    }
+    if (critique < 0) {
+      await interaction.channel.send(gif["bad url"][0] + "\n");
+    }
   },
 };

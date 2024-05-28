@@ -14,11 +14,11 @@ function gererPersoJSON() {
   return modules;
 }
 
-//config =require('./sourcePerso/perso.json');
 config = gererPersoJSON();
 configPNJ = require("../sourcePerso/PNJ.json");
 
 configautre = require("../sourcePerso/autre.json");
+gif = require("../source/gif.json");
 
 function avoirKey(element) {
   let objectToInspect;
@@ -588,6 +588,17 @@ function ecrireConfig() {
   }
 }
 
+function avoirGIF(attribut) {
+  if (hasSpaceFirst(attribut)) {
+    attribut = attribut.slice(1);
+  }
+  for (const [key, value] of Object.entries(gif)) {
+    if (key === attribut) {
+      return value;
+    }
+  }
+}
+
 //méthode à importer
 module.exports.config = config;
 module.exports.configautre = configautre;
@@ -630,3 +641,4 @@ module.exports.changePNJPrincipale = changePNJPrincipale;
 module.exports.getAllPNJ = getAllPNJ;
 module.exports.getPricipale = getPrincipale;
 module.exports.changeURLPNJ = changeURLPNJ;
+module.exports.avoirGIF = avoirGIF;
