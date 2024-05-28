@@ -39,7 +39,7 @@
 
   "instinct": {
     "key": ["instinct"],
-    "bad url": [],
+    "bad url": ["https://tenor.com/view/this-is-fine-fire-house-burning-okay-gif-5263684"],
     "good url": [
       "https://tenor.com/view/hisoka-hunter-x-hunter-hxh-anime-aura-gif-17602951",
       "https://tenor.com/view/aura-de-insanidade-gif-25469126",
@@ -111,7 +111,7 @@
 
   "équilibre": {
     "key": ["équilibre"],
-    "bad url": [],
+    "bad url": ["https://tenor.com/view/everybody-do-the-flop-drop-gif-14353985"],
     "good url": [
       "https://tenor.com/view/karakuri-circus-shirogane-dunk-basketball-dunked-gif-20598425",
       "https://tenor.com/view/inazuma-eleven-go-galaxy-inago-galaxy-anime-victor-blade-tsurugi-kyousuke-gif-23074329",
@@ -137,7 +137,8 @@
       "https://tenor.com/view/cute-anime-acchi-koochi-hug-gif-14017665",
       "https://tenor.com/view/funny-naruto-dodge-ack-gif-7402078",
       "https://tenor.com/view/android17-avoiding-dragonball-z-dodge-gif-13749639",
-      "https://tenor.com/view/goku-ultra-instinct-gif-13958783"
+      "https://tenor.com/view/goku-ultra-instinct-gif-13958783",
+      "https://tenor.com/view/kuchiki-rukia-bleach-ichigo-kurosaki-gif-23939718"
     ]
   },
 
