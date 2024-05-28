@@ -39,7 +39,9 @@
 
   "instinct": {
     "key": ["instinct"],
-    "bad url": ["https://tenor.com/view/this-is-fine-fire-house-burning-okay-gif-5263684"],
+    "bad url": [
+      "https://tenor.com/view/this-is-fine-fire-house-burning-okay-gif-5263684"
+    ],
     "good url": [
       "https://tenor.com/view/hisoka-hunter-x-hunter-hxh-anime-aura-gif-17602951",
       "https://tenor.com/view/aura-de-insanidade-gif-25469126",
@@ -111,7 +113,9 @@
 
   "équilibre": {
     "key": ["équilibre"],
-    "bad url": ["https://tenor.com/view/everybody-do-the-flop-drop-gif-14353985"],
+    "bad url": [
+      "https://tenor.com/view/everybody-do-the-flop-drop-gif-14353985"
+    ],
     "good url": [
       "https://tenor.com/view/karakuri-circus-shirogane-dunk-basketball-dunked-gif-20598425",
       "https://tenor.com/view/inazuma-eleven-go-galaxy-inago-galaxy-anime-victor-blade-tsurugi-kyousuke-gif-23074329",
@@ -215,7 +219,7 @@
   },
 
   "magie": {
-    "key": ["magie"],
+    "key": ["magie", "relique"],
     "bad url": [],
     "good url": [
       "https://tenor.com/view/anime-merlin-nanatsu-no-taizai-black-magic-boom-gif-13583175",

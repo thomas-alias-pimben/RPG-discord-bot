@@ -53,12 +53,12 @@ function cherchePerso(idJoueur) {
   return donnees;
 }
 
-function hasSpaceFirst(message) {
-  return message[0] === " ";
+function hasFirst(message, char = " ") {
+  return message[0] === char;
 }
 
 function getPersoAllAttributs(idJoueur, message) {
-  let spaceFirst = hasSpaceFirst(message);
+  let spaceFirst = hasFirst(message);
   perso = cherchePerso(idJoueur);
   retour = config[perso]["attribut"].flatMap((element) => {
     return Object.keys(element)
@@ -77,7 +77,7 @@ function getPersoAllAttributs(idJoueur, message) {
 }
 
 function getPersoAllPNJ(message) {
-  let spaceFirst = hasSpaceFirst(message);
+  let spaceFirst = hasFirst(message);
   let pnj = configPNJ.principale;
   let retour = Object.keys(configPNJ[pnj]["attribut"])
     .map((e) => {
@@ -98,7 +98,7 @@ function getPrincipale() {
 }
 
 function getAllPNJ(message) {
-  let spaceFirst = hasSpaceFirst(message);
+  let spaceFirst = hasFirst(message);
   let pnj = configPNJ.principale;
   let retour = Object.keys(configPNJ)
     .map((e) => {
@@ -589,18 +589,21 @@ function ecrireConfig() {
 }
 
 function avoirGIF(attribut) {
-  if (hasSpaceFirst(attribut)) {
+  if (hasFirst(attribut)) {
     attribut = attribut.slice(1);
   }
   for (const [key, value] of Object.entries(gif)) {
     if (key === attribut) {
       return value;
     }
-    value.key.forEach((val) => {
-      if (val === attribut) {
+
+    for (let val of value.key) {
+      //les mot avec & fonctionne si il est contenu dans l'attribut
+      if (attribut.includes(val)) {
+        console.log("HA");
         return value;
       }
-    });
+    }
   }
   return gif["default"];
 }
