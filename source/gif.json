@@ -17,6 +17,7 @@
       "https://tenor.com/view/kanna-kanna-kamui-dragon-maid-miss-kobayashis-dragon-maid-watching-gif-16381914"
     ]
   },
+
   "fouille": {
     "key": ["fouille"],
     "bad url": [],
@@ -34,6 +35,14 @@
       "https://tenor.com/view/sad-dont-steal-my-strawberry-anime-cake-desert-gif-11925145",
       "https://tenor.com/view/bento-knock-out-run-take-kidnap-gif-5666314",
       "https://tenor.com/view/kanna-kamui-anime-food-bread-creambread-gif-12390213"
+    ]
+  },
+
+  "musculature": {
+    "key": ["musculature"],
+    "bad url": ["https://tenor.com/view/dragon-maid-maidragon-kobayashisan-chi-no-maid-dragon-kobayashi-punch-gif-20635463"],
+    "good url": [
+      "https://tenor.com/view/a-gif-2604718221481934620"
     ]
   },
 
