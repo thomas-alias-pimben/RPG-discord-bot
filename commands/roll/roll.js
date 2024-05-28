@@ -76,13 +76,12 @@ module.exports = {
       message += "jet simple :**" + random + "**";
     }
 
-    await interaction.channel.send(message);
+    await interaction.reply(message);
     if (critique > 0) {
       await interaction.channel.send(gif["good url"][1] + "\n");
     }
     if (critique < 0) {
       await interaction.channel.send(gif["bad url"][0] + "\n");
     }
-
   },
 };

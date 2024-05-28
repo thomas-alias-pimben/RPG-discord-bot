@@ -596,6 +596,11 @@ function avoirGIF(attribut) {
     if (key === attribut) {
       return value;
     }
+    value.key.forEach((val) => {
+      if (val === attribut) {
+        return value;
+      }
+    });
   }
   return gif["default"];
 }
