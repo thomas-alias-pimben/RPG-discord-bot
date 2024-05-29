@@ -48,7 +48,7 @@ module.exports = {
     let random = jetDe();
     const randomCritique = jetCritique();
     let message = "";
-    let gif = avoirGIF(attribut);
+    //let gif = avoirGIF(attribut);
     critique = 0;
     //on gere les critique
     if (random === 10) {
@@ -77,11 +77,15 @@ module.exports = {
     }
 
     await interaction.reply(message);
-    if (critique > 0) {
+    if(critique !==0)
+    {
+      await interaction.channel.send(getRandomGIF(critique, attribut))
+    }
+    /*if (critique > 0) {
       await interaction.channel.send(gif["good url"][1] + "\n");
     }
     if (critique < 0) {
       await interaction.channel.send(gif["bad url"][0] + "\n");
-    }
+    }*/
   },
 };
