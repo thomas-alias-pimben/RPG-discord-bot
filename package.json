@@ -18,7 +18,8 @@
     "express-session": "^1.18.0",
     "ffmpeg": "^0.0.4",
     "ffmpeg-static": "^5.2.0",
-    "libsodium-wrappers": "^0.7.13"
+    "libsodium-wrappers": "^0.7.13",
+    "tenorjs": "^1.0.10"
   },
   "devDependencies": {
     "prettier": "3.2.5"
