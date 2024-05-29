@@ -607,6 +607,9 @@ function avoirGIF(attribut) {
   }
   return gif["default"];
 }
+function getRandomGIF(critique, attribut){
+
+}
 
 //méthode à importer
 module.exports.config = config;
