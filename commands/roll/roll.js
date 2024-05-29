@@ -5,7 +5,8 @@ const {
   avoirKey,
   cherchePerso,
   getPersoAllAttributs,
-  avoirGIF, getRandomGIF,
+  avoirGIF,
+  getRandomGIF,
 } = require("../../utils/manipulerjson");
 const { jetDe, jetCritique } = require("../../utils/diceFunction");
 const { musiquetime } = require("../../utils/vocalFunction");
@@ -77,9 +78,8 @@ module.exports = {
     }
 
     await interaction.reply(message);
-    if(critique !==0)
-    {
-      await interaction.channel.send(getRandomGIF(critique, attribut))
+    if (critique !== 0) {
+      await interaction.channel.send(getRandomGIF(critique, attribut));
     }
   },
 };

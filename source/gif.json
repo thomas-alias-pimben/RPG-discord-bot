@@ -40,10 +40,10 @@
 
   "musculature": {
     "key": ["musculature"],
-    "bad url": ["https://tenor.com/view/dragon-maid-maidragon-kobayashisan-chi-no-maid-dragon-kobayashi-punch-gif-20635463"],
-    "good url": [
-      "https://tenor.com/view/a-gif-2604718221481934620"
-    ]
+    "bad url": [
+      "https://tenor.com/view/dragon-maid-maidragon-kobayashisan-chi-no-maid-dragon-kobayashi-punch-gif-20635463"
+    ],
+    "good url": ["https://tenor.com/view/a-gif-2604718221481934620"]
   },
 
   "instinct": {

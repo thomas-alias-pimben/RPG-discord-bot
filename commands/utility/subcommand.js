@@ -1,5 +1,5 @@
 const { SlashCommandBuilder } = require("discord.js");
-const config = require('../../config.json');
+const config = require("../../config.json");
 
 module.exports = {
   data: new SlashCommandBuilder()
@@ -17,19 +17,22 @@ module.exports = {
       subcommand.setName("server").setDescription("Info about the server"),
     ),
   async execute(interaction) {
-
     const Tenor = require("tenorjs").client({
-      "Key": config.TenorKey, // https://developers.google.com/tenor/guides/quickstart
-      "Filter": "off", // "off", "low", "medium", "high", not case sensitive
-      "Locale": "en_US", // Your locale here, case-sensitivity depends on input
-      "MediaFilter": "minimal", // either minimal or basic, not case sensitive
-      "DateFormat": "D/MM/YYYY - H:mm:ss A" // Change this accordingly
+      Key: config.TenorKey, // https://developers.google.com/tenor/guides/quickstart
+      Filter: "off", // "off", "low", "medium", "high", not case sensitive
+      Locale: "en_US", // Your locale here, case-sensitivity depends on input
+      MediaFilter: "minimal", // either minimal or basic, not case sensitive
+      DateFormat: "D/MM/YYYY - H:mm:ss A", // Change this accordingly
     });
-    Tenor.Search.Query("hug", "3").then(Results => {
-      Results.forEach(Post => {
-        console.log(`Item #${Post.id} (Created: ${Post.created}) @ ${Post.url}`);
-      });
-    }).catch(console.error);
+    Tenor.Search.Query("hug", "3")
+      .then((Results) => {
+        Results.forEach((Post) => {
+          console.log(
+            `Item #${Post.id} (Created: ${Post.created}) @ ${Post.url}`,
+          );
+        });
+      })
+      .catch(console.error);
 
     await interaction.reply(interaction.options.getSubcommand());
   },
