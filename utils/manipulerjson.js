@@ -598,35 +598,35 @@ function avoirGIF(attribut) {
     }
 
     for (let val of value.key) {
-      //les mot avec & fonctionne si il est contenu dans l'attribut
       if (attribut.includes(val)) {
-        console.log("HA");
         return value;
       }
     }
   }
   return gif["default"];
 }
-function getRandomGIF(critique, attribut){
-    const gif = avoirGIF(attribut)
-    const gifDefault = avoirGIF("default");
-    const random = Math.random();
-    if (critique > 0) {
-      if(gif["good url"].length > 0){
-        return gif["good url"][Math.floor((random*gif["good url"].length))];
-      }
-       else{
-       return gifDefault["good url"][Math.floor((random*gifDefault["good url"].length))]
-      }
+function getRandomGIF(critique, attribut) {
+  const gif = avoirGIF(attribut);
+  const gifDefault = avoirGIF("default");
+  const random = Math.random();
+  if (critique > 0) {
+    if (gif["good url"].length > 0) {
+      return gif["good url"][Math.floor(random * gif["good url"].length)];
+    } else {
+      return gifDefault["good url"][
+        Math.floor(random * gifDefault["good url"].length)
+      ];
     }
-    if (critique < 0) {
-      if(gif["bad url"].length > 0) {
-        return gif["bad url"][Math.floor((random*gif["bad url"].length))]
-      }
-      else{
-        return gifDefault["bad url"][Math.floor((random*gifDefault["bad url"].length))]
-      }
+  }
+  if (critique < 0) {
+    if (gif["bad url"].length > 0) {
+      return gif["bad url"][Math.floor(random * gif["bad url"].length)];
+    } else {
+      return gifDefault["bad url"][
+        Math.floor(random * gifDefault["bad url"].length)
+      ];
     }
+  }
 }
 
 //méthode à importer
