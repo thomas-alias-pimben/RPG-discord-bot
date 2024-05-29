@@ -5,11 +5,12 @@ const {
   valeurAttributPNJ,
   getPersoAllPNJ,
   getPricipale,
-  getAllPNJ,
+  getAllPNJ, getRandomGIF,
 } = require("../../utils/manipulerjson");
 const { adminId } = require("../../config.json");
 const { jetDe, jetCritique } = require("../../utils/diceFunction");
 const { musiquetime } = require("../../utils/vocalFunction");
+const { spoilrollMJ } = require("../../config.json");
 
 module.exports = {
   data: new SlashCommandBuilder()
@@ -78,14 +79,16 @@ module.exports = {
       let random = jetDe();
       const randomCritique = jetCritique();
       let message = "";
-
+      let critique = 0;
       //on gere les critique
       if (random === 10) {
+        critique = 1;
         message += "REUSSITE CRITIQUE !!! : +" + randomCritique + "\n";
         random += randomCritique;
         musiquetime(chercheMusiqueVocal(userId), 30000);
       }
       if (random === 1) {
+        critique = -1;
         message = "échec critique ... : -" + randomCritique + "\n";
         random -= randomCritique;
         musiquetime("./musique/echec.mp3", 5000);
@@ -108,6 +111,9 @@ module.exports = {
       await interaction.reply(
         pnj + " => jet de " + attribut + " : **" + res + "**",
       );
+      if (critique !== 0 && (spoilrollMJ ?? false)) {
+        await interaction.channel.send(getRandomGIF(critique, attribut));
+      }
     } else {
       await interaction.reply("vous n'avez pas les droits");
     }

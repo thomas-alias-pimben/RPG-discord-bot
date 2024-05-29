@@ -2,12 +2,12 @@ const { SlashCommandBuilder } = require("discord.js");
 const {
   valeurAttribut,
   chercheMusiqueVocal,
-  valeurBonus,
+  valeurBonus, getRandomGIF,
 } = require("../../utils/manipulerjson");
 const { jetDe, jetCritique } = require("../../utils/diceFunction");
 const { adminId } = require("../../config.json");
 const { musiquetime } = require("../../utils/vocalFunction");
-
+const { spoilrollMJ } = require("../../config.json");
 module.exports = {
   data: new SlashCommandBuilder()
     .setName("rollmj")
@@ -26,14 +26,16 @@ module.exports = {
       let random = jetDe();
       const randomCritique = jetCritique();
       let message = "";
-
+      let critique = 0;
       if (valAttribut !== undefined) {
         //on gere les critique
         if (random === 10) {
+          critique = 1;
           random += randomCritique;
           musiquetime(chercheMusiqueVocal(userId), 30000);
         }
         if (random === 1) {
+          critique = -1;
           random -= randomCritique;
           musiquetime("./musique/echec.mp3", 5000);
         }
@@ -57,6 +59,9 @@ module.exports = {
       } else {
         message += "jet simple :**" + random + "**";
         await interaction.reply(message);
+      }
+      if (critique !== 0 && (spoilrollMJ ?? false)) {
+        await interaction.channel.send(getRandomGIF(critique, "default"));
       }
     } else {
       await interaction.reply({
