@@ -598,9 +598,7 @@ function avoirGIF(attribut) {
     }
 
     for (let val of value.key) {
-      //les mot avec & fonctionne si il est contenu dans l'attribut
       if (attribut.includes(val)) {
-        console.log("HA");
         return value;
       }
     }
