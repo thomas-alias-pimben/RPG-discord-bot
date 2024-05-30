@@ -112,7 +112,8 @@ client.once("ready", async (client) => {
       " °( ^-^)°",
   );
   client.user.setActivity("troller les joueurs");
-  changeURLPNJ(client.user.avatarURL().replace(".webp", ".png"));
+  changeURLPNJ(client.user.displayAvatarURL({ extension: 'png' }));
+  console.log(client.user.displayAvatarURL({ extension: 'png' }));
 });
 
 async function connecterBotChannelVocal() {
