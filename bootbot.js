@@ -11,7 +11,7 @@ const {
 //initialisation du bot discord
 const { SlashCommandIntegerOption } = require("@discordjs/builders");
 
-const { token, adminId, guildId } = require("./config.json");
+const { token, adminId, guildId, } = require("./config.json");
 
 const idAdmin = adminId;
 
@@ -20,6 +20,7 @@ let estEnVoc = false;
 require("./registeryCommand");
 const { changeURLPNJ } = require("./utils/manipulerjson");
 const { joinVoiceChannel } = require("@discordjs/voice");
+const { download } = require("./utils/FonctionServeur");
 
 // Create a new client instance
 const client = new Client({
@@ -112,8 +113,8 @@ client.once("ready", async (client) => {
       " °( ^-^)°",
   );
   client.user.setActivity("troller les joueurs");
-  changeURLPNJ(client.user.displayAvatarURL({ extension: 'png' }));
-  console.log(client.user.displayAvatarURL({ extension: 'png' }));
+  //on télécharge l'image d'avatar
+  await download(client.user.displayAvatarURL({ extension: 'png' }), 'public/image/avatar.png', function() {});
 });
 
 async function connecterBotChannelVocal() {

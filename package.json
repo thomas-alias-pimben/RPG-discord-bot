@@ -12,6 +12,7 @@
   "license": "ISC",
   "dependencies": {
     "@discordjs/voice": "^0.16.1",
+    "axios": "^1.7.2",
     "discord.js": "^14.15.2",
     "ejs": "^3.1.10",
     "express": "^4.19.2",
@@ -19,6 +20,7 @@
     "ffmpeg": "^0.0.4",
     "ffmpeg-static": "^5.2.0",
     "libsodium-wrappers": "^0.7.13",
+    "node-fetch": "^3.3.2",
     "tenorjs": "^1.0.10"
   },
   "devDependencies": {
