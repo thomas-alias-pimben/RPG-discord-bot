@@ -2,7 +2,8 @@ const { SlashCommandBuilder } = require("discord.js");
 const {
   valeurAttribut,
   chercheMusiqueVocal,
-  valeurBonus, getRandomGIF,
+  valeurBonus,
+  getRandomGIF,
 } = require("../../utils/manipulerjson");
 const { jetDe, jetCritique } = require("../../utils/diceFunction");
 const { adminId } = require("../../config.json");

@@ -11,7 +11,7 @@ const {
 //initialisation du bot discord
 const { SlashCommandIntegerOption } = require("@discordjs/builders");
 
-const { token, adminId, guildId, } = require("./config.json");
+const { token, adminId, guildId } = require("./config.json");
 
 const idAdmin = adminId;
 
@@ -114,7 +114,11 @@ client.once("ready", async (client) => {
   );
   client.user.setActivity("troller les joueurs");
   //on télécharge l'image d'avatar
-  await download(client.user.displayAvatarURL({ extension: 'png' }), 'public/image/avatar.png', function() {});
+  await download(
+    client.user.displayAvatarURL({ extension: "png" }),
+    "public/image/avatar.png",
+    function () {},
+  );
 });
 
 async function connecterBotChannelVocal() {
