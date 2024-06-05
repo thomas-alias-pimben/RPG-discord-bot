@@ -12,6 +12,7 @@ const {
 const { SlashCommandIntegerOption } = require("@discordjs/builders");
 
 const { token, adminId, guildId } = require("./config.json");
+const { isVocal } = require("./config.json");
 
 const idAdmin = adminId;
 
@@ -104,7 +105,11 @@ client.on(Events.InteractionCreate, async (interaction) => {
 });
 
 client.once("ready", async (client) => {
-  //await connecterBotChannelVocal();
+  if (isVocal) {
+    console.log("connection au vocal...");
+    await connecterBotChannelVocal();
+  }
+
   usernameAdmin = client.users.cache.get(idAdmin);
   console.log(`${client.user.tag} connecté`);
   console.log(
