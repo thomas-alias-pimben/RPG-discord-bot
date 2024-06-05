@@ -49,7 +49,7 @@ app.get("/perso", (request, response) => {
 });
 
 app.get("/bonus", (request, response) => {
-  manipautre = manipjson.configautre;
+  let manipautre = manipjson.configautre;
   response.render("page/bonus", { manipautre, joueurs, urlAvatar: urlAvatar });
 });
 

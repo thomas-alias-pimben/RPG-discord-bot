@@ -1,0 +1,62 @@
+{
+  "attribut": [
+    {
+      "santé physique": 0,
+      "santé spirituel": 0
+    },
+    {
+      "FORCE": 0,
+      "musculature": 0,
+      "vélocité": 0
+    },
+    {
+      "CHARISME": 0,
+      "manipulation": 0,
+      "intimidation": 0
+    },
+    {
+      "ATHLÉTISME": 0,
+      "équilibre": 0,
+      "agilité": 0,
+      "dextérité": 0,
+      "esquive": 0
+    },
+    {
+      "CONNAISSANCE": 0,
+      "culture générale": 0,
+      "culture mythologique": 0,
+      "culture magique": 0
+    },
+    {
+      "PERCEPTION": 0,
+      "vue": 0,
+      "ouïe": 0,
+      "fouille": 0,
+      "instinct": 0
+    },
+    {
+      "CONCENTRATION": 0,
+      "focalisation": 0,
+      "initiative": 0,
+      "discrétion": 0,
+      "orientation": 0
+    },
+    {
+      "RÉSISTANCE PHYSIQUE": 0,
+      "fatigue": 0,
+      "violence": 0,
+      "immunité": 0
+    },
+    {
+      "RÉSISTANCE MENTALE": 0,
+      "émotions": 0,
+      "résistance magique": 0
+    },
+    {
+      "magie noire": 0,
+      "pulsar": 0,
+      "recouvrement": 0
+    }
+  ],
+  "magie": {}
+}
