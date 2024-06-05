@@ -12,6 +12,7 @@ const {
 const { SlashCommandIntegerOption } = require("@discordjs/builders");
 
 const { token, adminId, guildId } = require("./config.json");
+const { isVocal } = require("./config.json");
 
 const idAdmin = adminId;
 
@@ -20,6 +21,7 @@ let estEnVoc = false;
 require("./registeryCommand");
 const { changeURLPNJ } = require("./utils/manipulerjson");
 const { joinVoiceChannel } = require("@discordjs/voice");
+const { download } = require("./utils/FonctionServeur");
 
 // Create a new client instance
 const client = new Client({
@@ -103,7 +105,11 @@ client.on(Events.InteractionCreate, async (interaction) => {
 });
 
 client.once("ready", async (client) => {
-  //await connecterBotChannelVocal();
+  if (isVocal) {
+    console.log("connection au vocal...");
+    await connecterBotChannelVocal();
+  }
+
   usernameAdmin = client.users.cache.get(idAdmin);
   console.log(`${client.user.tag} connecté`);
   console.log(
@@ -112,7 +118,12 @@ client.once("ready", async (client) => {
       " °( ^-^)°",
   );
   client.user.setActivity("troller les joueurs");
-  changeURLPNJ(client.user.avatarURL().replace(".webp", ".png"));
+  //on télécharge l'image d'avatar
+  await download(
+    client.user.displayAvatarURL({ extension: "png" }),
+    "public/image/avatar.png",
+    function () {},
+  );
 });
 
 async function connecterBotChannelVocal() {

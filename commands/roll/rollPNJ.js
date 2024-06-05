@@ -5,7 +5,8 @@ const {
   valeurAttributPNJ,
   getPersoAllPNJ,
   getPricipale,
-  getAllPNJ, getRandomGIF,
+  getAllPNJ,
+  getRandomGIF,
 } = require("../../utils/manipulerjson");
 const { adminId } = require("../../config.json");
 const { jetDe, jetCritique } = require("../../utils/diceFunction");
