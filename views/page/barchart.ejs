@@ -10,10 +10,11 @@
 <script src="https://cdn.amcharts.com/lib/5/index.js"></script>
 <script src="https://cdn.amcharts.com/lib/5/xy.js"></script>
 <script src="https://cdn.amcharts.com/lib/5/themes/Animated.js"></script>
+<script src="https://cdn.amcharts.com/lib/5/plugins/exporting.js"></script>
 
 <!-- Chart code -->
 <script>
-  am5.ready(function() {
+  am5.ready(async function() {
 
 // Create root element
 // https://www.amcharts.com/docs/v5/getting-started/#Root_element
@@ -33,8 +34,8 @@
       wheelX: "panX",
       wheelY: "zoomX",
       pinchZoomX: true,
-      paddingLeft:0,
-      paddingRight:1
+      paddingLeft: 0,
+      paddingRight: 1
     }));
 
 // Add cursor
@@ -92,11 +93,11 @@
     }));
 
     series.columns.template.setAll({ cornerRadiusTL: 5, cornerRadiusTR: 5, strokeOpacity: 0 });
-    series.columns.template.adapters.add("fill", function (fill, target) {
+    series.columns.template.adapters.add("fill", function(fill, target) {
       return chart.get("colors").getIndex(series.columns.indexOf(target));
     });
 
-    series.columns.template.adapters.add("stroke", function (stroke, target) {
+    series.columns.template.adapters.add("stroke", function(stroke, target) {
       return chart.get("colors").getIndex(series.columns.indexOf(target));
     });
 
@@ -146,8 +147,21 @@
     series.appear(1000);
     chart.appear(1000, 100);
 
+    let exporting = am5plugins_exporting.Exporting.new(root, {
+      menu: am5plugins_exporting.ExportingMenu.new(root, {})
+    });
+
+    await new Promise(r => setTimeout(r, 2000));
+    exporting.exportImage(chart).then((png) => {
+      document.getElementById("demo").innerHTML = "<img src=" + png + " >";
+      console.log(png)
+    });
+
+
   }); // end am5.ready()
 </script>
 
 <!-- HTML -->
 <div id="chartdiv"></div>
+
+<div id="demo"></div>

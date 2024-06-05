@@ -4,49 +4,51 @@ function gererPersoJSON() {
   const modules = {};
   const controllerPath = require("path").join(__dirname, "../perso");
 
-  fs
-    .readdirSync(controllerPath)
-    .forEach((file) => {
-      const name = file.replace(/\.js$/, "").replace(".json", "");
-      modules[name] = require(`../perso/${file}`);
-    });
+  fs.readdirSync(controllerPath).forEach((file) => {
+    const name = file.replace(/\.js$/, "").replace(".json", "");
+    modules[name] = require(`../perso/${file}`);
+  });
 
   return modules;
 }
 
-function gererAutreJSON()
-{
-  try
-  {
+function gererAutreJSON() {
+  try {
     return require("../source/autre.json");
-  }
-  catch (e) {
-    const jsonAutre ={ "bonusPNJ": [5, 5, 5, 5, 5], "avatarURL": ""}
-    fs.appendFile('./source/autre.json', JSON.stringify(jsonAutre), function (err) {   if (err) throw err;   console.log('Fichier autre créé !');});
+  } catch (e) {
+    const jsonAutre = { bonusPNJ: [5, 5, 5, 5, 5], avatarURL: "" };
+    fs.appendFile(
+      "./source/autre.json",
+      JSON.stringify(jsonAutre),
+      function (err) {
+        if (err) throw err;
+        console.log("Fichier autre créé !");
+      },
+    );
     return jsonAutre;
   }
-  
 }
 
-function gererPNJJSON()
-{
-  try
-  {
+function gererPNJJSON() {
+  try {
     return require("../sourcePerso/PNJ.json");
-  }
-  catch (e) {
-    const jsonPNJ ={ }
-    fs.appendFile('./sourcePerso/PNJ.json', JSON.stringify(jsonPNJ), function (err) {   if (err) throw err;   console.log('Fichier PNJ créé !');});
+  } catch (e) {
+    const jsonPNJ = {};
+    fs.appendFile(
+      "./sourcePerso/PNJ.json",
+      JSON.stringify(jsonPNJ),
+      function (err) {
+        if (err) throw err;
+        console.log("Fichier PNJ créé !");
+      },
+    );
     return jsonPNJ;
   }
-
 }
 
-
 config = gererPersoJSON();
-configautre =gererAutreJSON();
+configautre = gererAutreJSON();
 configPNJ = gererPNJJSON();
-
 
 gif = require("../source/gif.json");
 
@@ -458,10 +460,7 @@ function modifBonus(bonus) {
     configautre.bonusPNJ[4] = parseInt(bonus[4], 10);
   }
 
-  fs.writeFileSync(
-    "./source/autre.json",
-    JSON.stringify(configautre, null, 4),
-  );
+  fs.writeFileSync("./source/autre.json", JSON.stringify(configautre, null, 4));
 }
 function valeurBonus(bonus) {
   return configautre.bonusPNJ[parseInt(bonus)];
@@ -469,10 +468,7 @@ function valeurBonus(bonus) {
 
 function changeURLPNJ(url) {
   configautre.avatarURL = url;
-  fs.writeFileSync(
-    "./source/autre.json",
-    JSON.stringify(configautre, null, 4),
-  );
+  fs.writeFileSync("./source/autre.json", JSON.stringify(configautre, null, 4));
 }
 
 function modifAtt(perso, att, modif, nombre) {
