@@ -4,7 +4,7 @@ function gererPersoJSON() {
   const modules = {};
   const controllerPath = require("path").join(__dirname, "../perso");
 
-  require("fs")
+  fs
     .readdirSync(controllerPath)
     .forEach((file) => {
       const name = file.replace(/\.js$/, "").replace(".json", "");
@@ -14,10 +14,26 @@ function gererPersoJSON() {
   return modules;
 }
 
+function gererAutreJSON()
+{
+  try
+  {
+    return require("../source/autre.json");
+  }
+  catch (e) {
+    const jsonAutre ={ "bonusPNJ": [5, 5, 5, 5, 5], "avatarURL": ""}
+    fs.appendFile('./source/autre.json', JSON.stringify(jsonAutre), function (err) {   if (err) throw err;   console.log('Fichier créé !');});
+    return jsonAutre;
+  }
+  
+}
+
+
 config = gererPersoJSON();
+configautre =gererAutreJSON();
 configPNJ = require("../sourcePerso/PNJ.json");
 
-configautre = require("../sourcePerso/autre.json");
+
 gif = require("../source/gif.json");
 
 function avoirKey(element) {
@@ -429,7 +445,7 @@ function modifBonus(bonus) {
   }
 
   fs.writeFileSync(
-    "./sourcePerso/autre.json",
+    "./source/autre.json",
     JSON.stringify(configautre, null, 4),
   );
 }
@@ -440,7 +456,7 @@ function valeurBonus(bonus) {
 function changeURLPNJ(url) {
   configautre.avatarURL = url;
   fs.writeFileSync(
-    "./sourcePerso/autre.json",
+    "./source/autre.json",
     JSON.stringify(configautre, null, 4),
   );
 }
