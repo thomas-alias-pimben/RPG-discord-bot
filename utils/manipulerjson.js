@@ -22,16 +22,30 @@ function gererAutreJSON()
   }
   catch (e) {
     const jsonAutre ={ "bonusPNJ": [5, 5, 5, 5, 5], "avatarURL": ""}
-    fs.appendFile('./source/autre.json', JSON.stringify(jsonAutre), function (err) {   if (err) throw err;   console.log('Fichier créé !');});
+    fs.appendFile('./source/autre.json', JSON.stringify(jsonAutre), function (err) {   if (err) throw err;   console.log('Fichier autre créé !');});
     return jsonAutre;
   }
   
 }
 
+function gererPNJJSON()
+{
+  try
+  {
+    return require("../sourcePerso/PNJ.json");
+  }
+  catch (e) {
+    const jsonPNJ ={ }
+    fs.appendFile('./sourcePerso/PNJ.json', JSON.stringify(jsonPNJ), function (err) {   if (err) throw err;   console.log('Fichier PNJ créé !');});
+    return jsonPNJ;
+  }
+
+}
+
 
 config = gererPersoJSON();
 configautre =gererAutreJSON();
-configPNJ = require("../sourcePerso/PNJ.json");
+configPNJ = gererPNJJSON();
 
 
 gif = require("../source/gif.json");
