@@ -1,31 +1,4 @@
-const {
-  config,
-  aff,
-  avoirKey,
-  afficherPerso,
-  valeurAttribut,
-  affAttribut,
-  affSocial,
-  afficherPersoNom,
-  ajouterPv,
-  ajouterPs,
-  affPv,
-  restaurerPv,
-  restaurerPs,
-  modifierPv,
-  modifierPs,
-  tableauChannel,
-  getIdChannel,
-  chercheChanel,
-  cherchePerso,
-  chercheMusiqueVocal,
-  modifierXP,
-  ajouterXP,
-  getxp,
-  modifierverse,
-  ajouterverse,
-  getverse,
-} = require("./manipulerjson");
+const { config, avoirKey, affSocial, affPv } = require("./manipulerjson");
 
 function TableauPerso(perso) {
   resultat = "";

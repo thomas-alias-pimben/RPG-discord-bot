@@ -6,7 +6,8 @@ const {
   cherchePerso,
   getPersoAllAttributs,
   avoirGIF,
-  getRandomGIF, completeStat,
+  getRandomGIF,
+  completeStat,
 } = require("../../utils/manipulerjson");
 const { jetDe, jetCritique } = require("../../utils/diceFunction");
 const { musiquetime } = require("../../utils/vocalFunction");
@@ -49,7 +50,7 @@ module.exports = {
     const randomCritique = jetCritique();
     let message = "";
 
-    completeStat(userId, random,randomCritique, valAttribut);
+    completeStat(userId, random, randomCritique, valAttribut);
 
     critique = 0;
     //on gere les critique

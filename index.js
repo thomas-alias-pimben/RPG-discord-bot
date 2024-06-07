@@ -15,6 +15,8 @@ app.set("view engine", "ejs");
 
 //middleware
 app.use("/assets", express.static("public"));
+app.use("/js", express.static("utils/manipGraph"));
+app.use("/json", express.static("source"));
 app.use(bodyparser.urlencoded({ extended: false }));
 app.use(bodyparser.json());
 app.use(

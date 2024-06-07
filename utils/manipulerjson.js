@@ -51,7 +51,7 @@ function gererStatGraphJSON() {
   try {
     return require("../source/stat-for-graph.json");
   } catch (e) {
-    console.error(e)
+    console.error(e);
     const jsonstatGraph = {};
     fs.appendFile(
       "./source/stat-for-graph.json",
@@ -675,53 +675,52 @@ function getRandomGIF(critique, attribut) {
   }
 }
 
-function completeStat(userId, rollUser, criticRollUser, valAttribut)
-{
+function completeStat(userId, rollUser, criticRollUser, valAttribut) {
   let perso = cherchePerso(userId);
-  if(configStatGraph[perso] === undefined) {
+  if (configStatGraph[perso] === undefined) {
     configStatGraph[perso] = {
-      stat : [0,0,0,0,0,0,0,0,0,0],
+      stat: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
       max: 0,
-      min : Number.MAX_VALUE,
+      min: Number.MAX_VALUE,
       maxatt: 0,
-      minatt: Number.MAX_VALUE
+      minatt: Number.MAX_VALUE,
     };
   }
   let statPerso = configStatGraph[perso];
-  statPerso.stat[rollUser-1]++;
+  statPerso.stat[rollUser - 1]++;
 
-  const trueRoll = (rollUser===10 ? rollUser+criticRollUser : rollUser===1 ? rollUser-criticRollUser : rollUser)
+  const trueRoll =
+    rollUser === 10
+      ? rollUser + criticRollUser
+      : rollUser === 1
+        ? rollUser - criticRollUser
+        : rollUser;
   const trueRollAtt = trueRoll + valAttribut;
-  if(statPerso.max<trueRoll)
-  {
+  if (statPerso.max < trueRoll) {
     statPerso.max = trueRoll;
   }
-  if(statPerso.min>trueRoll)
-  {
+  if (statPerso.min > trueRoll) {
     statPerso.min = trueRoll;
   }
 
-  if(statPerso.maxatt<trueRollAtt)
-  {
+  if (statPerso.maxatt < trueRollAtt) {
     statPerso.maxatt = trueRollAtt;
   }
-  if(statPerso.minatt>trueRollAtt)
-  {
+  if (statPerso.minatt > trueRollAtt) {
     statPerso.minatt = trueRollAtt;
   }
-
 
   fs.writeFileSync(
     "./source/stat-for-graph.json",
     JSON.stringify(configStatGraph, null, 4),
   );
-
 }
 
 //méthode à importer
 module.exports.config = config;
 module.exports.configautre = configautre;
 module.exports.configPNJ = configPNJ;
+module.exports.configStatGraph = configStatGraph;
 module.exports.avoirKey = avoirKey;
 module.exports.valeurAttribut = valeurAttribut;
 module.exports.afficherPerso = afficherPerso;
@@ -762,4 +761,4 @@ module.exports.getPricipale = getPrincipale;
 module.exports.changeURLPNJ = changeURLPNJ;
 module.exports.avoirGIF = avoirGIF;
 module.exports.getRandomGIF = getRandomGIF;
-module.exports.completeStat=completeStat;
+module.exports.completeStat = completeStat;
