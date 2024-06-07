@@ -6,7 +6,7 @@ const {
   cherchePerso,
   getPersoAllAttributs,
   avoirGIF,
-  getRandomGIF,
+  getRandomGIF, completeStat,
 } = require("../../utils/manipulerjson");
 const { jetDe, jetCritique } = require("../../utils/diceFunction");
 const { musiquetime } = require("../../utils/vocalFunction");
@@ -40,7 +40,6 @@ module.exports = {
     //les attributs de la fonction
     let attribut = interaction.options.getString("attribut");
     let bonus = interaction.options.getInteger("bonus");
-
     if (typeof attribut === "string" && attribut[0] === " ") {
       attribut = attribut.slice(1);
     }
@@ -49,6 +48,8 @@ module.exports = {
     let random = jetDe();
     const randomCritique = jetCritique();
     let message = "";
+
+    completeStat(userId, random,randomCritique, valAttribut);
 
     critique = 0;
     //on gere les critique

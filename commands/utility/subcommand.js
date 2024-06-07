@@ -1,6 +1,6 @@
 const { SlashCommandBuilder } = require("discord.js");
 const config = require("../../config.json");
-const getURLTenor = require("../../utils/ManipuleTenor");
+const getURLTenor = require("../../utils/manipulerTenor");
 
 module.exports = {
   data: new SlashCommandBuilder()

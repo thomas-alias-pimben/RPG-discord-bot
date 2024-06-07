@@ -1,4 +1,5 @@
 const fs = require("fs");
+const { jetCritique } = require("./diceFunction");
 
 function gererPersoJSON() {
   const modules = {};
@@ -22,7 +23,7 @@ function gererAutreJSON() {
       JSON.stringify(jsonAutre),
       function (err) {
         if (err) throw err;
-        console.log("Fichier autre créé !");
+        console.log("Fichier 'autre.json' créé !");
       },
     );
     return jsonAutre;
@@ -39,16 +40,35 @@ function gererPNJJSON() {
       JSON.stringify(jsonPNJ),
       function (err) {
         if (err) throw err;
-        console.log("Fichier PNJ créé !");
+        console.log("Fichier 'PNJ.json' créé !");
       },
     );
     return jsonPNJ;
   }
 }
 
-config = gererPersoJSON();
-configautre = gererAutreJSON();
-configPNJ = gererPNJJSON();
+function gererStatGraphJSON() {
+  try {
+    return require("../source/stat-for-graph.json");
+  } catch (e) {
+    console.error(e)
+    const jsonstatGraph = {};
+    fs.appendFile(
+      "./source/stat-for-graph.json",
+      JSON.stringify(jsonstatGraph),
+      function (err) {
+        if (err) throw err;
+        console.log("Fichier 'stat-for-graph.json' créé !");
+      },
+    );
+    return jsonstatGraph;
+  }
+}
+
+let config = gererPersoJSON();
+let configautre = gererAutreJSON();
+let configPNJ = gererPNJJSON();
+let configStatGraph = gererStatGraphJSON();
 
 gif = require("../source/gif.json");
 
@@ -655,6 +675,49 @@ function getRandomGIF(critique, attribut) {
   }
 }
 
+function completeStat(userId, rollUser, criticRollUser, valAttribut)
+{
+  let perso = cherchePerso(userId);
+  if(configStatGraph[perso] === undefined) {
+    configStatGraph[perso] = {
+      stat : [0,0,0,0,0,0,0,0,0,0],
+      max: 0,
+      min : Number.MAX_VALUE,
+      maxatt: 0,
+      minatt: Number.MAX_VALUE
+    };
+  }
+  let statPerso = configStatGraph[perso];
+  statPerso.stat[rollUser-1]++;
+
+  const trueRoll = (rollUser===10 ? rollUser+criticRollUser : rollUser===1 ? rollUser-criticRollUser : rollUser)
+  const trueRollAtt = trueRoll + valAttribut;
+  if(statPerso.max<trueRoll)
+  {
+    statPerso.max = trueRoll;
+  }
+  if(statPerso.min>trueRoll)
+  {
+    statPerso.min = trueRoll;
+  }
+
+  if(statPerso.maxatt<trueRollAtt)
+  {
+    statPerso.maxatt = trueRollAtt;
+  }
+  if(statPerso.minatt>trueRollAtt)
+  {
+    statPerso.minatt = trueRollAtt;
+  }
+
+
+  fs.writeFileSync(
+    "./source/stat-for-graph.json",
+    JSON.stringify(configStatGraph, null, 4),
+  );
+
+}
+
 //méthode à importer
 module.exports.config = config;
 module.exports.configautre = configautre;
@@ -699,3 +762,4 @@ module.exports.getPricipale = getPrincipale;
 module.exports.changeURLPNJ = changeURLPNJ;
 module.exports.avoirGIF = avoirGIF;
 module.exports.getRandomGIF = getRandomGIF;
+module.exports.completeStat=completeStat;
