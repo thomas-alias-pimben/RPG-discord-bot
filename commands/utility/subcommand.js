@@ -19,7 +19,7 @@ module.exports = {
         ),
     async execute(interaction) {
         if (config.TenorKey) {
-            console.log(getURLTenor('hug', '3'))
+            console.log(await getURLTenor('hug', '3'))
         }
         await interaction.reply(interaction.options.getSubcommand())
     },
