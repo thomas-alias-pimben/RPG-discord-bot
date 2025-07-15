@@ -41,9 +41,19 @@ le fichier avec tout les attributs :
 }
 ```
 
-## installer les pakages
+## ajouter le fichier pour les gifs
+
+créer un dossier appellé "source" et ajouter le fichier "gif.json" avec :
+
+```json
+{}
+```
+
+## installer les pakage
 
 faites ensuite un `npm install` pour installer les paquets nécéssaires
+
+
 
 # pour lancer le bot
 
