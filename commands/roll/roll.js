@@ -80,7 +80,7 @@ module.exports = {
     await interaction.reply(message);
     if (critique !== 0) {
      
-      urlGif = getRandomGIF(critique, attribut)+"";
+      urlGif = getRandomGIF(critique, attribut);
 
       if( gif !== NOGIF)
       {
