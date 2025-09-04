@@ -79,7 +79,17 @@ module.exports = {
 
     await interaction.reply(message);
     if (critique !== 0) {
-      await interaction.channel.send(getRandomGIF(critique, attribut));
+     
+      urlGif = getRandomGIF(critique, attribut)+"";
+
+      if( gif !== NOGIF)
+      {
+        console.log("HOHO");
+        await interaction.channel.send( urlGif);
+      }
+        
     }
   },
 };
+
+NOGIF="NOGIF";

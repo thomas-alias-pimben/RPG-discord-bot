@@ -623,7 +623,7 @@ function avoirGIF(attribut) {
       return value;
     }
 
-    for (let val of value.key) {
+    for (let val of Object.keys(value)) {
       if (attribut.includes(val)) {
         return value;
       }
@@ -632,12 +632,13 @@ function avoirGIF(attribut) {
   return gif["default"];
 }
 function getRandomGIF(critique, attribut) {
-  const gif = avoirGIF(attribut);
+  const listGif = avoirGIF(attribut);
   const gifDefault = avoirGIF("default");
   const random = Math.random();
-  if (critique > 0) {
-    if (gif["good url"].length > 0) {
-      return gif["good url"][Math.floor(random * gif["good url"].length)];
+  if(listGif !== undefined){
+    if (critique > 0) {
+    if (listGif["good url"].length > 0) {
+      return listGif["good url"][Math.floor(random * listGif["good url"].length)];
     } else {
       return gifDefault["good url"][
         Math.floor(random * gifDefault["good url"].length)
@@ -645,8 +646,8 @@ function getRandomGIF(critique, attribut) {
     }
   }
   if (critique < 0) {
-    if (gif["bad url"].length > 0) {
-      return gif["bad url"][Math.floor(random * gif["bad url"].length)];
+    if (listGif["bad url"].length > 0) {
+      return listGif["bad url"][Math.floor(random * listGif["bad url"].length)];
     } else {
       return gifDefault["bad url"][
         Math.floor(random * gifDefault["bad url"].length)
@@ -654,6 +655,12 @@ function getRandomGIF(critique, attribut) {
     }
   }
 }
+else{
+  return NOGIF;
+}
+}
+
+NOGIF="NOGIF";
 
 //méthode à importer
 module.exports.config = config;
