@@ -23,6 +23,9 @@ module.exports = {
         .setRequired(true),
     )
     .addIntegerOption((option) =>
+      option.setName("rollbonus").setDescription("le les dés bonus"),
+    )
+    .addIntegerOption((option) =>
       option.setName("bonus").setDescription("le bonus"),
     ),
   async autocomplete(interaction) {
@@ -40,6 +43,8 @@ module.exports = {
     //les attributs de la fonction
     let attribut = interaction.options.getString("attribut");
     let bonus = interaction.options.getInteger("bonus");
+    let deBonus = interaction.options.getInteger("rollbonus");
+    let pointbonus = 0;
 
     if (typeof attribut === "string" && attribut[0] === " ") {
       attribut = attribut.slice(1);
@@ -49,6 +54,13 @@ module.exports = {
     let random = jetDe();
     const randomCritique = jetCritique();
     let message = "";
+
+    //le dé bonus
+    if (deBonus !== null) {
+        pointbonus = Math.floor(Math.random() * deBonus + 1);
+      }
+
+    
 
     critique = 0;
     //on gere les critique
@@ -67,10 +79,17 @@ module.exports = {
     if (valAttribut !== undefined) {
       message += "jet de " + attribut + " : **" + random + "** +" + valAttribut;
 
+
+       if (deBonus !== null) {1
+        message += "+ __" + pointbonus +"__";
+      }
+
       if (bonus !== null) {
         message += "+ " + bonus;
         random = random + bonus;
       }
+
+
 
       message += "=__**" + (random + valAttribut) + "**__";
     } else {
