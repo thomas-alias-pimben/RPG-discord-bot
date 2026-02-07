@@ -1,6 +1,7 @@
 {
-  "attaque": 0,
-  "degat": 0,
-  "precision": 0,
-  "initiative": 5
+  "attaque": "agilité",
+  "degat": "musculature",
+  "precision": "dextérité",
+  "initiative": "dextérité",
+  "parade" : "dextérité"
 }

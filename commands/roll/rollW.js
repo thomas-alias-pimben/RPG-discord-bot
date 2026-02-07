@@ -7,6 +7,7 @@ const {
   getAllWeapons,
   avoirGIF,
   getRandomGIF,
+  valeurAttributArme,
 } = require("../../utils/manipulerjson");
 const { jetDe, jetCritique } = require("../../utils/diceFunction");
 const { musiquetime } = require("../../utils/vocalFunction");
@@ -41,16 +42,18 @@ module.exports = {
   async execute(interaction) {
     const userId = interaction.user.id;
     //les attributs de la fonction
-    let attribut = interaction.options.getString("attribut");
+    let attribut = interaction.options.getString("arme");
     let bonus = interaction.options.getInteger("bonus");
     let deBonus = interaction.options.getInteger("rollbonus");
     let pointbonus = 0;
-
+  
+  
     if (typeof attribut === "string" && attribut[0] === " ") {
       attribut = attribut.slice(1);
     }
+     
     //la valeur de la stat
-    const valAttribut = valeurAttribut(userId, attribut);
+    const valAttribut = valeurAttributArme(userId, attribut);
     let random = jetDe();
     const randomCritique = jetCritique();
     let message = "";
@@ -98,7 +101,6 @@ module.exports = {
       urlGif = getRandomGIF(critique, attribut);
 
       if (gif !== NOGIF) {
-        console.log("HOHO");
         await interaction.channel.send(urlGif);
       }
     }

@@ -46,6 +46,7 @@ function gererPNJJSON() {
   }
 }
 
+/** pour rollW (weapons) */
 function gererWJSON() {
   try {
     return require("../source/weapons.json");
@@ -63,10 +64,31 @@ function gererWJSON() {
   }
 }
 
+/** pour rollW (weapons) */
+function gererAttWeaponJSON() {
+  try {
+    return require("../source/attribut_w.json");
+  } catch (e) {
+    const jsonPNJ = {};
+    fs.appendFile(
+      "./source/weapons.json",
+      JSON.stringify(jsonPNJ),
+      function (err) {
+        if (err) throw err;
+        console.log("Fichier weapons créé !");
+      },
+    );
+    return jsonPNJ;
+  }
+}
+
 config = gererPersoJSON();
 configautre = gererAutreJSON();
 configPNJ = gererPNJJSON();
+
+/** pour rollW (weapons) */
 configW = gererWJSON();
+configAttWeapon = gererAttWeaponJSON();
 
 gif = require("../source/gif.json");
 
@@ -429,6 +451,35 @@ function valeurAttribut(userId, attribut) {
   return undefined;
 }
 
+/** pour rollW (weapons) */
+function valeurAttributArme(userId, attribut) {
+  perso = cherchePerso(userId);
+
+  let retourFiche;
+  let retour;
+  if (config[perso] !== undefined) {
+
+    arrayWeapon = attribut.split(" ")
+    BonusWeapon = configW[arrayWeapon[0]][arrayWeapon[1]]
+    attJoueur = configAttWeapon[arrayWeapon[1]]
+   
+
+    config[perso]["attribut"].forEach((element) => {
+      let clef = avoirKey(element);
+
+      clef.forEach((key) => {
+        if (key === attJoueur) {
+          retourFiche = element[key];
+        }
+      });
+    });
+
+    retour = retourFiche + BonusWeapon
+
+    return retour;
+  }
+  return undefined;
+}
 /*    pour les CHANNEL */
 
 function tableauChannel() {
@@ -708,6 +759,7 @@ module.exports.afficherPerso = afficherPerso;
 module.exports.affAttribut = affAttribut;
 module.exports.affSocial = affMagie;
 module.exports.afficherPersoNom = afficherPersoNom;
+
 module.exports.ajouterPv = ajouterPv;
 module.exports.ajouterPs = ajouterPs;
 module.exports.affPv = affPv;
@@ -715,11 +767,13 @@ module.exports.restaurerPv = restaurerPv;
 module.exports.restaurerPs = restaurerPs;
 module.exports.modifierPv = modifierPv;
 module.exports.modifierPs = modifierPs;
+
 module.exports.tableauChannel = tableauChannel;
 module.exports.getIdChannel = getIdChannel;
 module.exports.chercheChanel = chercheChanel;
 module.exports.chercheMusiqueVocal = chercheMusiqueVocal;
 module.exports.cherchePerso = cherchePerso;
+
 module.exports.modifierXP = modifierXP;
 module.exports.ajouterXP = ajouterXP;
 module.exports.getxp = getxp;
@@ -729,6 +783,7 @@ module.exports.getverse = getverse;
 module.exports.modifBonus = modifBonus;
 module.exports.valeurBonus = valeurBonus;
 module.exports.modifAtt = modifAtt;
+
 module.exports.creerPNJ = creerPNJ;
 module.exports.changerPNJ = changerPNJ;
 module.exports.manipPNJ = manipPNJ;
@@ -740,6 +795,9 @@ module.exports.changePNJPrincipale = changePNJPrincipale;
 module.exports.getAllPNJ = getAllPNJ;
 module.exports.getPricipale = getPrincipale;
 module.exports.changeURLPNJ = changeURLPNJ;
+
 module.exports.avoirGIF = avoirGIF;
 module.exports.getRandomGIF = getRandomGIF;
+
 module.exports.getAllWeapons = getAllWeapons;
+module.exports.valeurAttributArme = valeurAttributArme;
