@@ -1,48 +1,56 @@
-const { REST, Routes } = require("discord.js");
+const { REST } = require("@discordjs/rest");
+const { Routes } = require("discord.js");
 const { clientId, guildId, token } = require("./config.json");
+
 const fs = require("node:fs");
 const path = require("node:path");
 
 const commands = [];
-// Grab all the command folders from the commands directory you created earlier
+
+// Récupère tous les dossiers de commandes
 const foldersPath = path.join(__dirname, "commands");
 const commandFolders = fs.readdirSync(foldersPath);
 
 for (const folder of commandFolders) {
-  // Grab all the command files from the commands directory you created earlier
+  // Récupère tous les fichiers de commandes dans chaque dossier
   const commandsPath = path.join(foldersPath, folder);
   const commandFiles = fs
     .readdirSync(commandsPath)
     .filter((file) => file.endsWith(".js"));
-  // Grab the SlashCommandBuilder#toJSON() output of each command's data for deployment
+
   for (const file of commandFiles) {
     const filePath = path.join(commandsPath, file);
     const command = require(filePath);
+
+    // Vérification pour éviter les erreurs
+    if (!command.data || !command.data.toJSON) {
+      console.error(` Commande invalide : ${filePath}`);
+      continue;
+    }
+
+    // Ajoute la commande au tableau
     commands.push(command.data.toJSON());
   }
 }
 
-// Construct and prepare an instance of the REST module
+// Crée une instance REST avec le token du bot
 const rest = new REST().setToken(token);
 
-// and deploy your commands!
+// Déploie les commandes slash
 (async () => {
   try {
     console.log(
-      `Started refreshing ${commands.length} application (/) commands.`,
+      `Mise à jour de ${commands.length} commandes slash en cours...`,
     );
 
-    // The put method is used to fully refresh all commands in the guild with the current set
+    // Met à jour toutes les commandes du serveur (guild)
     const data = await rest.put(
       Routes.applicationGuildCommands(clientId, guildId),
       { body: commands },
     );
 
-    console.log(
-      `Successfully reloaded ${data.length} application (/) commands.`,
-    );
+    console.log(`${data.length} commandes slash mises à jour avec succès.`);
   } catch (error) {
-    // And of course, make sure you catch and log any errors!
-    console.error("error " + error);
+    console.error("Erreur lors du déploiement des commandes :", error);
   }
 })();

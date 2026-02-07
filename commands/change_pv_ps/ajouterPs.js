@@ -1,7 +1,6 @@
-const { SlashCommandBuilder } = require("discord.js");
+const { SlashCommandBuilder } = require("@discordjs/builders");
 const { affPv, ajouterPs } = require("../../utils/manipulerjson");
 const { rebootPagePerso } = require("../../utils/channelPersoFunction");
-
 module.exports = {
   data: new SlashCommandBuilder()
     .setName("ajouter_ps")

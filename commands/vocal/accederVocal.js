@@ -1,49 +1,89 @@
-const { SlashCommandBuilder } = require("discord.js");
+const { SlashCommandBuilder } = require("@discordjs/builders");
 const {
-  afficherPlusieursPartie,
-  afficherPerso,
-  affAttribut,
-} = require("../../utils/manipulerjson");
+  joinVoiceChannel,
+  createAudioPlayer,
+  createAudioResource,
+  NoSubscriberBehavior,
+} = require("@discordjs/voice");
+const path = require("path");
+const fs = require("fs");
 const { adminId } = require("../../config.json");
-const { joinVoiceChannel } = require("@discordjs/voice");
 
 module.exports = {
   data: new SlashCommandBuilder()
     .setName("accedervocal")
-    .setDescription("accede au vocal de l'admin"),
+    .setDescription("Accède au vocal de l'admin et peut jouer un son RPG")
+    .addStringOption((option) =>
+      option
+        .setName("son")
+        .setDescription("Nom du son à jouer (ex: attack)")
+        .setRequired(false),
+    ),
+
   async execute(interaction) {
     const userId = interaction.user.id;
-    if (userId === adminId) {
-      const voiceChannel = interaction.member.voice.channel;
-      if (voiceChannel) {
-        const { joinVoiceChannel } = require("@discordjs/voice");
-        connection = joinVoiceChannel({
-          channelId: voiceChannel.id,
-          guildId: voiceChannel.guild.id,
-          adapterCreator: voiceChannel.guild.voiceAdapterCreator,
-        });
-
-        estEnVoc = true;
-        await interaction.reply({
-          content: "t'es bien  sur un channel vocal",
-          ephemeral: true,
-        });
-        //connection.destroy();
-      } else {
-        await interaction.reply({
-          content: "t'es pas sur un channel vocal",
-          ephemeral: true,
-        });
-      }
-    } else {
+    if (userId !== adminId) {
       await interaction.reply({
-        content: "tu n'as pas les droits",
+        content: "Tu n'as pas les droits",
         ephemeral: true,
       });
       console.log(
-        interaction.user.username +
-          " veut tricher ce petit coquin ###################################",
+        `${interaction.user.username} a essayé d'accéder au vocal sans droit !`,
       );
+      return;
     }
+
+    const voiceChannel = interaction.member.voice.channel;
+    if (!voiceChannel) {
+      await interaction.reply({
+        content: "Tu n'es pas sur un channel vocal",
+        ephemeral: true,
+      });
+      return;
+    }
+
+    // Connexion au canal vocal
+    const connection = joinVoiceChannel({
+      channelId: voiceChannel.id,
+      guildId: voiceChannel.guild.id,
+      adapterCreator: voiceChannel.guild.voiceAdapterCreator,
+      selfDeaf: false,
+    });
+
+    // Création d'un audio player
+    const player = createAudioPlayer({
+      behaviors: { noSubscriber: NoSubscriberBehavior.Play },
+    });
+    connection.subscribe(player);
+
+    connection.on("error", (error) =>
+      console.error("Erreur connection:", error),
+    );
+    player.on("error", (error) => console.error("Erreur player:", error));
+
+    // Jouer un son si fourni
+    const soundName = interaction.options.getString("son");
+    if (soundName) {
+      const filePath = path.join(
+        __dirname,
+        "../../musique/",
+        `${soundName}.mp3`,
+      );
+      if (!fs.existsSync(filePath)) {
+        await interaction.reply({
+          content: `Le son '${soundName}' est introuvable !`,
+          ephemeral: true,
+        });
+        return;
+      }
+
+      const resource = createAudioResource(filePath);
+      player.play(resource);
+    }
+
+    await interaction.reply({
+      content: "Tu es bien sur le channel vocal",
+      ephemeral: true,
+    });
   },
 };

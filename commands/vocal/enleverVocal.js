@@ -1,4 +1,4 @@
-const { SlashCommandBuilder } = require("discord.js");
+const { SlashCommandBuilder } = require("@discordjs/builders");
 const { adminId } = require("../../config.json");
 const { getVoiceConnections } = require("@discordjs/voice");
 module.exports = {

@@ -9,18 +9,18 @@ module.exports.musiquetime = (path, time) => {
   let player;
   if (getVoiceConnections().size !== 0) {
     let connection = getVoiceConnections().entries().next().value[1];
-    // player = createAudioPlayer();
+    player = createAudioPlayer();
     console.log("path =" + path);
     //player.pause();
     const resource = createAudioResource(path);
 
-    /* player.on(AudioPlayerStatus.Playing, () => {
+    player.on(AudioPlayerStatus.Playing, () => {
       console.log("The audio player has started playing!");
     });
 
     player.on(AudioPlayerStatus.Paused, () => {
       console.log("en pause");
-    });*/
+    });
 
     playercritique = createAudioPlayer();
 
@@ -28,8 +28,8 @@ module.exports.musiquetime = (path, time) => {
     connection.subscribe(playercritique);
     setTimeout(() => {
       playercritique.stop();
-      //connection.subscribe(player);
-      //player.unpause();
+      connection.subscribe(player);
+      player.unpause();
     }, time);
     console.log("musique réussite critique");
   } else {

@@ -4,7 +4,7 @@ const {
   chercheMusiqueVocal,
   avoirKey,
   cherchePerso,
-  getPersoAllAttributs,
+  getAllWeapons,
   avoirGIF,
   getRandomGIF,
 } = require("../../utils/manipulerjson");
@@ -13,12 +13,12 @@ const { musiquetime } = require("../../utils/vocalFunction");
 
 module.exports = {
   data: new SlashCommandBuilder()
-    .setName("roll")
-    .setDescription("que la chance soit avec toi")
+    .setName("roll_w")
+    .setDescription("que la WAAAG soit avec toi")
     .addStringOption((option) =>
       option
-        .setName("attribut")
-        .setDescription("l'attribut à utiliser pour ce lancer de dé")
+        .setName("arme")
+        .setDescription("l'arme à utiliser pour ce lancer de dé")
         .setAutocomplete(true)
         .setRequired(true),
     )
@@ -32,7 +32,7 @@ module.exports = {
     let idJoueur = interaction.user.id;
     let message = interaction.options.data[0].value;
     const focusedValue = interaction.options.getFocused();
-    const choices = getPersoAllAttributs(idJoueur, message);
+    const choices = getAllWeapons(message);
     const filtered = choices.filter((choice) => choice.includes(focusedValue));
     await interaction.respond(
       filtered.map((choice) => ({ name: choice, value: choice })),

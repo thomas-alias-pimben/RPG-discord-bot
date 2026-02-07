@@ -1,4 +1,4 @@
-const { SlashCommandBuilder } = require("discord.js");
+const { SlashCommandBuilder } = require("@discordjs/builders");
 const config = require("../../config.json");
 const getURLTenor = require("../../utils/ManipuleTenor");
 

@@ -1,4 +1,4 @@
-const { SlashCommandBuilder } = require("discord.js");
+const { SlashCommandBuilder } = require("@discordjs/builders");
 const {
   valeurAttribut,
   chercheMusiqueVocal,
@@ -33,12 +33,12 @@ module.exports = {
         if (random === 10) {
           critique = 1;
           random += randomCritique;
-          musiquetime(chercheMusiqueVocal(userId), 30000);
+          //musiquetime(chercheMusiqueVocal(userId), 50000);
         }
         if (random === 1) {
           critique = -1;
           random -= randomCritique;
-          musiquetime("./musique/echec.mp3", 5000);
+          //musiquetime("./musique/echec.mp3", 5000);
         }
         if (bonus != null) {
           console.log(

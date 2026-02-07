@@ -1,0 +1,42 @@
+{
+  "hache": {
+    "attaque": 1,
+    "degat": 3,
+    "precision": 1,
+    "initiative": 1,
+    "parade": 0
+  },
+  "eppee": {
+    "attaque": 3,
+    "degat": 2,
+    "precision": 0,
+    "initiative": 1,
+    "parade": 1
+  },
+  "dague": {
+    "attaque": 1,
+    "degat": 1,
+    "precision": 4,
+    "initiative": 0,
+    "parade": 0
+  },
+  "lance": {
+    "attaque": 1,
+    "degat": 1,
+    "precision": 1,
+    "initiative": 4,
+    "parade": 1
+  },
+  "poing": {
+    "attaque": 0,
+    "degat": 0,
+    "precision": 0,
+    "initiative": 0
+  },
+  "bouclier": {
+    "attaque": 0,
+    "degat": 0,
+    "precision": 0,
+    "initiative": 5
+  }
+}

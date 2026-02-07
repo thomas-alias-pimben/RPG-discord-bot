@@ -46,9 +46,27 @@ function gererPNJJSON() {
   }
 }
 
+function gererWJSON() {
+  try {
+    return require("../source/weapons.json");
+  } catch (e) {
+    const jsonPNJ = {};
+    fs.appendFile(
+      "./source/weapons.json",
+      JSON.stringify(jsonPNJ),
+      function (err) {
+        if (err) throw err;
+        console.log("Fichier weapons créé !");
+      },
+    );
+    return jsonPNJ;
+  }
+}
+
 config = gererPersoJSON();
 configautre = gererAutreJSON();
 configPNJ = gererPNJJSON();
+configW = gererWJSON();
 
 gif = require("../source/gif.json");
 
@@ -104,6 +122,21 @@ function getPersoAllAttributs(idJoueur, message) {
         }
       });
   });
+
+  return retour.slice(0, 25);
+}
+
+function getAllWeapons(message) {
+  const spaceFirst = hasFirst(message);
+
+  const retour = Object.entries(configW)
+    .flatMap(([weaponName, stats]) => {
+      return Object.entries(stats).map(([statName, statValue]) => {
+        const str = `${weaponName} ${statName} `;
+        return spaceFirst ? " " + str : str;
+      });
+    })
+    .filter((str) => str.includes(message));
 
   return retour.slice(0, 25);
 }
@@ -635,32 +668,35 @@ function getRandomGIF(critique, attribut) {
   const listGif = avoirGIF(attribut);
   const gifDefault = avoirGIF("default");
   const random = Math.random();
-  if(listGif !== undefined){
+  if (listGif !== undefined) {
     if (critique > 0) {
-    if (listGif["good url"].length > 0) {
-      return listGif["good url"][Math.floor(random * listGif["good url"].length)];
-    } else {
-      return gifDefault["good url"][
-        Math.floor(random * gifDefault["good url"].length)
-      ];
+      if (listGif["good url"].length > 0) {
+        return listGif["good url"][
+          Math.floor(random * listGif["good url"].length)
+        ];
+      } else {
+        return gifDefault["good url"][
+          Math.floor(random * gifDefault["good url"].length)
+        ];
+      }
     }
-  }
-  if (critique < 0) {
-    if (listGif["bad url"].length > 0) {
-      return listGif["bad url"][Math.floor(random * listGif["bad url"].length)];
-    } else {
-      return gifDefault["bad url"][
-        Math.floor(random * gifDefault["bad url"].length)
-      ];
+    if (critique < 0) {
+      if (listGif["bad url"].length > 0) {
+        return listGif["bad url"][
+          Math.floor(random * listGif["bad url"].length)
+        ];
+      } else {
+        return gifDefault["bad url"][
+          Math.floor(random * gifDefault["bad url"].length)
+        ];
+      }
     }
+  } else {
+    return NOGIF;
   }
-}
-else{
-  return NOGIF;
-}
 }
 
-NOGIF="NOGIF";
+NOGIF = "NOGIF";
 
 //méthode à importer
 module.exports.config = config;
@@ -706,3 +742,4 @@ module.exports.getPricipale = getPrincipale;
 module.exports.changeURLPNJ = changeURLPNJ;
 module.exports.avoirGIF = avoirGIF;
 module.exports.getRandomGIF = getRandomGIF;
+module.exports.getAllWeapons = getAllWeapons;
