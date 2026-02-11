@@ -474,9 +474,9 @@ function valeurAttributArme(userId, attribut) {
       });
     });
 
-    retour = retourFiche + BonusWeapon
+    
 
-    return retour;
+    return {retourFiche, BonusWeapon};
   }
   return undefined;
 }

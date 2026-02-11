@@ -53,7 +53,12 @@ module.exports = {
     }
      
     //la valeur de la stat
-    const valAttribut = valeurAttributArme(userId, attribut);
+    tabWeapon = valeurAttributArme(userId, attribut);
+    
+    const valAttribut = tabWeapon["retourFiche"];
+    const weapon = tabWeapon["BonusWeapon"]
+    const valTotal = valAttribut+weapon;
+    
     let random = jetDe();
     const randomCritique = jetCritique();
     let message = "";
@@ -77,8 +82,8 @@ module.exports = {
       random -= randomCritique;
       musiquetime("./musique/echec.mp3", 5000);
     }
-    if (valAttribut !== undefined) {
-      message += "jet de " + attribut + " : **" + random + "** +" + valAttribut;
+    if (valTotal !== undefined) {
+      message += "jet de " + attribut + " : **" + random + "** + " + weapon + " + "+valAttribut;
 
       if (deBonus !== null) {
         1;
@@ -91,7 +96,7 @@ module.exports = {
         random = random + bonus;
       }
 
-      message += "=__**" + (random + valAttribut) + "**__";
+      message += "=__**" + (random + valTotal) + "**__";
     } else {
       message += "jet simple :**" + random + "**";
     }
