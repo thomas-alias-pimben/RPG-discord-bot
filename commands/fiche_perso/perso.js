@@ -8,6 +8,7 @@ const { MessageFlags } = require('discord.js');
 
 const { adminId } = require("../../config.json");
 
+
 module.exports = {
   data: new SlashCommandBuilder()
     .setName("perso")
@@ -35,7 +36,7 @@ module.exports = {
     if (admin && interaction.user.id !== adminId) {
        await interaction.reply({
       content: "MON PETIT!! TU N'EST PAS ADMIN",
-      ephemeral: true,
+      flags: MessageFlags.Ephemeral,
     });
       } else {
          

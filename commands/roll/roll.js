@@ -10,6 +10,7 @@ const {
 } = require("../../utils/manipulerjson");
 const { jetDe, jetCritique } = require("../../utils/diceFunction");
 const { musiquetime } = require("../../utils/vocalFunction");
+const { MessageFlags } = require('discord.js');
 
 module.exports = {
   data: new SlashCommandBuilder()
@@ -25,8 +26,13 @@ module.exports = {
     .addIntegerOption((option) =>
       option.setName("rollbonus").setDescription("le les dés bonus"),
     )
-    .addIntegerOption((option) =>
+    .addStringOption((option) =>
       option.setName("bonus").setDescription("le bonus"),
+    )
+    .addBooleanOption((option) =>
+      option
+        .setName("caché")
+        .setDescription("est ce que ton roll est caché?")
     ),
   async autocomplete(interaction) {
     let idJoueur = interaction.user.id;
@@ -44,7 +50,16 @@ module.exports = {
     let attribut = interaction.options.getString("attribut");
     let bonus = interaction.options.getInteger("bonus");
     let deBonus = interaction.options.getInteger("rollbonus");
+    let prive = interaction.options.getBoolean("caché");
+
+  
+    let flag = 0;
     let pointbonus = 0;
+    
+    //pour mettre les message en privé
+    if(prive){
+      flag = MessageFlags.Ephemeral
+    }
 
     if (typeof attribut === "string" && attribut[0] === " ") {
       attribut = attribut.slice(1);
@@ -66,13 +81,20 @@ module.exports = {
       critique = 1;
       message += "REUSSITE CRITIQUE !!! : **+" + randomCritique + "**\n";
       random += randomCritique;
-      musiquetime(chercheMusiqueVocal(userId), 20000);
+      if(!prive)
+      {
+        musiquetime(chercheMusiqueVocal(userId), 20000);
+      }
+      
     }
     if (random === 1) {
       critique = -1;
       message = "échec critique ... : **-" + randomCritique + "**\n";
       random -= randomCritique;
-      musiquetime("./musique/echec.mp3", 5000);
+      if(!prive)
+      {
+        musiquetime("./musique/echec.mp3", 5000);
+      }
     }
     if (valAttribut !== undefined) {
       message += "jet de " + attribut + " : **" + random + "** +" + valAttribut;
@@ -93,13 +115,13 @@ module.exports = {
       message += "jet simple :**" + random + "**";
     }
 
-    await interaction.reply(message);
+    await interaction.reply({ content: message, flags: flag });
     if (critique !== 0) {
       urlGif = getRandomGIF(critique, attribut);
 
-      if (gif !== NOGIF) {
+      if (gif !== NOGIF && !prive) {
         console.log("HOHO");
-        await interaction.channel.send(urlGif);
+        await interaction.channel.send({ content: urlGif, flags: flag });
       }
     }
   },

@@ -9,6 +9,8 @@ const { jetDe, jetCritique } = require("../../utils/diceFunction");
 const { adminId } = require("../../config.json");
 const { musiquetime } = require("../../utils/vocalFunction");
 const { spoilrollMJ } = require("../../config.json");
+const { MessageFlags } = require('discord.js');
+
 module.exports = {
   data: new SlashCommandBuilder()
     .setName("rollmj")
@@ -67,7 +69,7 @@ module.exports = {
     } else {
       await interaction.reply({
         content: "tu n'as pas les droits",
-        ephemeral: true,
+        flags: MessageFlags.Ephemeral,
       });
       console.log(
         interaction.user.username +

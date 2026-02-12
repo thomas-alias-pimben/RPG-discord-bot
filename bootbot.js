@@ -6,7 +6,9 @@ const {
   Events,
   GatewayIntentBits,
   IntentsBitField,
+  MessageFlags
 } = require("discord.js");
+
 
 //initialisation du bot discord
 const { SlashCommandIntegerOption } = require("@discordjs/builders");
@@ -78,12 +80,12 @@ client.on(Events.InteractionCreate, async (interaction) => {
       if (interaction.replied || interaction.deferred) {
         await interaction.followUp({
           content: "There was an error while executing this command!",
-          ephemeral: true,
+          flags: MessageFlags.Ephemeral,
         });
       } else {
         await interaction.reply({
           content: "There was an error while executing this command!",
-          ephemeral: true,
+          flags: MessageFlags.Ephemeral,
         });
       }
     }
@@ -105,7 +107,7 @@ client.on(Events.InteractionCreate, async (interaction) => {
   }
 });
 
-client.once("ready", async (client) => {
+client.once("clientReady", async (client) => {
   if (isVocal) {
     console.log("connection au vocal...");
     await connecterBotChannelVocal();

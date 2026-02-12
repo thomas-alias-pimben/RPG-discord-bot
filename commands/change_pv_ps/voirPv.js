@@ -27,7 +27,7 @@ module.exports = {
     if (admin && interaction.user.id !== adminId) {
        await interaction.reply({
       content: "MON PETIT!! TU N'EST PAS ADMIN",
-      ephemeral: true,
+      flags: MessageFlags.Ephemeral,
     });
       } else {
 

@@ -8,6 +8,7 @@ const {
 } = require("../../utils/manipulerjson");
 const { DICE, jetDe } = require("../../utils/diceFunction");
 const { rebootPagePerso } = require("../../utils/channelPersoFunction");
+const { MessageFlags } = require('discord.js');
 
 module.exports = {
   data: new SlashCommandBuilder()
@@ -17,7 +18,7 @@ module.exports = {
     userId = interaction.user.id;
     restaurerPv(userId);
     rebootPagePerso(interaction.client);
-    await interaction.reply({ content: "" + affPv(userId), ephemeral: true });
+    await interaction.reply({ content: "" + affPv(userId), flags: MessageFlags.Ephemeral });
     console.log(interaction.user.username + " restaure ses pv");
   },
 };

@@ -1,6 +1,7 @@
 const { SlashCommandBuilder } = require("@discordjs/builders");
 const { rebootPagePerso } = require("../../utils/channelPersoFunction");
 const { adminId } = require("../../config.json");
+const { MessageFlags } = require('discord.js');
 
 module.exports = {
   data: new SlashCommandBuilder()
@@ -12,7 +13,7 @@ module.exports = {
       rebootPagePerso(interaction.client);
       await interaction.reply({
         content: "fini de reset les perso",
-        ephemeral: true,
+        flags: MessageFlags.Ephemeral,
       });
     }
   },

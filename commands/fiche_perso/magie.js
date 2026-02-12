@@ -5,6 +5,7 @@ const {
   affAttribut,
   affSocial,
 } = require("../../utils/manipulerjson");
+const { MessageFlags } = require('discord.js');
 
 module.exports = {
   data: new SlashCommandBuilder()
@@ -16,14 +17,14 @@ module.exports = {
     const persoTab = afficherPlusieursPartie(perso);
     await interaction.reply({
       content: "```" + persoTab[0] + "```",
-      ephemeral: true,
+      flags: MessageFlags.Ephemeral,
     });
     if (persoTab.length > 1) {
       persoTab.shift();
       for (const element of persoTab) {
         await interaction.followUp({
           content: "```" + element + "```",
-          ephemeral: true,
+          flags: MessageFlags.Ephemeral,
         });
       }
     }

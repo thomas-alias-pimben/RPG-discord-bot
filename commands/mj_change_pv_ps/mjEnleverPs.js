@@ -1,6 +1,7 @@
 const { SlashCommandBuilder } = require("@discordjs/builders");
 const { affPv, ajouterPs } = require("../../utils/manipulerjson");
 const { rebootPagePerso } = require("../../utils/channelPersoFunction");
+const { MessageFlags } = require('discord.js');
 
 module.exports = {
   data: new SlashCommandBuilder()
@@ -18,7 +19,7 @@ module.exports = {
     }
     ajouterPs(userId, -1 * ps);
     rebootPagePerso(interaction.client);
-    await interaction.reply({ content: "" + affPv(userId), ephemeral: true });
+    await interaction.reply({ content: "" + affPv(userId), flags: MessageFlags.Ephemeral });
     console.log(interaction.user.username + " s'enleve " + ps + " ps");
   },
 };

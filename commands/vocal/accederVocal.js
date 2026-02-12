@@ -8,6 +8,7 @@ const {
 const path = require("path");
 const fs = require("fs");
 const { adminId } = require("../../config.json");
+const { MessageFlags } = require('discord.js');
 
 module.exports = {
   data: new SlashCommandBuilder()
@@ -25,7 +26,7 @@ module.exports = {
     if (userId !== adminId) {
       await interaction.reply({
         content: "Tu n'as pas les droits",
-        ephemeral: true,
+        flags: MessageFlags.Ephemeral,
       });
       console.log(
         `${interaction.user.username} a essayé d'accéder au vocal sans droit !`,
@@ -37,7 +38,7 @@ module.exports = {
     if (!voiceChannel) {
       await interaction.reply({
         content: "Tu n'es pas sur un channel vocal",
-        ephemeral: true,
+        flags: MessageFlags.Ephemeral,
       });
       return;
     }
@@ -72,7 +73,7 @@ module.exports = {
       if (!fs.existsSync(filePath)) {
         await interaction.reply({
           content: `Le son '${soundName}' est introuvable !`,
-          ephemeral: true,
+          flags: MessageFlags.Ephemeral,
         });
         return;
       }
@@ -83,7 +84,7 @@ module.exports = {
 
     await interaction.reply({
       content: "Tu es bien sur le channel vocal",
-      ephemeral: true,
+      flags: MessageFlags.Ephemeral,
     });
   },
 };

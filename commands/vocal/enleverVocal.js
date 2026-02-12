@@ -1,6 +1,8 @@
 const { SlashCommandBuilder } = require("@discordjs/builders");
 const { adminId } = require("../../config.json");
 const { getVoiceConnections } = require("@discordjs/voice");
+const { MessageFlags } = require('discord.js');
+
 module.exports = {
   data: new SlashCommandBuilder()
     .setName("enlevervocal")
@@ -13,7 +15,7 @@ module.exports = {
       estEnVoc = false;
       await interaction.reply({
         content: "ok je m'en vais... :(",
-        ephemeral: true,
+        flags: MessageFlags.Ephemeral,
       });
     }
   },

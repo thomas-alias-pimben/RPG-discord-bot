@@ -1,4 +1,6 @@
 const { SlashCommandBuilder } = require("@discordjs/builders");
+const { MessageFlags } = require('discord.js');
+
 
 module.exports = {
   data: new SlashCommandBuilder()
@@ -8,7 +10,7 @@ module.exports = {
     const sent = await interaction.reply({
       content:
         "🏓Pong! \n Websocket heartbeat:" + interaction.client.ws.ping + "ms.",
-      ephemeral: true,
+      flags: MessageFlags.Ephemeral,
       fetchReply: true,
     });
     await interaction.editReply(
