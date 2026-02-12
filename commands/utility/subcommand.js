@@ -17,7 +17,25 @@ module.exports = {
       subcommand.setName("server").setDescription("Info about the server"),
     ),
   async execute(interaction) {
+    if(interaction.options.getSubcommand() === "server")
+    {
+      await interaction.reply(interaction.options.getSubcommand());
+    }
+    if(interaction.options.getSubcommand() === "user")
+    {
+      
+      const user = interaction.options.getUser("target")
+      if(user.bot)
+      {
+        await interaction.reply("c'est " + user.username+ " !\nc'est un bot");
+      }
+      else
+      {
+        const member = interaction.guild.members.cache.get(user.id)
+        await interaction.reply("c'est " + member.nickname + " !\npseudo: "+ user.globalName  );
+      }
+      
+    }
     
-    await interaction.reply(interaction.options.getSubcommand());
   },
 };
