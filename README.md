@@ -24,7 +24,6 @@ mettez le token de votre bot, l'id de votre bot, l'id du serveur et l'id de votr
 ### les attributs non obligatoires
 
 - **portServer** : le port de votre serveur <br/> _si cet attribut est absent, le port sera à 8000_
-- **TenorKey** : la clé privé pour l'API ténor (GIF)
 - **isVocal** : pour savoir si le bot se connecte au vocal automatiquement<br/>_(si il existe et est à true, le bot se connectera au vocal dès qu'il s'allume )_
 
 le fichier avec tout les attributs :
@@ -36,7 +35,6 @@ le fichier avec tout les attributs :
   "guildId": "your GuildId",
   "adminId": "your AdminId",
   "portServer": 8000,
-  "TenorKey": "your Tenorkey",
   "isVocal": true
 }
 ```

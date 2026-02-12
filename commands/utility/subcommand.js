@@ -1,6 +1,5 @@
 const { SlashCommandBuilder } = require("@discordjs/builders");
 const config = require("../../config.json");
-const getURLTenor = require("../../utils/ManipuleTenor");
 
 module.exports = {
   data: new SlashCommandBuilder()
@@ -18,9 +17,7 @@ module.exports = {
       subcommand.setName("server").setDescription("Info about the server"),
     ),
   async execute(interaction) {
-    if (config.TenorKey) {
-      console.log(getURLTenor("hug", "3"));
-    }
+    
     await interaction.reply(interaction.options.getSubcommand());
   },
 };
