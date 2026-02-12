@@ -4,28 +4,58 @@ const {
   afficherPerso,
 } = require("../../utils/manipulerjson");
 
+const { MessageFlags } = require('discord.js');
+
+const { adminId } = require("../../config.json");
+
 module.exports = {
   data: new SlashCommandBuilder()
     .setName("perso")
-    .setDescription("affiche ton perso"),
+    .setDescription("affiche ton perso").addUserOption((option) =>
+          option.setName("user").setDescription("l'utilisateur"),
+        ),
   async execute(interaction) {
-    const userId = interaction.user.id;
+    userId = "";
+    admin=false
+    
+    if(interaction.options.getUser("user") === null )
+    {
+      userId = interaction.user.id;
+    }
+    else
+    {
+      
+        userId = interaction.options.getUser("user").id;
+        admin=true;
+        
+    }
+
     const perso = afficherPerso(userId);
 
-    const persoTab = afficherPlusieursPartie(perso);
+    if (admin && interaction.user.id !== adminId) {
+       await interaction.reply({
+      content: "MON PETIT!! TU N'EST PAS ADMIN",
+      ephemeral: true,
+    });
+      } else {
+         
+        const persoTab = afficherPlusieursPartie(perso);
     await interaction.reply({
       content: "```" + persoTab[0] + "```",
-      ephemeral: true,
+      flags: MessageFlags.Ephemeral,
     });
     if (persoTab.length > 1) {
       persoTab.shift();
       for (const element of persoTab) {
         await interaction.followUp({
           content: "```" + element + "```",
-          ephemeral: true,
+          flags: MessageFlags.Ephemeral,
         });
       }
     }
     console.log(interaction.user.username + " regarde son perso...");
+      }
+
+    
   },
 };
