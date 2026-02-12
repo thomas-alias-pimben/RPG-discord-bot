@@ -15,7 +15,7 @@ module.exports.rebootPagePerso = (client) => {
     let channelpromise2 = client.channels.fetch(idJoueur);
 
     channelpromise2.then(succesChannel).catch(() => {
-      console.log(idJoueur + "n'as pas été trouvé");
+      console.log("ID CHANNEL INEXISTANT : "+idJoueur + "n'as pas été trouvé");
     });
   });
 

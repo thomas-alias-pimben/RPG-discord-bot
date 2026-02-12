@@ -1,7 +1,7 @@
 {
-    "id": "587605286013894656",
+    "id": "",
     "idChannel": "",
-    "musique": "./musique/ENTER.mp3",
+    "musique": "ENTER.mp3",
     "joueur": "moi",
     "nom": "Sandra Adoré",
     "race": "écureuil Garou",
@@ -10,7 +10,7 @@
     "verse": 100,
     "pv": [
         {
-            "PV": 18,
+            "PV": 30,
             "PS": 25
         }
     ],
@@ -159,5 +159,5 @@
             "transfert": 10
         }
     ],
-    "magie": {}
+    "magie": {}RPG-discord-bot/perso/exemple.json
 }
