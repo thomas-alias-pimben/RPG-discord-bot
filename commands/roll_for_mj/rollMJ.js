@@ -15,15 +15,29 @@ module.exports = {
   data: new SlashCommandBuilder()
     .setName("rollmj")
     .setDescription("commande mj")
-    .addStringOption((option) =>
-      option.setName("nb").setDescription("le numéro du bonus"),
+    .addIntegerOption((option) =>
+      option.setName("nb")
+            .setDescription("le numéro du bonus")
+            .setRequired(true),
+    ).addBooleanOption((option) =>
+      option
+        .setName("caché")
+        .setDescription("est ce que ton roll est caché?")
     ),
   async execute(interaction) {
     userId = interaction.user.id;
     if (userId === adminId) {
       //les attributs de la fonction
-      const bonus = interaction.options.getString("nb");
+      const bonus = interaction.options.getInteger("nb");
       console.log(bonus);
+
+      //cache
+      let prive = interaction.options.getBoolean("caché");
+      let flag = 0;
+      if(prive){
+      flag = MessageFlags.Ephemeral
+    }
+
       //la valeur de la stat
       const valAttribut = valeurBonus(bonus);
       let random = jetDe();
@@ -58,10 +72,10 @@ module.exports = {
           message += "jet simple :**" + random + "**";
         }
 
-        await interaction.reply(message);
+        await interaction.reply( { content: message, flags: flag });
       } else {
         message += "jet simple :**" + random + "**";
-        await interaction.reply(message);
+        await interaction.reply({ content: message, flags: flag });
       }
       if (critique !== 0 && (spoilrollMJ ?? false)) {
         await interaction.channel.send(getRandomGIF(critique, "default"));
