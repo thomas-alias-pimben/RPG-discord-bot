@@ -25,6 +25,7 @@ mettez le token de votre bot, l'id de votre bot, l'id du serveur et l'id de votr
 
 - **portServer** : le port de votre serveur <br/> _si cet attribut est absent, le port sera à 8000_
 - **isVocal** : pour savoir si le bot se connecte au vocal automatiquement<br/>_(si il existe et est à true, le bot se connectera au vocal dès qu'il s'allume )_
+- **spoilrollMJ** : Si configuré à true, affiche les GIF pour les réussites/echecs critque. Si à false ou abscent, ne les affiches pas.
 
 le fichier avec tout les attributs :
 
@@ -35,7 +36,8 @@ le fichier avec tout les attributs :
   "guildId": "your GuildId",
   "adminId": "your AdminId",
   "portServer": 8000,
-  "isVocal": true
+  "isVocal": true,
+  "spoilrollMJ": true
 }
 ```
 

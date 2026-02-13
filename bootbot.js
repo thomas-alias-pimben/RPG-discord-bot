@@ -20,6 +20,7 @@ const idAdmin = adminId;
 
 let pageperso = false;
 let estEnVoc = false;
+//permet de creer les commandes
 require("./registeryCommand");
 const { changeURLPNJ } = require("./utils/manipulerjson");
 const { joinVoiceChannel } = require("@discordjs/voice");
