@@ -547,7 +547,7 @@ function modifBonus(bonus) {
   fs.writeFileSync("./source/autre.json", JSON.stringify(configautre, null, 4));
 }
 function valeurBonus(bonus) {
-  return configautre.bonusPNJ[parseInt(bonus)];
+  return configautre.bonusPNJ[bonus];
 }
 
 function changeURLPNJ(url) {

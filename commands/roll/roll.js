@@ -26,7 +26,7 @@ module.exports = {
     .addIntegerOption((option) =>
       option.setName("rollbonus").setDescription("le les dés bonus"),
     )
-    .addStringOption((option) =>
+    .addIntegerOption((option) =>
       option.setName("bonus").setDescription("le bonus"),
     )
     .addBooleanOption((option) =>
