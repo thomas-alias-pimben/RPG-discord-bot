@@ -116,12 +116,18 @@ module.exports = {
     }
 
     await interaction.reply({ content: message, flags: flag });
+
+    
+      console.log(interaction.user.username+"##"+message)
+   
+
     if (critique !== 0) {
       urlGif = getRandomGIF(critique, attribut);
 
       if (gif !== NOGIF && !prive) {
         console.log("HOHO");
         await interaction.channel.send({ content: urlGif, flags: flag });
+        
       }
     }
   },
